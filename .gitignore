@@ -1,3 +1,12 @@
+# Dependencies
+node_modules
+package-lock.json
+
+# Build output
+dist
+dist-ssr
+build
+
 # Logs
 logs
 *.log
@@ -7,18 +16,40 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-node_modules
-dist
-dist-ssr
+# Runtime / env
 *.local
+.env
+.env.*
+!.env.example
+
+# Coverage / test
+coverage
+.nyc_output
+
+# Cache
+.cache
+*.tsbuildinfo
+.npm
+.eslintcache
+.stylelintcache
+.vite
+
+# OS files
+.DS_Store
+Thumbs.db
 
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
-.DS_Store
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Misc
+*.tgz
+temp
+tmp
+vite-temp
