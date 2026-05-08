@@ -1,0 +1,397 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-start;
+  width: 100%;
+  padding: 8px 20px;
+}
+
+.board-clip {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1.5px solid #CDCDCD;
+}
+
+.board-area {
+  position: relative;
+  width: 100%;
+  background: var(--color-yellow-300, #FBF8EE);
+  cursor: crosshair;
+  transform-origin: center;
+}
+
+.board-area.zoomed {
+  cursor: grab;
+}
+
+.board-area.panning {
+  cursor: grabbing;
+}
+
+.ball-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* subtle crosshair grid lines — extends 5x beyond playing area */
+.board-area::before {
+  content: '';
+  position: absolute;
+  inset: -200%;
+  background:
+    linear-gradient(#CDCDCD 0.5px, transparent 0.5px),
+    linear-gradient(90deg, #CDCDCD 0.5px, transparent 0.5px),
+    var(--color-yellow-300, #FBF8EE);
+  background-size: 2% 2%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.board-center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #CDCDCD;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* --- Hole --- */
+
+.hole-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.hole-ring {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid #719342;
+  background: rgba(113, 147, 65, 0.12);
+}
+
+.hole-flag {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 1px;
+  width: 2px;
+  height: 18px;
+  background: #4E4E4E;
+}
+
+.hole-flag::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 2px;
+  width: 10px;
+  height: 7px;
+  background: #EF4444;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+/* --- Distance guide line --- */
+
+.distance-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --- Players --- */
+
+.board-player-slot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 4;
+}
+
+.active-shooter::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1px dashed var(--player-color, #4E4E4E);
+  opacity: 0.5;
+}
+
+/* --- Holed effect --- */
+
+.holed-effect {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #719342;
+  background: rgba(113, 147, 65, 0.25);
+  animation: holed-pulse 0.6s ease-out forwards;
+  z-index: 5;
+  pointer-events: none;
+}
+
+@keyframes holed-pulse {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
+}
+
+/* ===================================================
+   Broadcast ticker — dark overlay on board
+   =================================================== */
+
+.broadcast-ticker {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 15, 25, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.bp-live {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  color: #EF4444;
+  letter-spacing: 0.8px;
+}
+
+.bp-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #EF4444;
+  animation: live-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes live-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+.bp-sep {
+  width: 1px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 0 8px;
+  flex-shrink: 0;
+}
+
+.bp-info {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bp-dim {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.bp-active {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.bp-active-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.bp-clutch-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  color: #719342;
+  background: rgba(113, 147, 65, 0.18);
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.6px;
+  margin-left: 2px;
+}
+
+.bp-outcome {
+  margin-left: auto;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: 0.4px;
+}
+
+.bp-out-great, .bp-out-good, .bp-out-clean { color: #B8D085; background: rgba(113, 147, 65, 0.2); }
+.bp-out-okay { color: #FFE99F; background: rgba(168, 141, 55, 0.2); }
+.bp-out-bad, .bp-out-missed { color: #F8A282; background: rgba(239, 68, 68, 0.2); }
+.bp-out-holed { color: #fff; background: #719342; }
+.bp-out-miracle { color: #fff; background: linear-gradient(135deg, #719342, #008BFF); }
+.bp-out-pinseeker { color: #fff; background: #008BFF; }
+
+/* ===================================================
+   Shot result banner — animated overlay on board
+   =================================================== */
+
+.shot-banner {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 6px 22px;
+  border-radius: 8px;
+  z-index: 12;
+  pointer-events: none;
+  animation: shot-reveal 2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  white-space: nowrap;
+}
+
+@keyframes shot-reveal {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  12%  { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  22%  { transform: translate(-50%, -50%) scale(1); }
+  65%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) translateY(-16px); }
+}
+
+.shot-great, .shot-good, .shot-clean {
+  color: #fff;
+  background: #719342;
+  box-shadow: 0 4px 20px rgba(113, 147, 65, 0.4);
+}
+
+.shot-okay {
+  color: #fff;
+  background: #A88D37;
+  box-shadow: 0 4px 20px rgba(168, 141, 55, 0.35);
+}
+
+.shot-bad, .shot-missed {
+  color: #fff;
+  background: #EF4444;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.35);
+}
+
+.shot-holed {
+  color: #fff;
+  background: #719342;
+  box-shadow: 0 4px 24px rgba(113, 147, 65, 0.5);
+}
+
+.shot-miracle {
+  color: #fff;
+  background: linear-gradient(135deg, #719342, #008BFF);
+  box-shadow: 0 4px 28px rgba(0, 139, 255, 0.4);
+}
+
+.shot-pinseeker {
+  color: #fff;
+  background: #008BFF;
+  box-shadow: 0 4px 24px rgba(0, 139, 255, 0.4);
+}
+
+/* ===================================================
+   Broadcast finished banner
+   =================================================== */
+
+.broadcast-finished {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0 2px;
+}
+
+.bf-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  color: #fff;
+  background: #EF4444;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.8px;
+}
+
+.bf-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4E4E4E;
+}
+
+/* --- Controls --- */
+
+.board-controls {
+  display: flex;
+  gap: 6px;
+  padding: 4px 0 0;
+  justify-content: center;
+}
+
+.control-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+}
+
+.control-btn:hover { opacity: 0.8; }
+
+.control-start {
+  color: #fff;
+  background: #719342;
+}
+
+.control-pause {
+  color: #4E4E4E;
+  background: #F2F2F2;
+}
+
+.control-stop {
+  color: #EF4444;
+  background: #FEF2F2;
+}

@@ -1,0 +1,362 @@
+.app-layout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* debug panel */
+.debug-panel {
+  width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #F2F2F2;
+  border: 1px solid #CDCDCD;
+}
+
+.debug-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #828282;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.debug-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #4E4E4E;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.debug-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.debug-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  border: 1.5px solid #CDCDCD;
+  border-radius: 10px;
+  background: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4E4E4E;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.debug-btn:hover {
+  border-color: #828282;
+}
+
+.debug-btn-active {
+  border-color: var(--btn-color);
+  background: #fff;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--btn-color) 20%, transparent);
+}
+
+.debug-btn-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--btn-color);
+  flex-shrink: 0;
+}
+
+.debug-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: #E8E8E8;
+}
+
+.debug-stat {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4E4E4E;
+}
+
+.island {
+  width: 390px;
+  height: 844px;
+  background: #FBF8EE;
+  border-radius: 50px;
+  box-shadow:
+    0 0 0 1px #CDCDCD,
+    0 25px 80px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+}
+
+.island-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 125px;
+  height: 34px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+.island-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 24px 4px;
+  position: relative;
+  z-index: 5;
+}
+
+.header-time {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #4E4E4E;
+  width: 54px;
+}
+
+.header-island-bar {
+  width: 126px;
+  height: 5px;
+  background: #F2F2F2;
+  border-radius: 3px;
+}
+
+.header-icons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  width: 54px;
+  justify-content: flex-end;
+}
+
+.island-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 20px 56px;
+  overflow: hidden;
+}
+
+.game-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  background: linear-gradient(135deg, #008BFF, #88E2E0, #719342);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.2px;
+  margin-top: 10px;
+}
+
+.game-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #828282;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* player drawer — replaces footer */
+.player-drawer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #FBF8EE;
+  border-radius: 20px 20px 0 0;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(calc(100% - 48px));
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 20;
+  touch-action: none;
+  user-select: none;
+}
+
+.player-drawer.open {
+  transform: translateY(0);
+}
+
+.drawer-handle {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 6px;
+  cursor: pointer;
+}
+
+.drawer-handle-bar {
+  width: 36px;
+  height: 4px;
+  background: #CDCDCD;
+  border-radius: 2px;
+  transition: background 0.15s;
+}
+
+.drawer-handle:hover .drawer-handle-bar {
+  background: #828282;
+}
+
+.drawer-peeks {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 4px 16px 12px;
+}
+
+.drawer-peek {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.drawer-peek-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4E4E4E;
+}
+
+.drawer-detail {
+  display: flex;
+  gap: 8px;
+  padding: 4px 16px 40px;
+}
+
+.player-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 16px;
+  background: #F2F2F2;
+}
+
+.player-card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.player-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.player-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4E4E4E;
+}
+
+.player-score {
+  margin-left: auto;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #4E4E4E;
+}
+
+/* stats */
+.player-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.stat-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+
+.stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4E4E4E;
+  width: 36px;
+}
+
+.stat-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #4E4E4E;
+  margin-left: auto;
+}
+
+.stat-cursed {
+  color: #EF4444;
+}
+
+/* swing curse section */
+.curse-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 6px 8px;
+  border-radius: 10px;
+  background: rgba(239, 68, 68, 0.06);
+  border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+.curse-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  color: #EF4444;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.curse-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #EF4444;
+}
+
+.curse-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #4E4E4E;
+  line-height: 1.3;
+}
+
+.curse-effect {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #EF4444;
+}

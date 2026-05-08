@@ -1,0 +1,30 @@
+.player-node {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player-marker {
+  position: relative;
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.player-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--player-color);
+  opacity: 0.9;
+}
+
+.player-icon {
+  position: relative;
+  width: 7px;
+  height: 7px;
+  color: #fff;
+}

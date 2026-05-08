@@ -1,0 +1,353 @@
+{
+  "reportId": "report_mc_1002",
+  "videoId": "video_mc_1002",
+  "userId": "user_marcus_chen",
+  "title": "Face-on | Right-handed | 7-Iron",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775000200000,
+  "updatedAt": 1775000200000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "mc_1002/frame_0.jpg",
+    "P2": "mc_1002/frame_1.jpg",
+    "P3": "mc_1002/frame_2.jpg",
+    "P4": "mc_1002/frame_3.jpg",
+    "P5": "mc_1002/frame_4.jpg",
+    "P6": "mc_1002/frame_5.jpg",
+    "P7": "mc_1002/frame_6.jpg",
+    "P8": "mc_1002/frame_7.jpg",
+    "P9": "mc_1002/frame_8.jpg",
+    "P10": "mc_1002/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 40,
+        "P2_takeaway": 91,
+        "P3_halfway_back": 110,
+        "P4_top": 132,
+        "P5_early_downswing": 142,
+        "P6_pre_impact": 150,
+        "P7_impact": 159,
+        "P8_release": 163,
+        "P9_follow_through": 169,
+        "P10_end": 184
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 150,
+        "max_lead_shoulder_linear_speed_idx": 155,
+        "max_mid_hands_linear_speed_idx": 157,
+        "max_chest_rotational_speed_idx": 152,
+        "max_arm_rotational_speed_idx": 141,
+        "max_pelvis_rotational_speed_idx": 151
+      },
+      "processingDuration": 0.16,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.285,
+        "backswingDuration": 0.715,
+        "downswingDuration": 0.215,
+        "xFactorDegrees": -11.0,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.4,
+          "atTakeaway": 1.0,
+          "atEarlyDownswing": 2.5,
+          "atTop": 3.1,
+          "atImpact": -5.1
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.2,
+          "atTop": 50,
+          "atEarlyDownswing": 33.0,
+          "atImpact": 6.1,
+          "atFollowThrough": 23
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.9,
+          "atTop": 60,
+          "atEarlyDownswing": 42,
+          "atImpact": 3.2
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 89.0,
+          "leftShoulderHorizontalAbductionAtAddress": 94.0,
+          "rightShoulderHorizontalAbductionAtTop": 71.0,
+          "leftShoulderHorizontalAbductionAtTop": 78.0,
+          "rightShoulderHorizontalAbductionAtImpact": 79.0,
+          "leftShoulderHorizontalAbductionAtImpact": 102.0,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 38.0,
+          "leftElbowAtAddress": 25.0,
+          "rightElbowAtTop": 49.0,
+          "leftElbowAtTop": 42.0,
+          "rightElbowAtImpact": 55.0,
+          "leftElbowAtImpact": 49.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 25.2,
+          "rightKneeAtAddress": 28.7,
+          "leftKneeAtTop": 16.6,
+          "rightKneeAtTop": 23.6,
+          "leftKneeAtImpact": 7.9,
+          "rightKneeAtImpact": 11.4
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 52.2,
+          "leftHipFlexAtAddress": 51.7,
+          "rightHipFlexAtTop": 35.6,
+          "leftHipFlexAtTop": 32.6,
+          "rightHipFlexAtImpact": 20.9,
+          "leftHipFlexAtImpact": 17.9
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -48.0,
+          "leftWristFlexionAtAddress": -59.0,
+          "rightWristFlexionAtTop": 38.0,
+          "leftWristFlexionAtTop": 35.0,
+          "rightWristFlexionAtImpact": -26.0,
+          "leftWristFlexionAtImpact": -38.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 42.6,
+          "atTop": 22.9,
+          "atImpact": 15.2,
+          "maxDeviation": 27.4
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.02,
+          "atEarlyDownswing": -0.01,
+          "atTop": -0.04,
+          "atImpact": 0.01
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.006,
+          "atEarlyDownswing": -0.07,
+          "atTop": -0.1,
+          "atImpact": 0.01
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 460,
+          "pelvisMaxSpeedFrame": 151,
+          "torsoMaxSpeed": 540,
+          "torsoMaxSpeedFrame": 152,
+          "armMaxSpeed": 19,
+          "armMaxSpeedFrame": 141,
+          "leadHipMaxSpeed": 0.46,
+          "leadHipMaxSpeedFrame": 150,
+          "leadShoulderMaxSpeed": 1.6,
+          "leadShoulderMaxSpeedFrame": 155,
+          "midHandsMaxSpeed": 3.9,
+          "midHandsMaxSpeedFrame": 157,
+          "wristMaxSpeed": 4.2,
+          "wristMaxSpeedFrame": 158,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 42,
+      "tokenUsage": {
+        "input": 9100,
+        "output": 1700,
+        "total": 10800
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Jack-in-the-Box",
+          "score": 52,
+          "potential": 3,
+          "stability": 1,
+          "comment": "Early extension on 7-Iron: spine drops from 42.6 to 15.2 deg (27.4 deg lost). Lead knee straightens from 25.2 to 7.9 deg. Hip flex vanishes from 52.2 to 20.9 deg. Body rises through impact zone, destroying shaft lean.",
+          "vibe": {
+            "name": "Pop-Up Ad Energy",
+            "value": 4.5
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 5.2
+            },
+            {
+              "name": "Sequencing",
+              "value": 5.2
+            },
+            {
+              "name": "Balance",
+              "value": 3.0
+            },
+            {
+              "name": "Plane Control",
+              "value": 3.4
+            },
+            {
+              "name": "Impact Control",
+              "value": 3.0
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 5,
+            "summary": "Lead knee snaps straight from 25.2 to 7.9 deg — the core early extension trigger.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "left knee",
+                  "type": "line",
+                  "description": "Straightening and pushing up",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "left knee",
+                  "type": "circle",
+                  "description": "Maintain flex through impact",
+                  "radius": 15
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "Spine collapses to 15.2 deg — stood up 27.4 deg from address, destroying shaft lean.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Thrusting upward toward ball",
+                  "direction": {
+                    "x": 1,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Turn horizontally, stay in posture",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Standing Up Pattern",
+            "summary": "Body rises 27.4 deg through impact — knees straighten, hips thrust, spine stands up.",
+            "phases": [
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "title": "Power Leak",
+            "summary": "Early extension prevents proper shaft lean. Energy leaks upward instead of into the ball.",
+            "phases": [
+              7,
+              8
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Chair Drill",
+            "front_action": "Set up with lead thigh touching a chair. Swing keeping contact — early extension breaks it.",
+            "back_roast_title": "The Elevator",
+            "back_roast_text": "Spine goes 42.6 to 15.2 deg on 7-Iron. Vertical jump, not golf swing."
+          },
+          {
+            "front_title": "Squat to Swing",
+            "front_action": "Start in slight squat, maintain knee flex through impact.",
+            "back_roast_title": "The Popcorn Kernel",
+            "back_roast_text": "You pop up like popcorn. The ball is on the ground — join it."
+          },
+          {
+            "front_title": "Headcover Under Arm",
+            "front_action": "Tuck headcover under lead armpit. If you stand up it drops.",
+            "back_roast_title": "The Escaping Arms",
+            "back_roast_text": "Arms escape upward like directing traffic. Keep them connected."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 42.6 deg spine; 25.2 deg knee flex."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway clean but upward drift starts in shoulders."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — 3.4 deg spine lost; stand-up accelerating."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — spine at 22.9 deg (19.700000000000003 lost); knee at 16.6 deg."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Aggressive knee extension in transition; body driving upward."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Hips thrust forward; body rising fast."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 15.2 deg — stood up 27.4 deg; contact inconsistent."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release from upright posture; low point behind ball."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through tall; body taller than address."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish off-balance on toes; stability chain broken."
+          }
+        ]
+      }
+    }
+  }
+}

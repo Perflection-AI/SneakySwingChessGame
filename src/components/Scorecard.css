@@ -1,0 +1,215 @@
+/* ===================================================
+   Scorecard — broadcast leaderboard style
+   =================================================== */
+
+.sc {
+  width: 100%;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 1px solid #E5E5E5;
+  background: #fff;
+  overflow: hidden;
+}
+
+/* --- Header rows --- */
+
+.sc-header {
+  display: flex;
+  background: #1A1A2E;
+}
+
+.sc-header .sc-label-col {
+  background: #1A1A2E;
+}
+
+.sc-header .sc-total-col {
+  background: #1A1A2E;
+}
+
+.sc-row {
+  display: flex;
+}
+
+.sc-row-par {
+  border-bottom: 1px solid #E5E5E5;
+}
+
+.sc-hole {
+  width: 24px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  flex-shrink: 0;
+}
+
+.sc-hole-current {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
+
+.sc-hole-done {
+  color: rgba(255, 255, 255, 0.35);
+}
+
+.sc-par {
+  width: 24px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.sc-par.sc-hole-current {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* --- Three-column layout for player rows --- */
+
+.sc-player-row {
+  display: flex;
+  border-bottom: 1px solid #F2F2F2;
+}
+
+.sc-player-row:last-child {
+  border-bottom: none;
+}
+
+.sc-leading {
+  background: rgba(113, 147, 65, 0.03);
+}
+
+.sc-label-col {
+  width: 52px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0 6px;
+  height: 26px;
+}
+
+.sc-pdot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.sc-pname {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sc-scroll {
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.sc-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.sc-total-col {
+  width: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.sc-total-hdr {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+}
+
+/* --- Score cells --- */
+
+.sc-score {
+  width: 24px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  color: #828282;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.sc-score-current {
+  background: #F2F2F2;
+  border-radius: 3px;
+}
+
+.sc-score-leader {
+  font-weight: 800;
+}
+
+.sc-leader-dot {
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+}
+
+/* --- Score color classes --- */
+
+.sc-eagle { color: #B8860B; }
+.sc-birdie { color: #719342; }
+.sc-par { color: #828282; }
+.sc-bogey { color: #A88D37; }
+.sc-double { color: #EF4444; }
+
+/* --- Total cell --- */
+
+.sc-total {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  color: #4E4E4E;
+  height: 26px;
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sc-total-leader {
+  border-radius: 4px;
+  padding: 0 4px;
+}
+
+/* Leader total gets the player's color background — applied inline would be complex,
+   so we highlight via a left border accent */

@@ -1,0 +1,352 @@
+{
+  "reportId": "report_sr_2001",
+  "videoId": "video_sr_2001",
+  "userId": "user_sofia_reyes",
+  "title": "Face-on | Right-handed | Driver",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1776000100000,
+  "updatedAt": 1776000100000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "sr_2001/frame_0.jpg",
+    "P2": "sr_2001/frame_1.jpg",
+    "P3": "sr_2001/frame_2.jpg",
+    "P4": "sr_2001/frame_3.jpg",
+    "P5": "sr_2001/frame_4.jpg",
+    "P6": "sr_2001/frame_5.jpg",
+    "P7": "sr_2001/frame_6.jpg",
+    "P8": "sr_2001/frame_7.jpg",
+    "P9": "sr_2001/frame_8.jpg",
+    "P10": "sr_2001/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 32,
+        "P2_takeaway": 78,
+        "P3_halfway_back": 102,
+        "P4_top": 123,
+        "P5_early_downswing": 129,
+        "P6_pre_impact": 134,
+        "P7_impact": 138,
+        "P8_release": 142,
+        "P9_follow_through": 147,
+        "P10_end": 163
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 134,
+        "max_lead_shoulder_linear_speed_idx": 139,
+        "max_mid_hands_linear_speed_idx": 131,
+        "max_chest_rotational_speed_idx": 136,
+        "max_arm_rotational_speed_idx": 126,
+        "max_pelvis_rotational_speed_idx": 135
+      },
+      "processingDuration": 0.155,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.412,
+        "backswingDuration": 0.785,
+        "downswingDuration": 0.235,
+        "xFactorDegrees": -16.5,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.3,
+          "atTakeaway": 0.6,
+          "atEarlyDownswing": 1.5,
+          "atTop": 2.2,
+          "atImpact": -1.8
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.0,
+          "atTop": 62,
+          "atEarlyDownswing": 43,
+          "atImpact": 2.5,
+          "atFollowThrough": 28
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 5.5,
+          "atTop": 84,
+          "atEarlyDownswing": 60,
+          "atImpact": 2.0
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 86.0,
+          "leftShoulderHorizontalAbductionAtAddress": 98.0,
+          "rightShoulderHorizontalAbductionAtTop": 56.0,
+          "leftShoulderHorizontalAbductionAtTop": 82.0,
+          "rightShoulderHorizontalAbductionAtImpact": 68.0,
+          "leftShoulderHorizontalAbductionAtImpact": 108.0,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 28.0,
+          "leftElbowAtAddress": 18.0,
+          "rightElbowAtTop": 35.0,
+          "leftElbowAtTop": 46.0,
+          "rightElbowAtImpact": 50.0,
+          "leftElbowAtImpact": 40.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 24.0,
+          "rightKneeAtAddress": 28.0,
+          "leftKneeAtTop": 10.0,
+          "rightKneeAtTop": 18.0,
+          "leftKneeAtImpact": 26.0,
+          "rightKneeAtImpact": 30.0
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 45.0,
+          "leftHipFlexAtAddress": 44.5,
+          "rightHipFlexAtTop": 16.0,
+          "leftHipFlexAtTop": 13.0,
+          "rightHipFlexAtImpact": 36.0,
+          "leftHipFlexAtImpact": 30.0
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -58.0,
+          "leftWristFlexionAtAddress": -65.0,
+          "rightWristFlexionAtTop": 48.0,
+          "leftWristFlexionAtTop": 44.0,
+          "rightWristFlexionAtImpact": -22.0,
+          "leftWristFlexionAtImpact": -35.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 36.0,
+          "atTop": 8.0,
+          "atImpact": 28.0,
+          "maxDeviation": 28.0
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.035,
+          "atEarlyDownswing": -0.02,
+          "atTop": -0.06,
+          "atImpact": 0.05
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.012,
+          "atEarlyDownswing": -0.18,
+          "atTop": -0.25,
+          "atImpact": -0.06
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 600,
+          "pelvisMaxSpeedFrame": 135,
+          "torsoMaxSpeed": 730,
+          "torsoMaxSpeedFrame": 136,
+          "armMaxSpeed": 75,
+          "armMaxSpeedFrame": 126,
+          "leadHipMaxSpeed": 0.75,
+          "leadHipMaxSpeedFrame": 134,
+          "leadShoulderMaxSpeed": 2.3,
+          "leadShoulderMaxSpeedFrame": 139,
+          "midHandsMaxSpeed": 5.3,
+          "midHandsMaxSpeedFrame": 131,
+          "wristMaxSpeed": 5.8,
+          "wristMaxSpeedFrame": 138,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 45,
+      "tokenUsage": {
+        "input": 9250,
+        "output": 1850,
+        "total": 11100
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Early Releaser",
+          "score": 82,
+          "potential": 4,
+          "stability": 3,
+          "comment": "Casting on Driver: right wrist releases from 48.0 to -22.0 deg (26.0 deg of lag angle lost). midHandsMaxSpeed fires at the same frame as pre-impact instead of after — the wrists unhinge too early, leaking power before impact.",
+          "vibe": {
+            "name": "Firecracker With a Wet Fuse",
+            "value": 7.2
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 8.6
+            },
+            {
+              "name": "Sequencing",
+              "value": 6.7
+            },
+            {
+              "name": "Balance",
+              "value": 7.9
+            },
+            {
+              "name": "Plane Control",
+              "value": 7.3
+            },
+            {
+              "name": "Impact Control",
+              "value": 6.2
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 5,
+            "summary": "Wrist angle already collapsing at early downswing — right wrist goes from 48.0 to 13.0 deg before impact even arrives.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "right wrist",
+                  "type": "line",
+                  "description": "Casting — unhinging too early",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "right wrist",
+                  "type": "circle",
+                  "description": "Hold the lag angle",
+                  "radius": 10
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "At impact the wrist has only -22.0 deg of flex — should be closer to 48.0. The lag angle released too early, costing power.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "left wrist",
+                  "type": "line",
+                  "description": "Breaking down through impact",
+                  "direction": {
+                    "x": 0,
+                    "y": 1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "left wrist",
+                  "type": "line",
+                  "description": "Maintain flat bow through impact",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Casting Motion",
+            "summary": "Wrists release 26.0 deg of lag angle before impact — the clubhead arrives early, losing stored energy.",
+            "phases": [
+              5,
+              6
+            ]
+          },
+          {
+            "title": "Power Leak at Impact",
+            "summary": "Without lag, clubhead speed peaks before impact. The body and arms are good but the wrist release timing wastes the advantage.",
+            "phases": [
+              6,
+              7
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Towel Drill",
+            "front_action": "Place a small towel under the grip, held between the forearms and shaft. Swing and keep the towel in place through impact. If you cast, the towel flies out.",
+            "back_roast_title": "The Slingshot",
+            "back_roast_text": "You release the wrists so early on Driver you could launch a water balloon. Hold the angle — power comes late, not early."
+          },
+          {
+            "front_title": "Pump to Impact",
+            "front_action": "Take the club to the top, then pump down halfway maintaining the wrist hinge. Repeat 5 times. Feel the lag pressure in the trail hand. Then swing through.",
+            "back_roast_title": "The Premature Celebrator",
+            "back_roast_text": "You celebrate the release before impact even happens. Save the party for after the ball is gone."
+          },
+          {
+            "front_title": "Whoosh at the Bottom",
+            "front_action": "Turn club upside down and swing for loudest whoosh at knee height (not hip height). The whoosh should be at impact, not before.",
+            "back_roast_title": "The Early Bird",
+            "back_roast_text": "Your whoosh happens too early in the swing. The ball needs the loudest noise, not the takeaway."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Good setup — 36 deg spine angle, 45 deg hip flex. Solid foundation for power generation."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Clean takeaway with natural wrist set starting at shaft parallel."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Wrist hinge builds to about 90 deg — good lag forming at halfway."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top position with 48.0 deg right wrist flex — solid lag angle stored."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Early downswing — wrist begins releasing prematurely from 48.0 deg. The cast is starting."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — wrist angle has already flattened significantly. Clubhead arriving too early."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at -22.0 deg wrist flex — lag angle nearly gone. Power leaked before ball contact."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Full release with no remaining wrist hinge — the energy was spent before it was needed."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through is long and loose from early release; arms extend well."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Balanced finish — the body rotation is good but the wrist timing cost distance."
+          }
+        ]
+      }
+    }
+  }
+}
