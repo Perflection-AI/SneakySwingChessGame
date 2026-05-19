@@ -1,0 +1,352 @@
+{
+  "reportId": "report_sr_2002",
+  "videoId": "video_sr_2002",
+  "userId": "user_sofia_reyes",
+  "title": "Face-on | Right-handed | 7-Iron",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1776000200000,
+  "updatedAt": 1776000200000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "sr_2002/frame_0.jpg",
+    "P2": "sr_2002/frame_1.jpg",
+    "P3": "sr_2002/frame_2.jpg",
+    "P4": "sr_2002/frame_3.jpg",
+    "P5": "sr_2002/frame_4.jpg",
+    "P6": "sr_2002/frame_5.jpg",
+    "P7": "sr_2002/frame_6.jpg",
+    "P8": "sr_2002/frame_7.jpg",
+    "P9": "sr_2002/frame_8.jpg",
+    "P10": "sr_2002/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 36,
+        "P2_takeaway": 84,
+        "P3_halfway_back": 106,
+        "P4_top": 128,
+        "P5_early_downswing": 134,
+        "P6_pre_impact": 139,
+        "P7_impact": 143,
+        "P8_release": 147,
+        "P9_follow_through": 152,
+        "P10_end": 168
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 142,
+        "max_lead_shoulder_linear_speed_idx": 147,
+        "max_mid_hands_linear_speed_idx": 136,
+        "max_chest_rotational_speed_idx": 144,
+        "max_arm_rotational_speed_idx": 132,
+        "max_pelvis_rotational_speed_idx": 143
+      },
+      "processingDuration": 0.17,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.302,
+        "backswingDuration": 0.728,
+        "downswingDuration": 0.212,
+        "xFactorDegrees": -17.0,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.3,
+          "atTakeaway": 0.6,
+          "atEarlyDownswing": 1.5,
+          "atTop": 2.2,
+          "atImpact": -1.8
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.0,
+          "atTop": 64,
+          "atEarlyDownswing": 44,
+          "atImpact": 2.5,
+          "atFollowThrough": 28
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 5.5,
+          "atTop": 86,
+          "atEarlyDownswing": 62,
+          "atImpact": 2.0
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 86.0,
+          "leftShoulderHorizontalAbductionAtAddress": 98.0,
+          "rightShoulderHorizontalAbductionAtTop": 56.0,
+          "leftShoulderHorizontalAbductionAtTop": 82.0,
+          "rightShoulderHorizontalAbductionAtImpact": 68.0,
+          "leftShoulderHorizontalAbductionAtImpact": 108.0,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 28.0,
+          "leftElbowAtAddress": 18.0,
+          "rightElbowAtTop": 35.0,
+          "leftElbowAtTop": 46.0,
+          "rightElbowAtImpact": 50.0,
+          "leftElbowAtImpact": 40.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 24.0,
+          "rightKneeAtAddress": 28.0,
+          "leftKneeAtTop": 10.0,
+          "rightKneeAtTop": 18.0,
+          "leftKneeAtImpact": 26.0,
+          "rightKneeAtImpact": 30.0
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 45.0,
+          "leftHipFlexAtAddress": 44.5,
+          "rightHipFlexAtTop": 16.0,
+          "leftHipFlexAtTop": 13.0,
+          "rightHipFlexAtImpact": 36.0,
+          "leftHipFlexAtImpact": 30.0
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -54.0,
+          "leftWristFlexionAtAddress": -62.0,
+          "rightWristFlexionAtTop": 44.0,
+          "leftWristFlexionAtTop": 40.0,
+          "rightWristFlexionAtImpact": -18.0,
+          "leftWristFlexionAtImpact": -32.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 36.0,
+          "atTop": 8.0,
+          "atImpact": 28.0,
+          "maxDeviation": 28.0
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.035,
+          "atEarlyDownswing": -0.02,
+          "atTop": -0.06,
+          "atImpact": 0.05
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.012,
+          "atEarlyDownswing": -0.18,
+          "atTop": -0.25,
+          "atImpact": -0.06
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 620,
+          "pelvisMaxSpeedFrame": 143,
+          "torsoMaxSpeed": 750,
+          "torsoMaxSpeedFrame": 144,
+          "armMaxSpeed": 85,
+          "armMaxSpeedFrame": 132,
+          "leadHipMaxSpeed": 0.7,
+          "leadHipMaxSpeedFrame": 142,
+          "leadShoulderMaxSpeed": 2.2,
+          "leadShoulderMaxSpeedFrame": 147,
+          "midHandsMaxSpeed": 5.6,
+          "midHandsMaxSpeedFrame": 136,
+          "wristMaxSpeed": 6.1,
+          "wristMaxSpeedFrame": 143,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 48,
+      "tokenUsage": {
+        "input": 9300,
+        "output": 1900,
+        "total": 11200
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Outside-In Artist",
+          "score": 65,
+          "potential": 3,
+          "stability": 3,
+          "comment": "Over the top on 7-Iron: shoulder fires first at 412 deg/s, dragging the club outside the line. Path comes across the ball at -6.2 deg. Classic outside-in pattern producing pulls and weak fades.",
+          "vibe": {
+            "name": "Firecracker With a Wet Fuse",
+            "value": 7.2
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 4.5
+            },
+            {
+              "name": "Sequencing",
+              "value": 4.0
+            },
+            {
+              "name": "Balance",
+              "value": 7.2
+            },
+            {
+              "name": "Plane Control",
+              "value": 7.8
+            },
+            {
+              "name": "Impact Control",
+              "value": 7.2
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 5,
+            "summary": "Right shoulder fires over the top at transition — shoulders rotate outward before the lower body clears, pulling the club outside the plane line.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "right shoulder",
+                  "type": "line",
+                  "description": "Firing over the top — shoulders lead from outside",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "right shoulder",
+                  "type": "circle",
+                  "description": "Drop the shoulder to shallow the club on plane",
+                  "radius": 10
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "At impact the club path is cutting across the ball at -6.2 deg — the outside-in path produces pulls and slices instead of a square strike.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "club path",
+                  "type": "line",
+                  "description": "Outside-in path cutting across the ball",
+                  "direction": {
+                    "x": 0,
+                    "y": 1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "club path",
+                  "type": "line",
+                  "description": "Shallow the club to approach from the inside",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Over the Top Transition",
+            "summary": "Right shoulder fires outward at transition, dragging the club above and outside the swing plane. The path crosses the target line from outside-in.",
+            "phases": [
+              5,
+              6
+            ]
+          },
+          {
+            "title": "Across-the-Ball Impact",
+            "summary": "Club arrives at impact on an outside-in path, cutting across the ball. Produces pulls, slices, and glancing blows that leak accuracy and distance.",
+            "phases": [
+              6,
+              7
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Behind-the-Body Drill",
+            "front_action": "At the top, pause and drop the right shoulder straight down toward the trail hip pocket before rotating. This trains the shallowing move that fixes over the top. Start with half swings.",
+            "back_roast_title": "The Shoulder Launcher",
+            "back_roast_text": "Your right shoulder fires like a rocket at transition on 7-Iron. NASA called — they want their launch sequence back. Drop it down, not around."
+          },
+          {
+            "front_title": "The Alignment Stick Gate",
+            "front_action": "Place an alignment stick in the ground 6 inches outside the ball, angled to create a gate. Swing without hitting the stick — this forces an inside approach path.",
+            "back_roast_title": "The Lawn Mower",
+            "back_roast_text": "You come so far over the top on 7-Iron you could mow the lawn on the adjacent fairway. Get back inside the line."
+          },
+          {
+            "front_title": "The Tuck and Turn Drill",
+            "front_action": "From the top, tuck the right elbow into the right hip before the shoulders rotate. This sequence — elbow tuck first, then turn — prevents the over the top move.",
+            "back_roast_title": "The Helicopter",
+            "back_roast_text": "Your shoulders spin so hard from the top the club helicopters across the ball. You are one blade away from takeoff — shall the club, do not spin it."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Good setup — 36 deg spine angle, 45 deg hip flex. Solid foundation for power generation."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Clean takeaway with natural wrist set starting at shaft parallel."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Wrist hinge builds to about 90 deg — good lag forming at halfway."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top position with 44.0 deg right wrist flex — solid lag angle stored."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Early downswing — wrist begins releasing prematurely from 44.0 deg. The cast is starting."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — wrist angle has already flattened significantly. Clubhead arriving too early."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at -18.0 deg wrist flex — lag angle nearly gone. Power leaked before ball contact."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Full release with no remaining wrist hinge — the energy was spent before it was needed."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through is long and loose from early release; arms extend well."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Balanced finish — the body rotation is good but the wrist timing cost distance."
+          }
+        ]
+      }
+    }
+  }
+}

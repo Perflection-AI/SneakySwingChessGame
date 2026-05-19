@@ -1,0 +1,352 @@
+{
+  "reportId": "report_dk_1004",
+  "videoId": "video_dk_1004",
+  "userId": "user_david_kim",
+  "title": "Face-on | Right-handed | Hybrid",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775260200000,
+  "updatedAt": 1775260200000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "dk_1004/frame_0.jpg",
+    "P2": "dk_1004/frame_1.jpg",
+    "P3": "dk_1004/frame_2.jpg",
+    "P4": "dk_1004/frame_3.jpg",
+    "P5": "dk_1004/frame_4.jpg",
+    "P6": "dk_1004/frame_5.jpg",
+    "P7": "dk_1004/frame_6.jpg",
+    "P8": "dk_1004/frame_7.jpg",
+    "P9": "dk_1004/frame_8.jpg",
+    "P10": "dk_1004/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 35,
+        "P2_takeaway": 83,
+        "P3_halfway_back": 105,
+        "P4_top": 125,
+        "P5_early_downswing": 133,
+        "P6_pre_impact": 140,
+        "P7_impact": 147,
+        "P8_release": 151,
+        "P9_follow_through": 157,
+        "P10_end": 172
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 140,
+        "max_lead_shoulder_linear_speed_idx": 145,
+        "max_mid_hands_linear_speed_idx": 147,
+        "max_chest_rotational_speed_idx": 142,
+        "max_arm_rotational_speed_idx": 133,
+        "max_pelvis_rotational_speed_idx": 141
+      },
+      "processingDuration": 0.12,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.41,
+        "backswingDuration": 0.84,
+        "downswingDuration": 0.27,
+        "xFactorDegrees": -9.5,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.38,
+          "atTakeaway": 0.75,
+          "atEarlyDownswing": 2.2,
+          "atTop": 2.7,
+          "atImpact": -4.1
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 1.9,
+          "atTop": 47,
+          "atEarlyDownswing": 31,
+          "atImpact": 5.4,
+          "atFollowThrough": 20
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.5,
+          "atTop": 56,
+          "atEarlyDownswing": 39,
+          "atImpact": 2.6
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 88.0,
+          "leftShoulderHorizontalAbductionAtAddress": 93.0,
+          "rightShoulderHorizontalAbductionAtTop": 71.0,
+          "leftShoulderHorizontalAbductionAtTop": 76.0,
+          "rightShoulderHorizontalAbductionAtImpact": 79.0,
+          "leftShoulderHorizontalAbductionAtImpact": 101.0,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 37.0,
+          "leftElbowAtAddress": 25.0,
+          "rightElbowAtTop": 49.0,
+          "leftElbowAtTop": 42.0,
+          "rightElbowAtImpact": 54.0,
+          "leftElbowAtImpact": 48.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 23.6,
+          "rightKneeAtAddress": 25.8,
+          "leftKneeAtTop": 18.2,
+          "rightKneeAtTop": 22.4,
+          "leftKneeAtImpact": 17.8,
+          "rightKneeAtImpact": 20.1
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 44.8,
+          "leftHipFlexAtAddress": 44.2,
+          "rightHipFlexAtTop": 36.1,
+          "leftHipFlexAtTop": 33.4,
+          "rightHipFlexAtImpact": 33.5,
+          "leftHipFlexAtImpact": 31.2
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -47.0,
+          "leftWristFlexionAtAddress": -58.0,
+          "rightWristFlexionAtTop": 38.0,
+          "leftWristFlexionAtTop": 35.0,
+          "rightWristFlexionAtImpact": -26.0,
+          "leftWristFlexionAtImpact": -37.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 40.1,
+          "atTop": 33.5,
+          "atImpact": 35.8,
+          "maxDeviation": 6.6
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.001,
+          "atTakeaway": 0.014,
+          "atEarlyDownswing": -0.008,
+          "atTop": -0.026,
+          "atImpact": 0.007
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.005,
+          "atEarlyDownswing": -0.054,
+          "atTop": -0.078,
+          "atImpact": 0.007
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 455,
+          "pelvisMaxSpeedFrame": 141,
+          "torsoMaxSpeed": 540,
+          "torsoMaxSpeedFrame": 142,
+          "armMaxSpeed": 19,
+          "armMaxSpeedFrame": 133,
+          "leadHipMaxSpeed": 0.52,
+          "leadHipMaxSpeedFrame": 140,
+          "leadShoulderMaxSpeed": 1.85,
+          "leadShoulderMaxSpeedFrame": 145,
+          "midHandsMaxSpeed": 4.05,
+          "midHandsMaxSpeedFrame": 147,
+          "wristMaxSpeed": 4.4,
+          "wristMaxSpeedFrame": 148,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 37,
+      "tokenUsage": {
+        "input": 9050,
+        "output": 1650,
+        "total": 10700
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Off-Beat",
+          "score": 93,
+          "potential": 5,
+          "stability": 5,
+          "comment": "Best swing of the set. Hybrid at 1.41s total — backswing 0.84s, downswing 0.27s. The longer backswing gives the transition room to breathe and it shows. Spine deviation only 6.6 deg. Kinematic sequence textbook. Balance at 9.2. This is what The Ice Man looks like when the tempo is clicking. Still a slight rush from the top, but minimal.",
+          "vibe": {
+            "name": "Ice in His Veins",
+            "value": 9.5
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 5.9
+            },
+            {
+              "name": "Sequencing",
+              "value": 5.5
+            },
+            {
+              "name": "Balance",
+              "value": 9.2
+            },
+            {
+              "name": "Plane Control",
+              "value": 6.7
+            },
+            {
+              "name": "Impact Control",
+              "value": 6.5
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 5,
+            "summary": "Even on this best swing, there's a micro-rush at the top — shoulders begin downswing rotation about 1-2 frames early relative to the pelvis.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Slightly early initiation of downswing turn",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "circle",
+                  "description": "Let the pelvis lead for 2 more frames before shoulders engage",
+                  "radius": 10
+                }
+              ]
+            }
+          },
+          {
+            "phase": 6,
+            "summary": "Hands track well through pre-impact — best hand speed profile of all swings. Only a barely perceptible timing variation.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hands",
+                  "type": "line",
+                  "description": "Minimal timing inconsistency through the hitting zone",
+                  "direction": {
+                    "x": 1,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hands",
+                  "type": "circle",
+                  "description": "Continue this smooth acceleration pattern — this is the model swing",
+                  "radius": 8
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Best Tempo of the Set",
+            "summary": "At 1.41s total, this is the longest and most controlled swing. The extra backswing duration gives the transition the space it needs.",
+            "phases": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "title": "Near-Elite Sequence",
+            "summary": "Kinematic sequence is nearly perfect. Pelvis leads, torso follows, arms deliver. The 93 score reflects how good this swing is when the tempo cooperates.",
+            "phases": [
+              5,
+              6,
+              7
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Hybrid Rhythm",
+            "front_action": "This swing IS the drill. Memorize this tempo — 0.84s back, 0.27s down. Recreate this feel with every club.",
+            "back_roast_title": "The Tease",
+            "back_roast_text": "You drop a 93 and make it look effortless. Where has this been for the other clubs? Oh right, tempo."
+          },
+          {
+            "front_title": "The Tempo Match",
+            "front_action": "Hit your driver, hybrid, and 7-iron back-to-back trying to match the same total swing duration. Consistency across clubs.",
+            "back_roast_title": "The Fair-Weather Metronome",
+            "back_roast_text": "When the tempo is on, you're the best player here. When it drifts, you're still top-3. Annoying."
+          },
+          {
+            "front_title": "The Pressure Shot",
+            "front_action": "Set up a specific target at 180 yards. Hit 5 hybrids at it, counting tempo for each. All 5 should feel identical in rhythm.",
+            "back_roast_title": "The Show-Off",
+            "back_roast_text": "93 on a hybrid swing. At this point you're just making the rest of the field look bad. Keep it up."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 40.1 deg spine; 23.6 deg knee flex. Tall, confident address for the hybrid."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway smooth and measured. Best takeaway tempo of all swings — pace is ideal."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway back — everything tracking perfectly. Shoulder turn at 3.5 deg, rhythm is locked in."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — spine at 33.5 deg (6.6 deg deviation). Excellent posture. Small pause before transition — best of the set."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Early downswing — transition is nearly textbook. Pelvis leads, shoulders follow with proper lag. Tiny micro-rush but minimal."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — smoothest hand speed profile of all swings. No hesitation, no burst — pure acceleration."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 35.8 deg spine — only 2.3 deg lost from top. Outstanding posture through the ball."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — powerful and balanced. Full extension through the hitting zone."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — smooth, long arc. Weight transfer complete and controlled."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — the picture of balance. The Ice Man at his absolute coolest. This is the one to replicate."
+          }
+        ]
+      }
+    }
+  }
+}

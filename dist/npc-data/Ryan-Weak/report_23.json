@@ -1,0 +1,355 @@
+{
+  "reportId": "report_rw_1023",
+  "videoId": "video_rw_1023",
+  "userId": "user_ryan_weak",
+  "title": "Face-on | Right-handed | Putter",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775002300000,
+  "updatedAt": 1775002300000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "rw_1023/frame_0.jpg",
+    "P2": "rw_1023/frame_1.jpg",
+    "P3": "rw_1023/frame_2.jpg",
+    "P4": "rw_1023/frame_3.jpg",
+    "P5": "rw_1023/frame_4.jpg",
+    "P6": "rw_1023/frame_5.jpg",
+    "P7": "rw_1023/frame_6.jpg",
+    "P8": "rw_1023/frame_7.jpg",
+    "P9": "rw_1023/frame_8.jpg",
+    "P10": "rw_1023/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 50,
+        "P2_takeaway": 110,
+        "P3_halfway_back": 125,
+        "P4_top": 140,
+        "P5_early_downswing": 148,
+        "P6_pre_impact": 155,
+        "P7_impact": 162,
+        "P8_release": 168,
+        "P9_follow_through": 176,
+        "P10_end": 192
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 155,
+        "max_lead_shoulder_linear_speed_idx": 158,
+        "max_mid_hands_linear_speed_idx": 160,
+        "max_chest_rotational_speed_idx": 156,
+        "max_arm_rotational_speed_idx": 150,
+        "max_pelvis_rotational_speed_idx": 155
+      },
+      "processingDuration": 0.18,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.05,
+        "backswingDuration": 0.65,
+        "downswingDuration": 0.18,
+        "xFactorDegrees": -1.5,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.15,
+          "atTakeaway": 0.5,
+          "atEarlyDownswing": 1.2,
+          "atTop": 1.8,
+          "atImpact": -0.8
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 1.5,
+          "atTop": 12,
+          "atEarlyDownswing": 8.0,
+          "atImpact": 3.5,
+          "atFollowThrough": 8
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.8,
+          "atTop": 18,
+          "atEarlyDownswing": 12,
+          "atImpact": 2.0
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 91.0,
+          "leftShoulderHorizontalAbductionAtAddress": 96.0,
+          "rightShoulderHorizontalAbductionAtTop": 84.0,
+          "leftShoulderHorizontalAbductionAtTop": 90.0,
+          "rightShoulderHorizontalAbductionAtImpact": 92.0,
+          "leftShoulderHorizontalAbductionAtImpact": 99.0,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 22.0,
+          "leftElbowAtAddress": 20.0,
+          "rightElbowAtTop": 30.0,
+          "leftElbowAtTop": 28.0,
+          "rightElbowAtImpact": 26.0,
+          "leftElbowAtImpact": 24.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 16.5,
+          "rightKneeAtAddress": 20.0,
+          "leftKneeAtTop": 15.8,
+          "rightKneeAtTop": 19.3,
+          "leftKneeAtImpact": 14.2,
+          "rightKneeAtImpact": 18.0
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 38.5,
+          "leftHipFlexAtAddress": 38.0,
+          "rightHipFlexAtTop": 36.8,
+          "leftHipFlexAtTop": 36.3,
+          "rightHipFlexAtImpact": 34.5,
+          "leftHipFlexAtImpact": 34.0
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -8.0,
+          "leftWristFlexionAtAddress": -11.0,
+          "rightWristFlexionAtTop": -4.0,
+          "leftWristFlexionAtTop": -7.0,
+          "rightWristFlexionAtImpact": -6.0,
+          "leftWristFlexionAtImpact": -9.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 33.0,
+          "atTop": 30.5,
+          "atImpact": 28.8,
+          "maxDeviation": 4.2
+        },
+        "hipSwayMeters": {
+          "atAddress": 0.0,
+          "atTakeaway": 0.015,
+          "atEarlyDownswing": -0.008,
+          "atTop": -0.02,
+          "atImpact": 0.005
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.0,
+          "atTakeaway": -0.008,
+          "atEarlyDownswing": -0.02,
+          "atTop": -0.03,
+          "atImpact": 0.003
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 150,
+          "pelvisMaxSpeedFrame": 155,
+          "torsoMaxSpeed": 190,
+          "torsoMaxSpeedFrame": 156,
+          "armMaxSpeed": 7,
+          "armMaxSpeedFrame": 150,
+          "leadHipMaxSpeed": 0.15,
+          "leadHipMaxSpeedFrame": 155,
+          "leadShoulderMaxSpeed": 0.4,
+          "leadShoulderMaxSpeedFrame": 158,
+          "midHandsMaxSpeed": 0.9,
+          "midHandsMaxSpeedFrame": 160,
+          "wristMaxSpeed": 1.0,
+          "wristMaxSpeedFrame": 162,
+          "hip2shoulderKinematicSequence": false
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 52,
+      "tokenUsage": {
+        "input": 9300,
+        "output": 2000,
+        "total": 11300
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Weekend Warrior",
+          "score": 20,
+          "potential": 1,
+          "stability": 1,
+          "comment": "Putting is a disaster too — spine deviates 4.2 deg which is huge for a putting stroke. Wrists break down (elbows go from 22 to 30 deg at top). Shoulder turn 18 deg when it should be under 10. Even the putter can't save this swing. The ball goes wherever it wants, and honestly, it has more say than the putter face.",
+          "vibe": {
+            "name": "Roulette Wheel",
+            "value": 1.5
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 2.5
+            },
+            {
+              "name": "Sequencing",
+              "value": 2.3
+            },
+            {
+              "name": "Balance",
+              "value": 2.8
+            },
+            {
+              "name": "Plane Control",
+              "value": 2.2
+            },
+            {
+              "name": "Impact Control",
+              "value": 2.4
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 2,
+            "summary": "Wristy takeaway — wrists hinge instead of shoulders rocking. Elbows break from 22 to 26 deg.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "right wrist",
+                  "type": "line",
+                  "description": "Breaking wrists immediately in takeaway instead of keeping them dead",
+                  "direction": {
+                    "x": 0,
+                    "y": 1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "right wrist",
+                  "type": "line",
+                  "description": "Keep wrists locked. Let shoulders rock the putter back like a pendulum.",
+                  "direction": {
+                    "x": -1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 4,
+            "summary": "Putt stroke too long — taking putter back to 18 deg shoulder turn. Causes distance control chaos.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "left shoulder",
+                  "type": "line",
+                  "description": "Rocking too far back, creating an inconsistent stroke length",
+                  "direction": {
+                    "x": -1,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "left shoulder",
+                  "type": "circle",
+                  "description": "Keep putting stroke short and compact. Same length back and through.",
+                  "radius": 6
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Wrist Breakdown",
+            "summary": "Wrists hinge during putting stroke — creating inconsistent face angle and distance control.",
+            "phases": [
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "title": "Body Movement",
+            "summary": "Spine moves 4.2 deg during putting stroke. Should be under 1 deg. Lower body is unstable.",
+            "phases": [
+              2,
+              4,
+              7
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Pencil Under Wrists",
+            "front_action": "Place a pencil across both forearms. Putt without letting it drop. Cures wristy stroke.",
+            "back_roast_title": "The Fidget Spinner",
+            "back_roast_text": "Your wrists move more during a putt than a DJ at a rave. The pencil would launch into orbit."
+          },
+          {
+            "front_title": "The 1-Foot Putt Gauntlet",
+            "front_action": "Make 50 one-foot putts in a row. If you miss one, start over. Feel the pendulum.",
+            "back_roast_title": "The 4-Putt Lottery",
+            "back_roast_text": "From 10 feet, your ball visits more of the hole's neighborhood than the hole itself. The lip of the cup sends its regards."
+          },
+          {
+            "front_title": "Look at the Hole",
+            "front_action": "Putt 10 balls looking at the hole, not the ball. Trains instinctive stroke.",
+            "back_roast_title": "The Seance",
+            "back_roast_text": "Your putting stroke is so disconnected from your body it looks like a seance. The ball moves, but nobody knows why."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 33.0 deg spine; 16.5 deg knee flex. Eyes probably not over ball."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — wrists immediately breaking. Not a pendulum — a flail."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — elbows opened from 22 to 28 deg. Stroke getting longer and looser."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 30.5 deg spine (2.5 deg lost). Stroke way too long for a putt."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — deceleration already beginning. No acceleration through ball."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — wrists re-positioning, face angle uncertain."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 28.8 deg — 4.2 deg deviation. Hit with inconsistent face angle."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — ball launching in unpredictable direction."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — stroke path diverges from target line."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — body shifted, spine angle changed. Same position zero times."
+          }
+        ]
+      }
+    }
+  }
+}

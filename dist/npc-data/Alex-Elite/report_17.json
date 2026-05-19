@@ -1,0 +1,353 @@
+{
+  "reportId": "report_ae_1017",
+  "videoId": "video_ae_1017",
+  "userId": "user_alex_elite",
+  "title": "Face-on | Right-handed | 7-Iron",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775001700000,
+  "updatedAt": 1775001700000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "ae_1017/frame_0.jpg",
+    "P2": "ae_1017/frame_1.jpg",
+    "P3": "ae_1017/frame_2.jpg",
+    "P4": "ae_1017/frame_3.jpg",
+    "P5": "ae_1017/frame_4.jpg",
+    "P6": "ae_1017/frame_5.jpg",
+    "P7": "ae_1017/frame_6.jpg",
+    "P8": "ae_1017/frame_7.jpg",
+    "P9": "ae_1017/frame_8.jpg",
+    "P10": "ae_1017/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 38,
+        "P2_takeaway": 86,
+        "P3_halfway_back": 108,
+        "P4_top": 128,
+        "P5_early_downswing": 137,
+        "P6_pre_impact": 145,
+        "P7_impact": 153,
+        "P8_release": 157,
+        "P9_follow_through": 163,
+        "P10_end": 178
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 145,
+        "max_lead_shoulder_linear_speed_idx": 149,
+        "max_mid_hands_linear_speed_idx": 151,
+        "max_chest_rotational_speed_idx": 147,
+        "max_arm_rotational_speed_idx": 136,
+        "max_pelvis_rotational_speed_idx": 146
+      },
+      "processingDuration": 0.13,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.21,
+        "backswingDuration": 0.68,
+        "downswingDuration": 0.21,
+        "xFactorDegrees": -12.5,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.48,
+          "atTakeaway": 0.85,
+          "atEarlyDownswing": 2.2,
+          "atTop": 2.85,
+          "atImpact": -5.1
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.3,
+          "atTop": 50,
+          "atEarlyDownswing": 34.0,
+          "atImpact": 6.2,
+          "atFollowThrough": 23
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 4.0,
+          "atTop": 60,
+          "atEarlyDownswing": 43,
+          "atImpact": 3.2
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 88.8,
+          "leftShoulderHorizontalAbductionAtAddress": 93.8,
+          "rightShoulderHorizontalAbductionAtTop": 70.8,
+          "leftShoulderHorizontalAbductionAtTop": 77.8,
+          "rightShoulderHorizontalAbductionAtImpact": 80.2,
+          "leftShoulderHorizontalAbductionAtImpact": 103.2,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 37.0,
+          "leftElbowAtAddress": 24.0,
+          "rightElbowAtTop": 48.0,
+          "leftElbowAtTop": 41.0,
+          "rightElbowAtImpact": 54.0,
+          "leftElbowAtImpact": 48.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 25.5,
+          "rightKneeAtAddress": 29.0,
+          "leftKneeAtTop": 18.8,
+          "rightKneeAtTop": 25.8,
+          "leftKneeAtImpact": 22.1,
+          "rightKneeAtImpact": 25.5
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 51.5,
+          "leftHipFlexAtAddress": 51.0,
+          "rightHipFlexAtTop": 36.2,
+          "leftHipFlexAtTop": 33.2,
+          "rightHipFlexAtImpact": 44.8,
+          "leftHipFlexAtImpact": 41.9
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -47.0,
+          "leftWristFlexionAtAddress": -58.0,
+          "rightWristFlexionAtTop": 37.0,
+          "leftWristFlexionAtTop": 34.0,
+          "rightWristFlexionAtImpact": -25.0,
+          "leftWristFlexionAtImpact": -37.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 43.2,
+          "atTop": 41.8,
+          "atImpact": 41.0,
+          "maxDeviation": 2.2
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.019,
+          "atEarlyDownswing": -0.009,
+          "atTop": -0.036,
+          "atImpact": 0.009
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.005,
+          "atEarlyDownswing": -0.062,
+          "atTop": -0.088,
+          "atImpact": 0.009
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 590,
+          "pelvisMaxSpeedFrame": 146,
+          "torsoMaxSpeed": 680,
+          "torsoMaxSpeedFrame": 147,
+          "armMaxSpeed": 22,
+          "armMaxSpeedFrame": 136,
+          "leadHipMaxSpeed": 0.58,
+          "leadHipMaxSpeedFrame": 145,
+          "leadShoulderMaxSpeed": 2.0,
+          "leadShoulderMaxSpeedFrame": 149,
+          "midHandsMaxSpeed": 4.3,
+          "midHandsMaxSpeedFrame": 151,
+          "wristMaxSpeed": 4.6,
+          "wristMaxSpeedFrame": 152,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 39,
+      "tokenUsage": {
+        "input": 9180,
+        "output": 1600,
+        "total": 10780
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Machine",
+          "score": 96,
+          "potential": 5,
+          "stability": 5,
+          "comment": "7-Iron is a scalpel. Spine deviation only 2.2 deg. Knee flex preserved at 22.1 vs 25.5 deg at address. Kinematic sequence textbook. The only 'flaw' is that robots don't have feel — this swing is almost too perfect for its own good.",
+          "vibe": {
+            "name": "Surgical Zen",
+            "value": 9.0
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 8.5
+            },
+            {
+              "name": "Sequencing",
+              "value": 8.7
+            },
+            {
+              "name": "Balance",
+              "value": 9.6
+            },
+            {
+              "name": "Plane Control",
+              "value": 8.9
+            },
+            {
+              "name": "Impact Control",
+              "value": 9.3
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 2,
+            "summary": "Takeaway slightly too mechanical — could benefit from more natural arm swing.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "right arm",
+                  "type": "line",
+                  "description": "Over-controlling, keeping arm too connected to body",
+                  "direction": {
+                    "x": -1,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "right arm",
+                  "type": "line",
+                  "description": "Allow more natural extension in takeaway",
+                  "direction": {
+                    "x": 0,
+                    "y": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 8,
+            "summary": "Release is slightly held off — could improve ball compression with fuller extension.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "left wrist",
+                  "type": "line",
+                  "description": "Holding on through impact slightly",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "left wrist",
+                  "type": "circle",
+                  "description": "Fully release wrist hinge through impact",
+                  "radius": 12
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Iron Compression",
+            "summary": "Ball-first contact with descending blow. Divot starts after ball — textbook iron play.",
+            "phases": [
+              7,
+              8
+            ]
+          },
+          {
+            "title": "Stability Machine",
+            "summary": "Knee flex variation under 3.5 deg total. Spine angle variation under 2.2 deg. Anatomical locked-in.",
+            "phases": [
+              1,
+              4,
+              7
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The 80% Drill",
+            "front_action": "Swing every shot at 80% power for an entire round. Feel the control, trust the club.",
+            "back_roast_title": "The Terminator's Irons",
+            "back_roast_text": "Your 7-Iron shots are so precise they come with GPS coordinates. We'd tell you to loosen up but we're afraid you'd laser someone on the next fairway."
+          },
+          {
+            "front_title": "Close Your Eyes",
+            "front_action": "Hit 7-Irons with eyes closed. Develop feel over pure mechanics.",
+            "back_roast_title": "The Spreadsheet Swing",
+            "back_roast_text": "Your swing has more data points than a quarterly earnings report. Try hitting one that your heart chose, not your algorithm."
+          },
+          {
+            "front_title": "Feet Together Drill",
+            "front_action": "Hit 7-Irons with feet touching. Tests balance and arm-body connection.",
+            "back_roast_title": "The Statue",
+            "back_roast_text": "You're so balanced you could hit 7-Irons on a canoe. We've seen less stability in mountain goats."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 43.2 deg spine; 25.5 deg knee flex. Impeccable iron posture."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway on-plane, slightly mechanical. Right arm stays connected."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway back — full shoulder turn, wrist hinge timed perfectly."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — spine at 41.8 deg (only 1.4 deg lost). posture locked in."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition from ground up. Weight shifts smoothly to lead side."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — shaft approaching from inside, shallow path."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 41.0 deg — 2.2 deg total loss. Ball-first contact, descending blow."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release full but slightly controlled. Could be more aggressive."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through balanced. Belt buckle to target."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish in perfect pose. Could be on a textbook cover."
+          }
+        ]
+      }
+    }
+  }
+}

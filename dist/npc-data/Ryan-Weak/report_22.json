@@ -1,0 +1,397 @@
+{
+  "reportId": "report_rw_1022",
+  "videoId": "video_rw_1022",
+  "userId": "user_ryan_weak",
+  "title": "Face-on | Right-handed | 7-Iron",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775002200000,
+  "updatedAt": 1775002200000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "rw_1022/frame_0.jpg",
+    "P2": "rw_1022/frame_2.jpg",
+    "P3": "rw_1022/frame_2.jpg",
+    "P4": "rw_1022/frame_3.jpg",
+    "P5": "rw_1022/frame_4.jpg",
+    "P6": "rw_1022/frame_5.jpg",
+    "P7": "rw_1022/frame_6.jpg",
+    "P8": "rw_1022/frame_7.jpg",
+    "P9": "rw_1022/frame_8.jpg",
+    "P10": "rw_1022/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 42,
+        "P2_takeaway": 95,
+        "P3_halfway_back": 115,
+        "P4_top": 138,
+        "P5_early_downswing": 149,
+        "P6_pre_impact": 159,
+        "P7_impact": 169,
+        "P8_release": 176,
+        "P9_follow_through": 184,
+        "P10_end": 202
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 159,
+        "max_lead_shoulder_linear_speed_idx": 166,
+        "max_mid_hands_linear_speed_idx": 170,
+        "max_chest_rotational_speed_idx": 161,
+        "max_arm_rotational_speed_idx": 151,
+        "max_pelvis_rotational_speed_idx": 160
+      },
+      "processingDuration": 0.24,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.35,
+        "backswingDuration": 0.82,
+        "downswingDuration": 0.29,
+        "xFactorDegrees": -3.8,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.25,
+          "atTakeaway": 1.6,
+          "atEarlyDownswing": 4.0,
+          "atTop": 5.5,
+          "atImpact": -8.8
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 1.0,
+          "atTop": 20,
+          "atEarlyDownswing": 13.5,
+          "atImpact": 2.8,
+          "atFollowThrough": 9
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 1.8,
+          "atTop": 26,
+          "atEarlyDownswing": 18,
+          "atImpact": 2.2
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 92.5,
+          "leftShoulderHorizontalAbductionAtAddress": 97.5,
+          "rightShoulderHorizontalAbductionAtTop": 83.0,
+          "leftShoulderHorizontalAbductionAtTop": 89.0,
+          "rightShoulderHorizontalAbductionAtImpact": 96.0,
+          "leftShoulderHorizontalAbductionAtImpact": 109.0,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 43.0,
+          "leftElbowAtAddress": 31.0,
+          "rightElbowAtTop": 60.0,
+          "leftElbowAtTop": 54.0,
+          "rightElbowAtImpact": 64.0,
+          "leftElbowAtImpact": 58.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 19.5,
+          "rightKneeAtAddress": 23.0,
+          "leftKneeAtTop": 9.2,
+          "rightKneeAtTop": 15.0,
+          "leftKneeAtImpact": 4.5,
+          "rightKneeAtImpact": 8.2
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 36.8,
+          "leftHipFlexAtAddress": 36.3,
+          "rightHipFlexAtTop": 20.2,
+          "leftHipFlexAtTop": 17.2,
+          "rightHipFlexAtImpact": 9.1,
+          "leftHipFlexAtImpact": 6.1
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -39.0,
+          "leftWristFlexionAtAddress": -50.0,
+          "rightWristFlexionAtTop": 54.0,
+          "leftWristFlexionAtTop": 50.0,
+          "rightWristFlexionAtImpact": -16.0,
+          "leftWristFlexionAtImpact": -29.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 30.2,
+          "atTop": 16.8,
+          "atImpact": 9.5,
+          "maxDeviation": 20.7
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.005,
+          "atTakeaway": 0.042,
+          "atEarlyDownswing": -0.022,
+          "atTop": -0.085,
+          "atImpact": 0.032
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.003,
+          "atTakeaway": -0.013,
+          "atEarlyDownswing": -0.105,
+          "atTop": -0.155,
+          "atImpact": 0.027
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 200,
+          "pelvisMaxSpeedFrame": 160,
+          "torsoMaxSpeed": 265,
+          "torsoMaxSpeedFrame": 161,
+          "armMaxSpeed": 8,
+          "armMaxSpeedFrame": 151,
+          "leadHipMaxSpeed": 0.20,
+          "leadHipMaxSpeedFrame": 159,
+          "leadShoulderMaxSpeed": 0.75,
+          "leadShoulderMaxSpeedFrame": 166,
+          "midHandsMaxSpeed": 1.4,
+          "midHandsMaxSpeedFrame": 170,
+          "wristMaxSpeed": 1.7,
+          "wristMaxSpeedFrame": 172,
+          "hip2shoulderKinematicSequence": false
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 58,
+      "tokenUsage": {
+        "input": 9450,
+        "output": 2150,
+        "total": 11600
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Weekend Warrior",
+          "score": 16,
+          "potential": 1,
+          "stability": 1,
+          "comment": "Loss of posture on 7-Iron mirrors Driver issues. Spine drops from 30.2 to 9.5 deg (20.7 deg lost). Shoulder turn only 26 deg. Arms fire first in kinematic sequence. This 7-Iron swing has the structural integrity of a sandcastle at high tide.",
+          "vibe": {
+            "name": "Sandcastle Architecture",
+            "value": 1.0
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 2.1
+            },
+            {
+              "name": "Sequencing",
+              "value": 2.0
+            },
+            {
+              "name": "Balance",
+              "value": 2.3
+            },
+            {
+              "name": "Plane Control",
+              "value": 2.6
+            },
+            {
+              "name": "Impact Control",
+              "value": 1.8
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 1,
+            "summary": "Address posture at 30.2 deg — slightly better than Driver but still too upright for a 7-Iron.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Insufficient hip hinge at address",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Bend from hips until spine reaches 40+ deg for irons",
+                  "direction": {
+                    "x": 0,
+                    "y": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 4,
+            "summary": "Top position — spine at 16.8 deg (13.4 deg lost), shoulder turn only 26 deg. No coil stored.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Lifting instead of turning. Arms doing all the work.",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Turn shoulders 90 degrees while maintaining posture",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "Impact at 9.5 deg spine — stood up 20.7 deg. No shaft lean, no compression.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Full early extension — hips and spine vertical at impact",
+                  "direction": {
+                    "x": 1,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Stay in posture through impact. Turn, don't stand up.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Posture Evaporation",
+            "summary": "Spine angle evaporates from 30.2 to 9.5 deg. That's 68% of posture lost by impact.",
+            "phases": [
+              1,
+              4,
+              7
+            ]
+          },
+          {
+            "title": "Arm-Only Swing",
+            "summary": "Shoulder turn 26 deg, hip turn 20 deg. Body barely rotates — arms swing independently.",
+            "phases": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "title": "No Compression",
+            "summary": "Without shaft lean or descending blow, 7-Iron contact is thin and powerless.",
+            "phases": [
+              7,
+              8
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Hula Hoop",
+            "front_action": "Put a hula hoop around your waist. Turn your hips inside it without letting it fall. That's hip turn.",
+            "back_roast_title": "The Rusty Hinge",
+            "back_roast_text": "Your hips turn 20 degrees total. That's less rotation than a revolving door in a library. Your 7-Iron shots think the body is optional."
+          },
+          {
+            "front_title": "Impact Bag Drill",
+            "front_action": "Hit an impact bag at 50% speed. Feel your chest turn through impact, not just arms.",
+            "back_roast_title": "The T-Rex",
+            "back_roast_text": "Your arms are doing all the work while your body watches from the sidelines like a T-Rex at a yoga class."
+          },
+          {
+            "front_title": "Feet Together 7-Iron",
+            "front_action": "Hit 7-Irons with feet together. Forces body rotation over arm swing.",
+            "back_roast_title": "The Helicopter Blade",
+            "back_roast_text": "If your arms swing any harder without your body, they'll achieve lift-off. The rest of you is just ballast."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 30.2 deg spine; 19.5 deg knee flex. Better than Driver but still needs 10+ more degrees of bend."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — arms lift club steeply. No rotation initiation from body."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — spine at 24 deg (6.2 deg lost). Continuing to lift, not turn."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 16.8 deg spine (13.4 deg lost). 26 deg shoulder turn. Minimal coil."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — arms start down first. Body follows late."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — rapidly standing up. No lag, no shaft lean."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 9.5 deg — 20.7 deg lost. Thin contact guaranteed."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release from fully upright position. Clubhead rising through impact zone."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — falling away from target line."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — facing 30 degrees right of target. Knees knocking. Hold the railing."
+          }
+        ]
+      }
+    }
+  }
+}

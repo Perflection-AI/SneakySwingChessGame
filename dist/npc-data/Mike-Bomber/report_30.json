@@ -1,0 +1,353 @@
+{
+  "reportId": "report_mb_1030",
+  "videoId": "video_mb_1030",
+  "userId": "user_mike_bomber",
+  "title": "Face-on | Right-handed | Wedge",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775003000000,
+  "updatedAt": 1775003000000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "mb_1030/frame_0.jpg",
+    "P2": "mb_1030/frame_1.jpg",
+    "P3": "mb_1030/frame_2.jpg",
+    "P4": "mb_1030/frame_3.jpg",
+    "P5": "mb_1030/frame_4.jpg",
+    "P6": "mb_1030/frame_5.jpg",
+    "P7": "mb_1030/frame_6.jpg",
+    "P8": "mb_1030/frame_7.jpg",
+    "P9": "mb_1030/frame_8.jpg",
+    "P10": "mb_1030/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 40,
+        "P2_takeaway": 86,
+        "P3_halfway_back": 106,
+        "P4_top": 128,
+        "P5_early_downswing": 138,
+        "P6_pre_impact": 148,
+        "P7_impact": 157,
+        "P8_release": 160,
+        "P9_follow_through": 165,
+        "P10_end": 178
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 148,
+        "max_lead_shoulder_linear_speed_idx": 153,
+        "max_mid_hands_linear_speed_idx": 155,
+        "max_chest_rotational_speed_idx": 150,
+        "max_arm_rotational_speed_idx": 140,
+        "max_pelvis_rotational_speed_idx": 149
+      },
+      "processingDuration": 0.14,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 0.92,
+        "backswingDuration": 0.52,
+        "downswingDuration": 0.15,
+        "xFactorDegrees": -13.5,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.42,
+          "atTakeaway": 1.0,
+          "atEarlyDownswing": 2.8,
+          "atTop": 3.5,
+          "atImpact": -5.5
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.8,
+          "atTop": 48,
+          "atEarlyDownswing": 33.0,
+          "atImpact": 7.2,
+          "atFollowThrough": 22
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 4.8,
+          "atTop": 60,
+          "atEarlyDownswing": 43,
+          "atImpact": 4.8
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 87.0,
+          "leftShoulderHorizontalAbductionAtAddress": 92.0,
+          "rightShoulderHorizontalAbductionAtTop": 65.0,
+          "leftShoulderHorizontalAbductionAtTop": 72.0,
+          "rightShoulderHorizontalAbductionAtImpact": 77.0,
+          "leftShoulderHorizontalAbductionAtImpact": 100.0,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 35.0,
+          "leftElbowAtAddress": 22.0,
+          "rightElbowAtTop": 45.0,
+          "leftElbowAtTop": 38.0,
+          "rightElbowAtImpact": 53.0,
+          "leftElbowAtImpact": 47.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 28.5,
+          "rightKneeAtAddress": 32.0,
+          "leftKneeAtTop": 15.0,
+          "rightKneeAtTop": 22.0,
+          "leftKneeAtImpact": 5.5,
+          "rightKneeAtImpact": 9.0
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 56.0,
+          "leftHipFlexAtAddress": 55.5,
+          "rightHipFlexAtTop": 32.0,
+          "leftHipFlexAtTop": 29.0,
+          "rightHipFlexAtImpact": 14.0,
+          "leftHipFlexAtImpact": 11.0
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -50.0,
+          "leftWristFlexionAtAddress": -61.0,
+          "rightWristFlexionAtTop": 40.0,
+          "leftWristFlexionAtTop": 37.0,
+          "rightWristFlexionAtImpact": -21.0,
+          "leftWristFlexionAtImpact": -33.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 48.5,
+          "atTop": 30.0,
+          "atImpact": 18.5,
+          "maxDeviation": 30.0
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.003,
+          "atTakeaway": 0.022,
+          "atEarlyDownswing": -0.014,
+          "atTop": -0.055,
+          "atImpact": 0.018
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.002,
+          "atTakeaway": -0.007,
+          "atEarlyDownswing": -0.072,
+          "atTop": -0.11,
+          "atImpact": 0.014
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 520,
+          "pelvisMaxSpeedFrame": 149,
+          "torsoMaxSpeed": 620,
+          "torsoMaxSpeedFrame": 150,
+          "armMaxSpeed": 22,
+          "armMaxSpeedFrame": 140,
+          "leadHipMaxSpeed": 0.55,
+          "leadHipMaxSpeedFrame": 148,
+          "leadShoulderMaxSpeed": 1.9,
+          "leadShoulderMaxSpeedFrame": 153,
+          "midHandsMaxSpeed": 4.2,
+          "midHandsMaxSpeedFrame": 155,
+          "wristMaxSpeed": 4.6,
+          "wristMaxSpeedFrame": 156,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 46,
+      "tokenUsage": {
+        "input": 9360,
+        "output": 1810,
+        "total": 11170
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Howitzer",
+          "score": 34,
+          "potential": 5,
+          "stability": 1,
+          "comment": "Wedge swing is Driver power applied to a 60-degree loft. Shoulder turn 60 deg on a wedge. Pelvis speed 520 deg/s. Spine drops 30 deg from 48.5 to 18.5 deg. Knee from 28.5 to 5.5 deg. You swing the wedge so hard it files a workplace safety complaint. Ball goes far but the green never sees it.",
+          "vibe": {
+            "name": "Wedge of Mass Destruction",
+            "value": 8.8
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 9.6
+            },
+            {
+              "name": "Sequencing",
+              "value": 9.3
+            },
+            {
+              "name": "Balance",
+              "value": 2.5
+            },
+            {
+              "name": "Plane Control",
+              "value": 2.8
+            },
+            {
+              "name": "Impact Control",
+              "value": 2.2
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 4,
+            "summary": "Top of wedge swing — spine at 30.0 deg (18.5 deg lost). Posture failing under 60 deg shoulder turn.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Massive rotation pushes body upward. Too much coil for a wedge.",
+                  "direction": {
+                    "x": 1,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Limit wedge backswing to 45 deg shoulder turn. Less coil, more control.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "Impact at 18.5 deg — 30 deg lost. Full early extension on a wedge swing. Spin-killing contact.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "left knee",
+                  "type": "line",
+                  "description": "Knee extends from 28.5 to 5.5 deg. Power surge destroys wedge technique.",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "left knee",
+                  "type": "circle",
+                  "description": "Maintain knee flex through wedge impact. Quiet lower body.",
+                  "radius": 14
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Wedge Power Surge",
+            "summary": "520 deg/s pelvis speed on a wedge is absurd. Body treats every club the same — maximum violence.",
+            "phases": [
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "title": "Spin Killer",
+            "summary": "30 deg spine deviation means no shaft lean, no descending blow. All spin is replaced by power.",
+            "phases": [
+              6,
+              7
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Clock Drill — 9 to 3 Only",
+            "front_action": "Swing wedge from 9 o'clock to 3 o'clock. NO MORE. Feel control over power for once.",
+            "back_roast_title": "The Wedge Launcher",
+            "back_roast_text": "You swing your wedge like it owes you rent. The ball goes 140 yards but the green was at 60."
+          },
+          {
+            "front_title": "Towel Snap",
+            "front_action": "Swing with a towel instead of a wedge. Feel the rhythm, the smooth acceleration.",
+            "back_roast_title": "The Sonic Boom",
+            "back_roast_text": "Your wedge produces a sound effect on contact. Birds scatter. Dogs bark. The greenkeeper cries."
+          },
+          {
+            "front_title": "Paint the Line",
+            "front_action": "Visualize painting a line on the ground with your wedge. Smooth back, smooth through. No explosions.",
+            "back_roast_title": "The Crater",
+            "back_roast_text": "Your wedge divots are less divots and more archaeological excavation sites. The ground yields to your power."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 48.5 deg spine; 28.5 deg knee flex. Good wedge posture."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — too fast, too aggressive for a wedge. Power default activated."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — 10 deg spine lost. Rotation building beyond wedge requirements."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 30.0 deg spine (18.5 deg lost). 60 deg shoulder turn. Way too much for a wedge."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — explosive. The wedge has no idea what's about to happen."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — body rising fast. Knee extending. Power overwhelming technique."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 18.5 deg — 30 deg lost. Wedge contact with zero finesse."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — full speed, clubhead too far ahead of hands."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — extended reverse C. Back screaming."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — powerful, off-balance. Ball: long gone. Green: confused."
+          }
+        ]
+      }
+    }
+  }
+}
