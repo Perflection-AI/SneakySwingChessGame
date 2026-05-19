@@ -159,6 +159,15 @@
   overflow: hidden;
 }
 
+.island-body-picker {
+  padding: 0;
+  align-items: stretch;
+}
+
+.island-body-game {
+  padding: 0;
+}
+
 .game-title {
   font-family: 'DM Sans', sans-serif;
   font-size: 20px;

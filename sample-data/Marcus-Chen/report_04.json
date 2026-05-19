@@ -175,11 +175,11 @@
       },
       "advice": {
         "nutshell": {
-          "name": "The Jack-in-the-Box",
-          "score": 50,
-          "potential": 3,
+          "name": "The Bomber",
+          "score": 44,
+          "potential": 4,
           "stability": 1,
-          "comment": "Early extension on Hybrid: spine drops from 40.3 to 14.1 deg (26.2 deg lost). Lead knee straightens from 24.1 to 8.2 deg. Hip flex vanishes from 50.6 to 19.6 deg. Body rises through impact zone, destroying shaft lean.",
+          "comment": "Early extension on Hybrid: spine drops from 40.3 to 14.1 deg (26.2 deg lost). Lead knee straightens from 24.1 to 8.2 deg. Hip flex vanishes from 50.6 to 19.6 deg. Brutal power, zero control — early extension sends it everywhere.",
           "vibe": {
             "name": "Pop-Up Ad Energy",
             "value": 4.5
@@ -187,23 +187,23 @@
           "technical_radar": [
             {
               "name": "Rotation",
-              "value": 5.4
+              "value": 8.3
             },
             {
               "name": "Sequencing",
-              "value": 5.4
+              "value": 7.3
             },
             {
               "name": "Balance",
-              "value": 3.2
+              "value": 2.9
             },
             {
               "name": "Plane Control",
-              "value": 3.6
+              "value": 2.0
             },
             {
               "name": "Impact Control",
-              "value": 3.2
+              "value": 2.2
             }
           ]
         },

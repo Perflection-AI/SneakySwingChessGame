@@ -6,8 +6,8 @@
   width: 100%;
   margin-top: 6px;
   border-radius: 10px;
-  border: 1px solid #E5E5E5;
-  background: #fff;
+  border: 1px solid var(--dsd-gray300);
+  background: var(--dsd-white);
   overflow: hidden;
 }
 
@@ -15,15 +15,15 @@
 
 .sc-header {
   display: flex;
-  background: #1A1A2E;
+  background: rgb(92, 107, 85);
 }
 
 .sc-header .sc-label-col {
-  background: #1A1A2E;
+  background: rgb(92, 107, 85);
 }
 
 .sc-header .sc-total-col {
-  background: #1A1A2E;
+  background: rgb(92, 107, 85);
 }
 
 .sc-row {
@@ -31,54 +31,54 @@
 }
 
 .sc-row-par {
-  border-bottom: 1px solid #E5E5E5;
+  border-bottom: 1px solid var(--dsd-gray300);
 }
 
 .sc-hole {
-  width: 24px;
+  width: 26px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--dsd-content-white);
+  flex-shrink: 0;
+}
+
+.sc-hole-current {
+  color: var(--dsd-content-white);
+  background: var(--dsd-broadcast-divider);
+  border-radius: 3px;
+}
+
+.sc-hole-done {
+  color: var(--dsd-broadcast-dim);
+}
+
+.sc-par {
+  width: 26px;
   height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'DM Sans', sans-serif;
-  font-size: 8px;
-  font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
-  flex-shrink: 0;
-}
-
-.sc-hole-current {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 3px;
-}
-
-.sc-hole-done {
-  color: rgba(255, 255, 255, 0.35);
-}
-
-.sc-par {
-  width: 24px;
-  height: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'DM Sans', sans-serif;
-  font-size: 7px;
+  font-size: 9px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--dsd-broadcast-dim);
   flex-shrink: 0;
 }
 
 .sc-par.sc-hole-current {
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--dsd-content-white);
 }
 
 /* --- Three-column layout for player rows --- */
 
 .sc-player-row {
   display: flex;
-  border-bottom: 1px solid #F2F2F2;
+  border-bottom: 1px solid var(--dsd-gray100);
 }
 
 .sc-player-row:last-child {
@@ -86,7 +86,7 @@
 }
 
 .sc-leading {
-  background: rgba(113, 147, 65, 0.03);
+  background: rgba(var(--dsd-green700-rgb), 0.03);
 }
 
 .sc-label-col {
@@ -108,7 +108,7 @@
 
 .sc-pname {
   font-family: 'DM Sans', sans-serif;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.2px;
   overflow: hidden;
@@ -139,34 +139,34 @@
 
 .sc-total-hdr {
   font-family: 'DM Sans', sans-serif;
-  font-size: 8px;
+  font-size: 10px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
-  height: 18px;
+  color: var(--dsd-broadcast-dim);
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
+  width: 34px;
 }
 
 /* --- Score cells --- */
 
 .sc-score {
-  width: 24px;
-  height: 26px;
+  width: 26px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: 'DM Sans', sans-serif;
-  font-size: 9px;
+  font-size: 11px;
   font-weight: 700;
-  color: #828282;
+  color: var(--dsd-gray500);
   flex-shrink: 0;
   position: relative;
 }
 
 .sc-score-current {
-  background: #F2F2F2;
+  background: var(--dsd-gray100);
   border-radius: 3px;
 }
 
@@ -186,21 +186,21 @@
 
 /* --- Score color classes --- */
 
-.sc-eagle { color: #B8860B; }
-.sc-birdie { color: #719342; }
-.sc-par { color: #828282; }
-.sc-bogey { color: #A88D37; }
-.sc-double { color: #EF4444; }
+.sc-eagle { color: var(--dsd-yellow700); }
+.sc-birdie { color: var(--dsd-green700); }
+.sc-par { color: var(--dsd-gray500); }
+.sc-bogey { color: var(--dsd-yellow700); }
+.sc-double { color: var(--dsd-red700); }
 
 /* --- Total cell --- */
 
 .sc-total {
   font-family: 'DM Sans', sans-serif;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 800;
-  color: #4E4E4E;
-  height: 26px;
-  width: 32px;
+  color: var(--dsd-gray700);
+  height: 28px;
+  width: 34px;
   display: flex;
   align-items: center;
   justify-content: center;

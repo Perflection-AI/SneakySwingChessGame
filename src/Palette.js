@@ -37,6 +37,25 @@ const Palette = {
     error: '#EF4444',
     info: '#008BFF',
   },
+
+  effect: {
+    player_stat:  { base: '#008BFF', bg: 'rgba(0,139,255,0.15)',  border: 'rgba(0,139,255,0.5)',  text: '#008BFF', solidBg: '#EBF5FF', label: 'STAT' },
+    weather:      { base: '#D97706', bg: 'rgba(245,158,11,0.15)', border: 'rgba(245,158,11,0.5)', text: '#D97706', solidBg: '#FFF8E1', label: 'WEATHER' },
+    animal_event: { base: '#059669', bg: 'rgba(16,185,129,0.15)', border: 'rgba(16,185,129,0.5)', text: '#059669', solidBg: '#ECFDF5', label: 'ANIMAL' },
+    brainrot_meta:{ base: '#7C3AED', bg: 'rgba(139,92,246,0.15)', border: 'rgba(139,92,246,0.5)', text: '#7C3AED', solidBg: '#F3E8FF', label: 'BRAINROT' },
+  },
+
+  outcome: {
+    holed: '#4CAF50',
+    miracle: '#4CAF50',
+    pinseeker: '#4CAF50',
+    great: '#719342',
+    good: '#719342',
+    clean: '#719342',
+    okay: '#C49A2A',
+    missed: '#D97706',
+    bad: '#EF4444',
+  },
 }
 
 export default Palette

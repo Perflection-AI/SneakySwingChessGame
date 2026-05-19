@@ -175,11 +175,11 @@
       },
       "advice": {
         "nutshell": {
-          "name": "The Early Releaser",
-          "score": 78,
-          "potential": 4,
+          "name": "The Outside-In Artist",
+          "score": 65,
+          "potential": 3,
           "stability": 3,
-          "comment": "Casting on 7-Iron: right wrist releases from 44.0 to -18.0 deg (26.0 deg of lag angle lost). midHandsMaxSpeed fires at the same frame as pre-impact instead of after — the wrists unhinge too early, leaking power before impact.",
+          "comment": "Over the top on 7-Iron: shoulder fires first at 412 deg/s, dragging the club outside the line. Path comes across the ball at -6.2 deg. Classic outside-in pattern producing pulls and weak fades.",
           "vibe": {
             "name": "Firecracker With a Wet Fuse",
             "value": 7.2
@@ -187,36 +187,36 @@
           "technical_radar": [
             {
               "name": "Rotation",
-              "value": 8.7
+              "value": 4.5
             },
             {
               "name": "Sequencing",
-              "value": 6.9
+              "value": 4.0
             },
             {
               "name": "Balance",
-              "value": 8.0
+              "value": 7.2
             },
             {
               "name": "Plane Control",
-              "value": 7.4
+              "value": 7.8
             },
             {
               "name": "Impact Control",
-              "value": 6.4
+              "value": 7.2
             }
           ]
         },
         "root_causes": [
           {
             "phase": 5,
-            "summary": "Wrist angle already collapsing at early downswing — right wrist goes from 44.0 to 13.0 deg before impact even arrives.",
+            "summary": "Right shoulder fires over the top at transition — shoulders rotate outward before the lower body clears, pulling the club outside the plane line.",
             "cause": {
               "joints": [
                 {
-                  "name": "right wrist",
+                  "name": "right shoulder",
                   "type": "line",
-                  "description": "Casting — unhinging too early",
+                  "description": "Firing over the top — shoulders lead from outside",
                   "direction": {
                     "x": 1,
                     "y": 0
@@ -227,9 +227,9 @@
             "optim": {
               "joints": [
                 {
-                  "name": "right wrist",
+                  "name": "right shoulder",
                   "type": "circle",
-                  "description": "Hold the lag angle",
+                  "description": "Drop the shoulder to shallow the club on plane",
                   "radius": 10
                 }
               ]
@@ -237,13 +237,13 @@
           },
           {
             "phase": 7,
-            "summary": "At impact the wrist has only -18.0 deg of flex — should be closer to 44.0. The lag angle released too early, costing power.",
+            "summary": "At impact the club path is cutting across the ball at -6.2 deg — the outside-in path produces pulls and slices instead of a square strike.",
             "cause": {
               "joints": [
                 {
-                  "name": "left wrist",
+                  "name": "club path",
                   "type": "line",
-                  "description": "Breaking down through impact",
+                  "description": "Outside-in path cutting across the ball",
                   "direction": {
                     "x": 0,
                     "y": 1
@@ -254,9 +254,9 @@
             "optim": {
               "joints": [
                 {
-                  "name": "left wrist",
+                  "name": "club path",
                   "type": "line",
-                  "description": "Maintain flat bow through impact",
+                  "description": "Shallow the club to approach from the inside",
                   "direction": {
                     "x": 1,
                     "y": 0
@@ -268,16 +268,16 @@
         ],
         "swing_dynamics": [
           {
-            "title": "Casting Motion",
-            "summary": "Wrists release 26.0 deg of lag angle before impact — the clubhead arrives early, losing stored energy.",
+            "title": "Over the Top Transition",
+            "summary": "Right shoulder fires outward at transition, dragging the club above and outside the swing plane. The path crosses the target line from outside-in.",
             "phases": [
               5,
               6
             ]
           },
           {
-            "title": "Power Leak at Impact",
-            "summary": "Without lag, clubhead speed peaks before impact. The body and arms are good but the wrist release timing wastes the advantage.",
+            "title": "Across-the-Ball Impact",
+            "summary": "Club arrives at impact on an outside-in path, cutting across the ball. Produces pulls, slices, and glancing blows that leak accuracy and distance.",
             "phases": [
               6,
               7
@@ -286,22 +286,22 @@
         ],
         "flipcards": [
           {
-            "front_title": "The Towel Drill",
-            "front_action": "Place a small towel under the grip, held between the forearms and shaft. Swing and keep the towel in place through impact. If you cast, the towel flies out.",
-            "back_roast_title": "The Slingshot",
-            "back_roast_text": "You release the wrists so early on 7-Iron you could launch a water balloon. Hold the angle — power comes late, not early."
+            "front_title": "The Behind-the-Body Drill",
+            "front_action": "At the top, pause and drop the right shoulder straight down toward the trail hip pocket before rotating. This trains the shallowing move that fixes over the top. Start with half swings.",
+            "back_roast_title": "The Shoulder Launcher",
+            "back_roast_text": "Your right shoulder fires like a rocket at transition on 7-Iron. NASA called — they want their launch sequence back. Drop it down, not around."
           },
           {
-            "front_title": "Pump to Impact",
-            "front_action": "Take the club to the top, then pump down halfway maintaining the wrist hinge. Repeat 5 times. Feel the lag pressure in the trail hand. Then swing through.",
-            "back_roast_title": "The Premature Celebrator",
-            "back_roast_text": "You celebrate the release before impact even happens. Save the party for after the ball is gone."
+            "front_title": "The Alignment Stick Gate",
+            "front_action": "Place an alignment stick in the ground 6 inches outside the ball, angled to create a gate. Swing without hitting the stick — this forces an inside approach path.",
+            "back_roast_title": "The Lawn Mower",
+            "back_roast_text": "You come so far over the top on 7-Iron you could mow the lawn on the adjacent fairway. Get back inside the line."
           },
           {
-            "front_title": "Whoosh at the Bottom",
-            "front_action": "Turn club upside down and swing for loudest whoosh at knee height (not hip height). The whoosh should be at impact, not before.",
-            "back_roast_title": "The Early Bird",
-            "back_roast_text": "Your whoosh happens too early in the swing. The ball needs the loudest noise, not the takeaway."
+            "front_title": "The Tuck and Turn Drill",
+            "front_action": "From the top, tuck the right elbow into the right hip before the shoulders rotate. This sequence — elbow tuck first, then turn — prevents the over the top move.",
+            "back_roast_title": "The Helicopter",
+            "back_roast_text": "Your shoulders spin so hard from the top the club helicopters across the ball. You are one blade away from takeoff — shall the club, do not spin it."
           }
         ],
         "phase_analysis": [

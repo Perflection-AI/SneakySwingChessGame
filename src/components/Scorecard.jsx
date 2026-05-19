@@ -43,21 +43,35 @@ export default function Scorecard({ players, scorecard, holePars, holeNumber, ga
   const completedHoles = (scorecard[players[0].id] || []).filter(s => s != null).length
 
   function holeLeader(i) {
-    const s0 = scorecard[players[0].id]?.[i]
-    const s1 = scorecard[players[1].id]?.[i]
-    if (s0 == null || s1 == null) return -1
-    const d0 = s0 - holePars[i]
-    const d1 = s1 - holePars[i]
-    if (d0 < d1) return 0
-    if (d1 < d0) return 1
-    return -1
+    let bestIdx = -1
+    let bestDiff = Infinity
+    let allDone = true
+    for (let pi = 0; pi < players.length; pi++) {
+      const s = scorecard[players[pi].id]?.[i]
+      if (s == null) { allDone = false; continue }
+      const d = s - holePars[i]
+      if (d < bestDiff) { bestDiff = d; bestIdx = pi }
+    }
+    if (!allDone) return -1
+    // Check for tie
+    let count = 0
+    for (let pi = 0; pi < players.length; pi++) {
+      const s = scorecard[players[pi].id]?.[i]
+      if (s != null && s - holePars[i] === bestDiff) count++
+    }
+    return count > 1 ? -1 : bestIdx
   }
 
   const leaderIdx = (() => {
     if (completedHoles === 0) return -1
-    if (totals[0] < totals[1]) return 0
-    if (totals[1] < totals[0]) return 1
-    return -1
+    let bestIdx = -1
+    let bestTotal = Infinity
+    let tied = false
+    for (let pi = 0; pi < players.length; pi++) {
+      if (totals[pi] < bestTotal) { bestTotal = totals[pi]; bestIdx = pi; tied = false }
+      else if (totals[pi] === bestTotal) { tied = true }
+    }
+    return tied ? -1 : bestIdx
   })()
 
   return (

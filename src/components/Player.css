@@ -28,3 +28,22 @@
   height: 7px;
   color: #fff;
 }
+
+.player-emoji {
+  position: relative;
+  font-size: 8px;
+  line-height: 1;
+  text-align: center;
+}
+
+.player-dimmed .player-ring {
+  filter: saturate(0.3) brightness(0.65);
+}
+
+.player-dimmed .player-icon {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.player-dimmed .player-emoji {
+  opacity: 0.5;
+}

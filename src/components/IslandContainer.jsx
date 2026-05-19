@@ -1,6 +1,7 @@
-import { useState, useRef, useCallback, useEffect } from 'react'
+import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
 import Palette from '../Palette'
 import Board from './Board'
+import TrainingPicker from './TrainingPicker'
 import './IslandContainer.css'
 
 const players = [
@@ -41,9 +42,15 @@ const STAT_META = [
 export default function IslandContainer() {
   const [activePlayerId, setActivePlayerId] = useState('marcus')
   const [mode, setMode] = useState('game')
+  const [gamePhase, setGamePhase] = useState('training_select') // training_select | playing
 
   const [drawerOpen, setDrawerOpen] = useState(false)
   const dragRef = useRef(null)
+
+  const handleSelectTraining = useCallback((training) => {
+    // Replace first player ("you") with training-derived stats, keep Sofia as opponent
+    setGamePhase('playing')
+  }, [])
 
   const onDrawerPointerDown = useCallback((e) => {
     if (e.button !== 0) return
@@ -122,10 +129,16 @@ export default function IslandContainer() {
           </div>
         </header>
 
-        <div className="island-body">
-          <h1 className="game-title">Sneaky Swing</h1>
-          <p className="game-subtitle">Auto Chess</p>
-          <Board players={players} activePlayerId={activePlayerId} mode={mode} />
+        <div className={`island-body${gamePhase === 'training_select' ? ' island-body-picker' : mode === 'game' && gamePhase === 'playing' ? ' island-body-game' : ''}`}>
+          {gamePhase === 'training_select' ? (
+            <TrainingPicker onSelectTraining={handleSelectTraining} />
+          ) : (
+            <>
+              <h1 className="game-title">Sneaky Swing</h1>
+              <p className="game-subtitle">Auto Chess</p>
+              <Board players={players} activePlayerId={activePlayerId} mode={mode} />
+            </>
+          )}
         </div>
 
         <div

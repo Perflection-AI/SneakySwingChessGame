@@ -175,11 +175,11 @@
       },
       "advice": {
         "nutshell": {
-          "name": "The Jack-in-the-Box",
-          "score": 55,
-          "potential": 3,
+          "name": "The Bomber",
+          "score": 48,
+          "potential": 4,
           "stability": 1,
-          "comment": "Early extension on Wedge: spine drops from 48.2 to 20.2 deg (28.0 deg lost). Lead knee straightens from 28.2 to 9.2 deg. Hip flex vanishes from 55.9 to 22.2 deg. Body rises through impact zone, destroying shaft lean.",
+          "comment": "Early extension on Wedge: spine drops from 48.2 to 20.2 deg (28.0 deg lost). Lead knee straightens from 28.2 to 9.2 deg. Hip flex vanishes from 55.9 to 22.2 deg. Explosive power but early extension blows every shot offline.",
           "vibe": {
             "name": "Pop-Up Ad Energy",
             "value": 4.5
@@ -187,23 +187,23 @@
           "technical_radar": [
             {
               "name": "Rotation",
-              "value": 5.3
+              "value": 8.8
             },
             {
               "name": "Sequencing",
-              "value": 5.3
+              "value": 7.8
             },
             {
               "name": "Balance",
-              "value": 3.1
+              "value": 3.3
             },
             {
               "name": "Plane Control",
-              "value": 3.5
+              "value": 2.8
             },
             {
               "name": "Impact Control",
-              "value": 3.1
+              "value": 2.5
             }
           ]
         },

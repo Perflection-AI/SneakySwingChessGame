@@ -1,3 +1,39 @@
+:root {
+  /* DSD Primitive Colors (DESIGN_SYSTEM_DESCRIPTION §2.1) */
+  --dsd-red300: #FEF2F2;
+  --dsd-red500: #F8A282;
+  --dsd-red700: #EF4444;
+  --dsd-yellow300: #FBF8EE;
+  --dsd-yellow500: #FFE99F;
+  --dsd-yellow700: #A88D37;
+  --dsd-green300: #E8F3D8;
+  --dsd-green500: #B8D085;
+  --dsd-green700: #719342;
+  --dsd-green700-rgb: 113, 147, 66;
+  --dsd-gray100: #F2F2F2;
+  --dsd-gray300: #CDCDCD;
+  --dsd-gray500: #828282;
+  --dsd-gray700: #4E4E4E;
+  --dsd-blue300: #F3F9FF;
+  --dsd-blue500: #88E2E0;
+  --dsd-blue700: #008BFF;
+  --dsd-white: #FFFFFF;
+  --dsd-black: #000000;
+
+  /* DSD Semantic (§2.2) */
+  --dsd-brand-primary: #719241;
+  --dsd-content-primary: #4E4E4E;
+  --dsd-content-secondary: #828282;
+  --dsd-content-white: #FFFFFF;
+  --dsd-border-default: #CDCDCD;
+  --dsd-overlay-scrim: rgba(0, 0, 0, 0.5);
+
+  /* Chess-game specific: broadcast dark panel — DSD deep green from SwingLens website */
+  --dsd-broadcast-bg: rgba(92, 107, 85, 0.93);
+  --dsd-broadcast-divider: rgba(117, 216, 186, 0.18);
+  --dsd-broadcast-dim: rgba(209, 242, 232, 0.7);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +42,7 @@
 
 body {
   min-height: 100vh;
-  background: #F2F2F2;
+  background: var(--dsd-gray100);
   display: flex;
   justify-content: center;
   align-items: center;

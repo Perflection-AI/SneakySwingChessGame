@@ -175,11 +175,11 @@
       },
       "advice": {
         "nutshell": {
-          "name": "The Jack-in-the-Box",
-          "score": 52,
-          "potential": 3,
+          "name": "The Bomber",
+          "score": 42,
+          "potential": 4,
           "stability": 1,
-          "comment": "Early extension on 7-Iron: spine drops from 42.6 to 15.2 deg (27.4 deg lost). Lead knee straightens from 25.2 to 7.9 deg. Hip flex vanishes from 52.2 to 20.9 deg. Body rises through impact zone, destroying shaft lean.",
+          "comment": "Early extension on 7-Iron: spine drops from 42.6 to 15.2 deg (27.4 deg lost). Lead knee straightens from 25.2 to 7.9 deg. Hip flex vanishes from 52.2 to 20.9 deg. Huge rotation but body rises through impact, wrecking aim and control.",
           "vibe": {
             "name": "Pop-Up Ad Energy",
             "value": 4.5
@@ -187,23 +187,23 @@
           "technical_radar": [
             {
               "name": "Rotation",
-              "value": 5.2
+              "value": 8.6
             },
             {
               "name": "Sequencing",
-              "value": 5.2
+              "value": 7.2
             },
             {
               "name": "Balance",
-              "value": 3.0
+              "value": 2.8
             },
             {
               "name": "Plane Control",
-              "value": 3.4
+              "value": 2.2
             },
             {
               "name": "Impact Control",
-              "value": 3.0
+              "value": 1.8
             }
           ]
         },

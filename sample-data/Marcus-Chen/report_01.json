@@ -175,11 +175,11 @@
       },
       "advice": {
         "nutshell": {
-          "name": "The Jack-in-the-Box",
-          "score": 48,
-          "potential": 3,
+          "name": "The Bomber",
+          "score": 45,
+          "potential": 4,
           "stability": 1,
-          "comment": "Early extension on Driver: spine drops from 38.2 to 12.9 deg (25.3 deg lost). Lead knee straightens from 22.9 to 8.6 deg. Hip flex vanishes from 48.9 to 18.2 deg. Body rises through impact zone, destroying shaft lean.",
+          "comment": "Early extension on Driver: spine drops from 38.2 to 12.9 deg (25.3 deg lost). Lead knee straightens from 22.9 to 8.6 deg. Hip flex vanishes from 48.9 to 18.2 deg. Massive raw power but body rises through impact zone, destroying shaft lean and aim.",
           "vibe": {
             "name": "Pop-Up Ad Energy",
             "value": 4.5
@@ -187,23 +187,23 @@
           "technical_radar": [
             {
               "name": "Rotation",
-              "value": 5.1
+              "value": 8.4
             },
             {
               "name": "Sequencing",
-              "value": 5.1
+              "value": 7.4
             },
             {
               "name": "Balance",
-              "value": 2.9
+              "value": 3.1
             },
             {
               "name": "Plane Control",
-              "value": 3.3
+              "value": 2.5
             },
             {
               "name": "Impact Control",
-              "value": 2.9
+              "value": 2.0
             }
           ]
         },
