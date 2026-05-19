@@ -1,0 +1,104 @@
+.map-canvas-container {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  background: #EAE6D8;
+  border-radius: 12px;
+  overflow: hidden;
+  touch-action: none;
+  user-select: none;
+  cursor: crosshair;
+}
+
+.map-canvas-panning {
+  cursor: grabbing;
+}
+
+.map-canvas-transform {
+  position: absolute;
+  inset: 0;
+  transform-origin: center center;
+}
+
+.map-canvas-image {
+  position: absolute;
+  pointer-events: none;
+}
+
+.map-point {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #008BFF;
+  border: 2px solid #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: grab;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+  z-index: 2;
+  touch-action: none;
+}
+
+.map-point:active {
+  cursor: grabbing;
+}
+
+.map-point-selected {
+  border-color: #FFD700;
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.25);
+  z-index: 3;
+}
+
+.map-point-num {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.map-zoom-badge {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.15s;
+}
+
+.map-zoom-badge:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.map-canvas-empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #EAE6D8;
+  border-radius: 12px;
+  min-height: 200px;
+}
+
+.map-canvas-empty-icon {
+  opacity: 0.4;
+}
+
+.map-canvas-empty-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: #828282;
+}

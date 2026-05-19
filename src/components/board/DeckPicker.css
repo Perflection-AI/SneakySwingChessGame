@@ -1,0 +1,52 @@
+.deck-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+}
+
+.dp-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #828282;
+  letter-spacing: 0.5px;
+  margin-right: 4px;
+}
+
+.dp-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 12px;
+  border: 1px solid #CDCDCD;
+  border-radius: 8px;
+  background: #FFFFFF;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  min-width: 90px;
+}
+
+.dp-option:hover {
+  border-color: #719342;
+}
+
+.dp-active {
+  border-color: #719342 !important;
+  background: #E8F3D8 !important;
+}
+
+.dp-brainrot.dp-active {
+  border-color: #8B5CF6 !important;
+  background: #F3E8FF !important;
+}
+
+.dp-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #4E4E4E;
+}
+
+.dp-info {
+  font-size: 10px;
+  color: #828282;
+}

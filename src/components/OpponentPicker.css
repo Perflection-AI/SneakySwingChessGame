@@ -1,0 +1,371 @@
+/* Opponent Picker */
+
+.opp-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 24px;
+  overflow: hidden;
+}
+
+.opp-header {
+  padding: 20px 0 12px;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-bottom: 0.5px solid #F2F2F2;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.opp-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #828282;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.opp-back-btn:hover {
+  color: #4E4E4E;
+}
+
+.opp-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #4E4E4E;
+  margin: 0;
+}
+
+.opp-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #828282;
+  margin: 2px 0 0;
+}
+
+/* Tabs — Following / Nearby */
+.opp-tabs {
+  display: flex;
+  gap: 0;
+  padding: 8px 0 0;
+  flex-shrink: 0;
+  border-bottom: 1px solid #F2F2F2;
+  margin: 0 -24px;
+  padding-left: 24px;
+}
+
+.opp-tab {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: #828282;
+  background: none;
+  border: none;
+  padding: 6px 12px 8px;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.opp-tab::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: transparent;
+  border-radius: 1px;
+  transition: background 0.15s;
+}
+
+.opp-tab-active {
+  color: #4E4E4E;
+}
+
+.opp-tab-active::after {
+  background: #719241;
+}
+
+.opp-tab:hover {
+  color: #4E4E4E;
+}
+
+.opp-tab-count {
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+  background: #CDCDCD;
+  border-radius: 8px;
+  padding: 0 5px;
+  line-height: 16px;
+  min-width: 16px;
+  text-align: center;
+}
+
+.opp-tab-active .opp-tab-count {
+  background: #719241;
+}
+
+/* 2-column grid, vertically scrollable */
+.opp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  align-content: start;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Card — full-bleed image with overlay */
+.opp-card {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 16px;
+  border: 0.5px solid #CDCDCD;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.opp-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16px;
+  pointer-events: none;
+  transition: opacity 0.2s;
+}
+
+.opp-card:hover::after {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.opp-card-selected {
+  border-color: #719241;
+  border-width: 1.5px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(113, 146, 65, 0.12);
+}
+
+.opp-card-selected::after {
+  opacity: 0;
+}
+
+.opp-card-selected:hover {
+  border-color: #719241;
+}
+
+.opp-card-selected:hover::after {
+  opacity: 0;
+}
+
+/* Background image — fills entire card */
+.opp-card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Glitch scanlines */
+.opp-card-glitch {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(113, 146, 65, 0.06) 2px,
+    rgba(113, 146, 65, 0.06) 4px
+  );
+  pointer-events: none;
+  animation: oppGlitchScan 0.3s steps(3) infinite;
+}
+
+@keyframes oppGlitchScan {
+  0% { transform: translateY(0); }
+  33% { transform: translateY(-1px); }
+  66% { transform: translateY(1px); }
+  100% { transform: translateY(0); }
+}
+
+/* Text overlay — bottom area */
+.opp-card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  min-height: 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 6px 10px;
+  gap: 3px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 60%, transparent);
+}
+
+.opp-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.opp-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.opp-card-name-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.opp-online-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ADE80;
+  box-shadow: 0 0 4px rgba(74, 222, 128, 0.5);
+  flex-shrink: 0;
+}
+
+.opp-card-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.2;
+}
+
+.opp-card-role {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.opp-card-check {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  color: transparent;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+
+.opp-card-check-on {
+  background: #719241;
+  border-color: #719241;
+  color: #FFFFFF;
+}
+
+/* Stats — compact inline */
+.opp-card-stats {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.opp-stat {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.opp-stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.opp-stat-bar-track {
+  width: 20px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.opp-stat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.opp-stat-val {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.opp-distance {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Footer — DSD Primary Button */
+.opp-footer {
+  flex-shrink: 0;
+  padding: 8px 0 32px;
+}
+
+.opp-start-btn {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 9999px;
+  background: #719241;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.opp-start-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(113, 146, 65, 0.3);
+}
+
+.opp-start-btn:disabled {
+  background: #CDCDCD;
+  color: #FFFFFF;
+  cursor: not-allowed;
+}

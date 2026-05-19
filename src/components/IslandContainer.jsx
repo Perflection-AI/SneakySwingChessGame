@@ -1,83 +1,274 @@
 import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
 import Palette from '../Palette'
 import Board from './Board'
+import GameControls from './board/GameControls'
+import MappingView from './mapping/MappingView'
 import TrainingPicker from './TrainingPicker'
+import OpponentPicker from './OpponentPicker'
+import MapPicker from './MapPicker'
+import DeckPickerScreen from './DeckPickerScreen'
+import { SWING_ISSUES } from '../utils/shotPhysics'
+import appConfig from '../appConfig'
+import trainingRecords, { computeStatsFromTraining } from '../data/trainingRecords'
+import PracticeRange from './PracticeRange'
 import './IslandContainer.css'
-
-const players = [
-  {
-    id: 'marcus',
-    name: 'Marcus Chen',
-    abbr: 'MC',
-    score: 50,
-    color: Palette.yellow[700],
-    stats: { power: 5, aim: 3, nerve: 2 },
-    curse: {
-      issue: 'Hip Betrayal',
-      desc: '屁股提前下班，球突然不认路',
-      effect: { stat: 'aim', mod: -1, label: 'Aim −1' },
-    },
-  },
-  {
-    id: 'sofia',
-    name: 'Sofia Reyes',
-    abbr: 'SR',
-    score: 82,
-    color: Palette.green[700],
-    stats: { power: 8, aim: 5, nerve: 6 },
-    curse: {
-      issue: 'Premature Release',
-      desc: '力量提前花完，球还没到地方人已经没了',
-      effect: { stat: 'power', mod: -2, label: 'Power −2' },
-    },
-  },
-]
 
 const STAT_META = [
   { key: 'power', label: 'Power' },
   { key: 'aim', label: 'Aim' },
-  { key: 'nerve', label: 'Nerve' },
+  { key: 'touch', label: 'Touch' },
+]
+
+const STAT_VALUES = [1, 3, 5, 7, 9]
+
+const ISSUE_KEYS = Object.keys(SWING_ISSUES)
+
+const ONBOARDING_LINES = [
+  'Stats ← training report',
+  'PWR = Rotation + Sequencing',
+  'AIM = Plane + Impact Ctrl',
+  'TCH = Tempo + Contact + Stability',
+  'Issue ← dominant flaw pattern',
+  'Click field to hit a shot →',
 ]
 
 export default function IslandContainer() {
   const [activePlayerId, setActivePlayerId] = useState('marcus')
   const [mode, setMode] = useState('game')
-  const [gamePhase, setGamePhase] = useState('training_select') // training_select | playing
+  const [controls, setControls] = useState(null)
+  const [discoveredMaps, setDiscoveredMaps] = useState([])
+  const [selectedMapIds, setSelectedMapIds] = useState([])
 
-  const [drawerOpen, setDrawerOpen] = useState(false)
-  const dragRef = useRef(null)
+  const [gamePhase, setGamePhase] = useState('training_select') // 'training_select' | 'opponent_select' | 'map_select' | 'deck_select' | 'playing' | 'practice_range'
+  const [playerTraining, setPlayerTraining] = useState(null)
+  const [selectedOpponents, setSelectedOpponents] = useState(['marcus', 'sofia', 'david'])
+  const [selectedDeck, setSelectedDeck] = useState('base')
+  const [mapsLoading, setMapsLoading] = useState(false)
 
   const handleSelectTraining = useCallback((training) => {
-    // Replace first player ("you") with training-derived stats, keep Sofia as opponent
+    setPlayerTraining(training)
+    setGamePhase('opponent_select')
+  }, [])
+
+  const handleConfirmOpponents = useCallback(() => {
+    setGamePhase('map_select')
+  }, [])
+
+  const handleConfirmMap = useCallback(() => {
+    setGamePhase('deck_select')
+  }, [])
+
+  const handleConfirmDeck = useCallback(() => {
+    if (!playerTraining) return
+    if (selectedDeck === 'none') {
+      appConfig.cards.enabled = false
+    } else {
+      appConfig.cards.enabled = true
+      appConfig.cards.deckType = selectedDeck
+    }
+    setActivePlayerId('you')
     setGamePhase('playing')
+  }, [playerTraining, selectedDeck])
+
+  const handleEnterPracticeRange = useCallback((training) => {
+    const stats = training.stats || computeStatsFromTraining(training.day)
+    setPlayerTraining(training)
+    setTestConfig({ stats: { power: stats.power, aim: stats.aim, touch: stats.touch }, issue: stats.issue || 'none' })
+    setMode('test')
+    setGamePhase('practice_range')
   }, [])
 
-  const onDrawerPointerDown = useCallback((e) => {
-    if (e.button !== 0) return
-    dragRef.current = { startY: e.clientY, wasOpen: drawerOpen, moved: false }
-  }, [drawerOpen])
+  const handleExitPracticeRange = useCallback(() => {
+    setMode('game')
+    setGamePhase('training_select')
+  }, [])
 
+  const handleNewGame = useCallback(() => {
+    setMode('game')
+    setGamePhase('training_select')
+    setPlayerTraining(null)
+    setSelectedOpponents(['marcus', 'sofia', 'david'])
+    setSelectedMapIds([])
+    setSelectedDeck('base')
+    appConfig.map.imageUrl = null
+    appConfig.map.points = []
+    appConfig.map.imageWidth = 0
+    appConfig.map.imageHeight = 0
+    setActivePlayerId('you')
+  }, [])
+
+  const aiPlayers = useMemo(() => [
+    {
+      id: 'marcus',
+      name: 'Marcus Chen',
+      abbr: 'MC',
+      score: 45,
+      color: Palette.yellow[700],
+      stats: { power: 5, aim: 4, touch: 4 },
+      issue: 'earlyExt',
+      photoDir: '/mock-record/opponents/marcus',
+    },
+    {
+      id: 'sofia',
+      name: 'Sofia Reyes',
+      abbr: 'SR',
+      score: 68,
+      color: Palette.green[700],
+      stats: { power: 5, aim: 9, touch: 6 },
+      issue: 'overTheTop',
+      photoDir: '/mock-record/opponents/sofia',
+    },
+    {
+      id: 'david',
+      name: 'David Kim',
+      abbr: 'DK',
+      score: 91,
+      color: Palette.blue[700],
+      stats: { power: 6, aim: 9, touch: 10 },
+      issue: 'poorTempo',
+      photoDir: '/mock-record/opponents/david',
+    },
+  ], [])
+
+  const players = useMemo(() => {
+    const opponents = aiPlayers.filter(p => selectedOpponents.includes(p.id))
+    if (gamePhase === 'playing' && playerTraining) {
+      return [
+        {
+          id: 'you',
+          name: 'You',
+          abbr: 'YOU',
+          score: playerTraining.day.avgScore,
+          color: Palette.red[700],
+          stats: playerTraining.stats,
+          issue: playerTraining.stats.issue,
+          photoDir: '/mock-record/day-1',
+        },
+        ...opponents,
+      ]
+    }
+    if (gamePhase === 'practice_range' && playerTraining) {
+      return [
+        {
+          id: 'you',
+          name: 'You',
+          abbr: 'YOU',
+          score: playerTraining.day.avgScore,
+          color: Palette.red[700],
+          stats: playerTraining.stats,
+          issue: playerTraining.stats.issue,
+          photoDir: '/mock-record/day-1',
+        },
+      ]
+    }
+    return opponents
+  }, [gamePhase, playerTraining, aiPlayers, selectedOpponents])
+
+  const [illustrateConfig, setIllustrateConfig] = useState({
+    varyStat: 'power',
+    baseStats: { power: 5, aim: 5, touch: 5 },
+    paused: false,
+  })
+
+  const [testConfig, setTestConfig] = useState({
+    stats: { power: 5, aim: 5, touch: 5 },
+    issue: 'none',
+  })
+
+  const setTestStat = useCallback((key, value) => {
+    setTestConfig(c => ({ ...c, stats: { ...c.stats, [key]: value } }))
+  }, [])
+
+  // --- Map auto-discovery & management ---
+
+  const discoverMaps = useCallback(async () => {
+    const maps = []
+    const tryImg = (url) => new Promise(resolve => {
+      const img = new Image()
+      img.onload = () => resolve(true)
+      img.onerror = () => resolve(false)
+      img.src = url
+    })
+    for (let i = 1; i <= 20; i++) {
+      const id = `map_${i}`
+      try {
+        const res = await fetch(`/map/${id}/map.json`)
+        if (!res.ok) break
+        const data = await res.json()
+        if (data.points?.length >= 2) {
+          let imageUrl = null
+          for (const ext of ['png', 'jpg']) {
+            const url = `/map/${id}/map.${ext}`
+            if (await tryImg(url)) { imageUrl = url; break }
+          }
+          maps.push({ id, pointCount: data.points.length, data, imageUrl })
+        }
+      } catch { break }
+    }
+    setDiscoveredMaps(maps)
+    appConfig.map.availableMaps = maps
+    return maps
+  }, [])
+
+  const rebuildMapConfig = useCallback((selIds, maps) => {
+    const selected = selIds
+      .map(id => maps.find(m => m.id === id))
+      .filter(Boolean)
+
+    if (selected.length === 0) {
+      appConfig.map.imageUrl = null
+      appConfig.map.points = []
+      appConfig.map.imageWidth = 0
+      appConfig.map.imageHeight = 0
+      appConfig.map.holePlan = []
+      return
+    }
+
+    // Build hole plan: each map's points generate independent holes
+    // Map with N points → N-1 holes: (pt0→pt1), (pt1→pt2), ..., (pt_{N-2}→pt_{N-1})
+    const holePlan = []
+    for (const m of selected) {
+      const pts = m.data.points
+      for (let i = 0; i < pts.length - 1; i++) {
+        holePlan.push({
+          startPt: pts[i],
+          endPt: pts[i + 1],
+          mapId: m.id,
+          imageUrl: m.imageUrl || `/map/${m.id}/map.png`,
+          imageWidth: m.data.image?.width ?? 0,
+          imageHeight: m.data.image?.height ?? 0,
+        })
+      }
+    }
+
+    // Set first map image as initial background
+    const first = holePlan[0]
+    appConfig.map.imageUrl = first.imageUrl
+    appConfig.map.imageWidth = first.imageWidth
+    appConfig.map.imageHeight = first.imageHeight
+    appConfig.map.holePlan = holePlan
+    appConfig.map.points = [] // no longer used for flat merge
+    appConfig.map.availableMaps = selected
+  }, [])
+
+  // Auto-discover maps when entering map_select phase
   useEffect(() => {
-    const onMove = (e) => {
-      const d = dragRef.current
-      if (!d) return
-      const dy = d.startY - e.clientY
-      if (Math.abs(dy) > 8) d.moved = true
-      if (dy > 30 && !d.wasOpen) { setDrawerOpen(true); dragRef.current = null }
-      else if (dy < -30 && d.wasOpen) { setDrawerOpen(false); dragRef.current = null }
-    }
-    const onUp = () => {
-      const d = dragRef.current
-      if (d && !d.moved) setDrawerOpen(v => !v)
-      dragRef.current = null
-    }
-    window.addEventListener('pointermove', onMove)
-    window.addEventListener('pointerup', onUp)
-    return () => {
-      window.removeEventListener('pointermove', onMove)
-      window.removeEventListener('pointerup', onUp)
-    }
-  }, [])
+    if (gamePhase !== 'map_select') return
+    if (discoveredMaps.length > 0) return
+    setMapsLoading(true)
+    discoverMaps().finally(() => setMapsLoading(false))
+  }, [gamePhase, discoveredMaps.length, discoverMaps])
+
+  const handleCheckMap = useCallback((mapId) => {
+    setSelectedMapIds(prev => {
+      const next = prev.includes(mapId)
+        ? prev.filter(id => id !== mapId)
+        : [...prev, mapId]
+      appConfig.map.selectedMaps = next
+      rebuildMapConfig(next, discoveredMaps)
+      return next
+    })
+  }, [discoveredMaps, rebuildMapConfig])
 
   return (
     <div className="app-layout">
@@ -87,33 +278,110 @@ export default function IslandContainer() {
         <div className="debug-buttons">
           <button className={`debug-btn${mode === 'test' ? ' debug-btn-active' : ''}`} style={{ '--btn-color': '#828282' }} onClick={() => setMode('test')}>Test</button>
           <button className={`debug-btn${mode === 'game' ? ' debug-btn-active' : ''}`} style={{ '--btn-color': '#719342' }} onClick={() => setMode('game')}>Game</button>
+          <button className={`debug-btn${mode === 'illustrate' ? ' debug-btn-active' : ''}`} style={{ '--btn-color': '#008BFF' }} onClick={() => setMode('illustrate')}>Illust</button>
+          <button className={`debug-btn${mode === 'mapping' ? ' debug-btn-active' : ''}`} style={{ '--btn-color': '#E0A030' }} onClick={() => setMode('mapping')}>Map</button>
         </div>
-        <div className="debug-label">Active Shooter</div>
-        <div className="debug-buttons">
-          {players.map(p => (
+
+        {mode === 'test' && gamePhase !== 'practice_range' && (
+          <div className="test-config">
+            {/* Onboarding hint */}
+            <div className="test-onboarding">
+              {ONBOARDING_LINES.map((line, i) => (
+                <div key={i} className="test-onboarding-line">{line}</div>
+              ))}
+            </div>
+
+            {/* Stat pickers */}
+            <div className="debug-label">Stats</div>
+            <div className="test-stat-group">
+              {STAT_META.map(({ key, label }) => (
+                <div key={key} className="illustrate-base-row">
+                  <span className="illustrate-base-label">{key.slice(0, 3).toUpperCase()}</span>
+                  <div className="illustrate-base-vals">
+                    {STAT_VALUES.map(v => (
+                      <button
+                        key={v}
+                        className={`illustrate-base-btn${testConfig.stats[key] === v ? ' illustrate-base-btn-active' : ''}`}
+                        onClick={() => setTestStat(key, v)}
+                      >{v}</button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Swing Issue selector */}
+            <div className="debug-label">Issue</div>
+            <div className="test-issue-selector">
+              <select
+                className="test-issue-select"
+                value={testConfig.issue}
+                onChange={(e) => setTestConfig(c => ({ ...c, issue: e.target.value }))}
+              >
+                {ISSUE_KEYS.map(k => (
+                  <option key={k} value={k}>
+                    {SWING_ISSUES[k].label}
+                  </option>
+                ))}
+              </select>
+              {testConfig.issue !== 'none' && (
+                <div className="test-issue-info">
+                  <div className="test-issue-effect">{SWING_ISSUES[testConfig.issue].effect}</div>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {mode === 'illustrate' && (
+          <div className="illustrate-config">
+            <div className="debug-label">Vary Stat</div>
+            <div className="illustrate-stat-toggles">
+              {['power', 'aim', 'touch'].map(s => (
+                <button
+                  key={s}
+                  className={`illustrate-stat-btn${illustrateConfig.varyStat === s ? ' illustrate-stat-btn-active' : ''}`}
+                  onClick={() => setIllustrateConfig(c => ({ ...c, varyStat: s }))}
+                >
+                  {s.slice(0, 1).toUpperCase() + s.slice(1, 3)}
+                </button>
+              ))}
+            </div>
+            <div className="debug-label">Base Values</div>
+            <div className="illustrate-base-group">
+              {['power', 'aim', 'touch'].filter(s => s !== illustrateConfig.varyStat).map(s => (
+                <div key={s} className="illustrate-base-row">
+                  <span className="illustrate-base-label">{s.slice(0, 3).toUpperCase()}</span>
+                  <div className="illustrate-base-vals">
+                    {[1, 3, 5, 7, 9].map(v => (
+                      <button
+                        key={v}
+                        className={`illustrate-base-btn${illustrateConfig.baseStats[s] === v ? ' illustrate-base-btn-active' : ''}`}
+                        onClick={() => setIllustrateConfig(c => ({
+                          ...c,
+                          baseStats: { ...c.baseStats, [s]: v },
+                        }))}
+                      >{v}</button>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
             <button
-              key={p.id}
-              className={`debug-btn${activePlayerId === p.id ? ' debug-btn-active' : ''}`}
-              style={{ '--btn-color': p.color }}
-              onClick={() => setActivePlayerId(p.id)}
+              className="illustrate-pause-btn"
+              onClick={() => setIllustrateConfig(c => ({ ...c, paused: !c.paused }))}
             >
-              <span className="debug-btn-dot" />
-              {p.abbr}
+              {illustrateConfig.paused ? '▶ Resume' : '⏸ Pause'}
             </button>
-          ))}
-        </div>
-        <div className="debug-stats">
-          {(() => {
-            const p = players.find(p => p.id === activePlayerId)
-            return (
-              <>
-                <div className="debug-stat"><span>PWR</span><span>{p.stats.power}</span></div>
-                <div className="debug-stat"><span>AIM</span><span>{p.stats.aim}</span></div>
-                <div className="debug-stat"><span>NRV</span><span>{p.stats.nerve}</span></div>
-              </>
-            )
-          })()}
-        </div>
+          </div>
+        )}
+
+        {controls && !controls.gameFinished && <GameControls {...controls} />}
+        {controls && controls.gameFinished && (
+          <div className="board-controls">
+            <button className="control-btn control-start" onClick={handleNewGame}>New Game</button>
+          </div>
+        )}
       </aside>
 
       <div className="island">
@@ -129,64 +397,70 @@ export default function IslandContainer() {
           </div>
         </header>
 
-        <div className={`island-body${gamePhase === 'training_select' ? ' island-body-picker' : mode === 'game' && gamePhase === 'playing' ? ' island-body-game' : ''}`}>
-          {gamePhase === 'training_select' ? (
-            <TrainingPicker onSelectTraining={handleSelectTraining} />
+        <div className={`island-body${(mode === 'game' && gamePhase === 'playing') || gamePhase === 'practice_range' ? ' island-body-game' : ''}${(mode === 'game' && (gamePhase === 'training_select' || gamePhase === 'opponent_select' || gamePhase === 'map_select' || gamePhase === 'deck_select')) ? ' island-body-picker' : ''}`}>
+          {mode === 'mapping' ? (
+            <MappingView />
+          ) : mode === 'game' && gamePhase === 'deck_select' ? (
+            <DeckPickerScreen
+              selected={selectedDeck}
+              onSelect={setSelectedDeck}
+              onConfirm={handleConfirmDeck}
+              onBack={() => setGamePhase('map_select')}
+            />
+          ) : mode === 'game' && gamePhase === 'map_select' ? (
+            <MapPicker
+              discoveredMaps={discoveredMaps}
+              selectedMapIds={selectedMapIds}
+              onToggleMap={handleCheckMap}
+              onConfirm={handleConfirmMap}
+              onBack={() => setGamePhase('opponent_select')}
+              loading={mapsLoading}
+            />
+          ) : mode === 'game' && gamePhase === 'opponent_select' ? (
+            <OpponentPicker
+              aiPlayers={aiPlayers}
+              selected={selectedOpponents}
+              onToggle={id => setSelectedOpponents(prev =>
+                prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+              )}
+              onConfirm={handleConfirmOpponents}
+              onBack={() => setGamePhase('training_select')}
+            />
+          ) : mode === 'game' && gamePhase === 'training_select' ? (
+            <TrainingPicker
+              trainingRecords={trainingRecords}
+              onSelectTraining={handleSelectTraining}
+              onPracticeRange={handleEnterPracticeRange}
+            />
+          ) : gamePhase === 'practice_range' ? (
+            <PracticeRange
+              playerTraining={playerTraining}
+              testConfig={testConfig}
+              onBack={handleExitPracticeRange}
+              players={players}
+              mapImageUrl={(() => {
+                const m = discoveredMaps.find(m => m.id === selectedMapIds[0])
+                return m?.imageUrl || (selectedMapIds.length > 0 ? `/map/${selectedMapIds[0]}/map.png` : null)
+              })()}
+            />
           ) : (
             <>
-              <h1 className="game-title">Sneaky Swing</h1>
-              <p className="game-subtitle">Auto Chess</p>
-              <Board players={players} activePlayerId={activePlayerId} mode={mode} />
+              {mode !== 'game' && <h1 className="game-title">Sneaky Swing</h1>}
+              {mode !== 'game' && <p className="game-subtitle">Auto Chess</p>}
+              <Board
+                players={players}
+                activePlayerId={activePlayerId}
+                mode={mode}
+                onControls={setControls}
+                illustrateConfig={illustrateConfig}
+                testConfig={testConfig}
+                mapImageUrl={(() => {
+                  const m = discoveredMaps.find(m => m.id === selectedMapIds[0])
+                  return m?.imageUrl || (selectedMapIds.length > 0 ? `/map/${selectedMapIds[0]}/map.png` : null)
+                })()}
+              />
             </>
           )}
-        </div>
-
-        <div
-          className={`player-drawer${drawerOpen ? ' open' : ''}`}
-          onPointerDown={onDrawerPointerDown}
-        >
-          <div className="drawer-handle">
-            <div className="drawer-handle-bar" />
-          </div>
-
-          <div className="drawer-peeks">
-            {players.map(p => (
-              <div key={p.id} className="drawer-peek">
-                <div className="player-dot" style={{ background: p.color }} />
-                <span className="drawer-peek-name">{p.abbr}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="drawer-detail">
-            {players.map((p) => (
-              <div key={p.id} className="player-card">
-                <div className="player-card-header">
-                  <div className="player-dot" style={{ background: p.color }} />
-                  <span className="player-name">{p.abbr}</span>
-                  <span className="player-score">{p.score}</span>
-                </div>
-
-                <div className="player-stats">
-                  {STAT_META.map(({ key, label }) => (
-                    <div key={key} className="stat-row">
-                      <span className="stat-label">{label}</span>
-                      <span className={`stat-value${p.curse.effect?.stat === key ? ' stat-cursed' : ''}`}>
-                        {p.curse.effect?.stat === key ? p.stats[key] + p.curse.effect.mod : p.stats[key]}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="curse-section">
-                  <span className="curse-title">SWING CURSE</span>
-                  <div className="curse-name">{p.curse.issue}</div>
-                  <div className="curse-desc">{p.curse.desc}</div>
-                  <div className="curse-effect">{p.curse.effect.label}</div>
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </div>

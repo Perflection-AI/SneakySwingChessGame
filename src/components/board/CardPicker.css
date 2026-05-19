@@ -1,0 +1,76 @@
+.card-picker {
+  display: flex;
+  align-items: stretch;
+  gap: 8px;
+  padding: 6px 0;
+}
+
+.cp-cards {
+  display: flex;
+  gap: 8px;
+  flex: 1;
+}
+
+.cp-slot {
+  background: var(--dsd-white);
+  border: 1px solid var(--dsd-gray300);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+}
+
+.cp-slot-empty {
+  border: 1px dashed var(--dsd-gray300);
+  background: transparent;
+}
+
+.cp-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dsd-gray700);
+}
+
+.cp-desc {
+  font-size: 11px;
+  color: var(--dsd-gray700);
+}
+
+.cp-flavor {
+  font-size: 10px;
+  color: var(--dsd-gray500);
+  font-style: italic;
+}
+
+.cp-use-btn {
+  margin-top: 4px;
+  background: var(--dsd-green700);
+  color: var(--dsd-white);
+  border: none;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cp-use-btn:hover {
+  opacity: 0.9;
+}
+
+.cp-skip {
+  background: none;
+  border: none;
+  color: var(--dsd-gray500);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.cp-skip:hover {
+  color: var(--dsd-gray700);
+}

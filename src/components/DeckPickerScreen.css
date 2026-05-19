@@ -1,0 +1,287 @@
+/* Deck Picker Screen */
+
+.dk-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 24px;
+  overflow: hidden;
+}
+
+.dk-header {
+  padding: 20px 0 12px;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-bottom: 0.5px solid #F2F2F2;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.dk-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #828282;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.dk-back-btn:hover {
+  color: #4E4E4E;
+}
+
+.dk-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #4E4E4E;
+  margin: 0;
+}
+
+.dk-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #828282;
+  margin: 2px 0 0;
+}
+
+/* Grid — scrollable */
+.dk-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 0;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Card — horizontal layout with left color bar */
+.dk-card {
+  border-radius: 12px;
+  border: 0.5px solid #CDCDCD;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s, opacity 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.dk-card-dimmed {
+  opacity: 0.45;
+}
+
+.dk-card-dimmed:hover {
+  opacity: 0.7;
+  border-color: #B8D085;
+}
+
+.dk-card:hover {
+  border-color: #B8D085;
+}
+
+.dk-card-selected {
+  border-width: 1.5px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(113, 146, 65, 0.12);
+  opacity: 1;
+}
+
+.dk-card-selected:hover {
+  border-color: var(--dk-accent, #719241);
+}
+
+/* Top row: color bar + info */
+.dk-card-top {
+  display: flex;
+  align-items: stretch;
+}
+
+/* Left color bar */
+.dk-card-color-bar {
+  width: 4px;
+  flex-shrink: 0;
+  transition: background 0.15s;
+}
+
+/* Info row — horizontal */
+.dk-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 14px 14px 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.dk-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.dk-card-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #4E4E4E;
+  transition: color 0.15s;
+}
+
+.dk-card-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #828282;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dk-card-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  margin-left: 12px;
+}
+
+.dk-card-count {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  color: #828282;
+  line-height: 1;
+  transition: color 0.15s;
+}
+
+/* Check mark */
+.dk-card-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid #CDCDCD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: transparent;
+  transition: all 0.15s;
+}
+
+.dk-card-check-on {
+  background: #719241;
+  border-color: #719241;
+  color: #FFFFFF;
+}
+
+/* Expandable preview area inside selected card */
+.dk-card-preview {
+  border-top: 0.5px solid #F2F2F2;
+  padding: 16px 12px;
+  background: #FAFAFA;
+}
+
+.dk-preview-fan {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+/* Individual preview card */
+.dk-preview-card {
+  width: 110px;
+  border-radius: 10px;
+  border: 1px solid var(--card-border, rgba(0, 0, 0, 0.1));
+  background: #FFFFFF;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+}
+
+.dk-preview-card:hover {
+  transform: rotate(0deg) translateY(-8px) scale(1.08) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  z-index: 20 !important;
+}
+
+.dk-preview-card-inner {
+  padding: 10px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dk-preview-badge {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+  align-self: flex-start;
+  letter-spacing: 0.3px;
+}
+
+.dk-preview-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.dk-preview-desc {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 400;
+  color: #4E4E4E;
+  line-height: 1.3;
+}
+
+.dk-preview-flavor {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  color: #828282;
+  font-style: italic;
+  margin-top: 1px;
+}
+
+/* Footer */
+.dk-footer {
+  flex-shrink: 0;
+  padding: 8px 0 32px;
+}
+
+.dk-start-btn {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 9999px;
+  background: #719241;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.dk-start-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(113, 146, 65, 0.3);
+}

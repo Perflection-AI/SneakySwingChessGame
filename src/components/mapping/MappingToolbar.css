@@ -1,0 +1,36 @@
+.map-toolbar {
+  display: flex;
+  gap: 6px;
+}
+
+.map-toolbar-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 8px 4px;
+  border: 1.5px solid #CDCDCD;
+  border-radius: 10px;
+  background: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #4E4E4E;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.map-toolbar-btn:hover:not(:disabled) {
+  border-color: #828282;
+}
+
+.map-toolbar-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.map-toolbar-btn-danger:hover:not(:disabled) {
+  border-color: #EF4444;
+  color: #EF4444;
+}

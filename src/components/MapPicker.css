@@ -1,0 +1,222 @@
+/* Map Picker */
+
+.mp-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 24px;
+  overflow: hidden;
+}
+
+.mp-header {
+  padding: 20px 0 12px;
+  flex-shrink: 0;
+  background: #FFFFFF;
+  border-bottom: 0.5px solid #F2F2F2;
+  margin: 0 -24px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.mp-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #4E4E4E;
+  margin: 0;
+}
+
+.mp-subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #828282;
+  margin: 2px 0 0;
+}
+
+/* Grid layout — 2 columns */
+.mp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 12px 0;
+  overflow-y: auto;
+  flex: 1;
+  min-height: 0;
+  align-content: start;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Card */
+.mp-card {
+  position: relative;
+  border-radius: 16px;
+  border: 0.5px solid #CDCDCD;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  display: flex;
+  flex-direction: column;
+}
+
+.mp-card:hover {
+  border-color: #B8D085;
+}
+
+.mp-card-selected {
+  border-color: #719241;
+  border-width: 1.5px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 0 0 2px rgba(113, 146, 65, 0.12);
+}
+
+.mp-card-selected:hover {
+  border-color: #719241;
+}
+
+/* Preview area — map thumbnail */
+.mp-card-preview {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #F2F2F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.mp-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.mp-card-icon {
+  color: #CDCDCD;
+}
+
+/* Info row */
+.mp-card-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  background: #FFFFFF;
+}
+
+.mp-card-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #4E4E4E;
+}
+
+.mp-card-holes {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  color: #828282;
+}
+
+/* Check mark */
+.mp-card-check {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1.5px solid #CDCDCD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: transparent;
+  transition: all 0.15s;
+}
+
+.mp-card-check-on {
+  background: #719241;
+  border-color: #719241;
+  color: #FFFFFF;
+}
+
+/* Empty state */
+.mp-empty {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 0;
+  gap: 6px;
+}
+
+.mp-empty-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #828282;
+}
+
+.mp-empty-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: #CDCDCD;
+}
+
+/* Footer */
+.mp-footer {
+  flex-shrink: 0;
+  padding: 8px 0 8px;
+  display: flex;
+  gap: 10px;
+}
+
+.mp-skip-btn {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: 1.5px solid #CDCDCD;
+  border-radius: 9999px;
+  background: #FFFFFF;
+  color: #828282;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  white-space: nowrap;
+}
+
+.mp-skip-btn:hover {
+  border-color: #828282;
+  color: #4E4E4E;
+}
+
+.mp-start-btn {
+  flex: 1;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 9999px;
+  background: #719241;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.mp-start-btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(113, 146, 65, 0.3);
+}
+
+.mp-start-btn:disabled {
+  background: #CDCDCD;
+  color: #FFFFFF;
+  cursor: not-allowed;
+}

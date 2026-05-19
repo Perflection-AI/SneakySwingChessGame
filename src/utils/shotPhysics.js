@@ -43,6 +43,15 @@ export function generateHoleFromMap(holeIndex, mapPoints, playerCount) {
   const startPt = mapPoints[holeIndex % N]
   const endPt = mapPoints[(holeIndex + 1) % N]
 
+  // Switch to the source map's image when crossing map boundaries
+  const mapId = startPt.mapId
+  const mapMeta = appConfig.map.availableMaps?.find(m => m.id === mapId)
+  if (mapMeta) {
+    appConfig.map.imageUrl = mapMeta.imageUrl || `/map/${mapId}/map.png`
+    appConfig.map.imageWidth = mapMeta.data.image?.width ?? 0
+    appConfig.map.imageHeight = mapMeta.data.image?.height ?? 0
+  }
+
   const du = endPt.uv.u - startPt.uv.u
   const dv = endPt.uv.v - startPt.uv.v
   const imgW = appConfig.map.imageWidth
@@ -89,6 +98,25 @@ export function generateHoleFromMap(holeIndex, mapPoints, playerCount) {
   appConfig.map.transform = { scale, imgAspect, offsetX, offsetY }
 
   return { hole, positions, distYd }
+}
+
+export function generateFieldCardPositions(startPos, holePos, count, cfg) {
+  const dx = holePos.x - startPos.x
+  const dy = holePos.y - startPos.y
+  const d = Math.sqrt(dx * dx + dy * dy)
+  if (d < 1) return []
+  const dirX = dx / d, dirY = dy / d
+  const perpX = -dirY, perpY = dirX
+  const results = []
+  for (let i = 0; i < count; i++) {
+    const t = cfg.pathStartPct + Math.random() * (cfg.pathEndPct - cfg.pathStartPct)
+    const lateral = (Math.random() - 0.5) * 2 * cfg.lateralSpread
+    results.push({
+      x: startPos.x + dx * t + perpX * lateral,
+      y: startPos.y + dy * t + perpY * lateral,
+    })
+  }
+  return results
 }
 
 export function sampleAroundIdeal(ideal, min, max, stability) {
@@ -154,17 +182,23 @@ export function rollBreakthrough(controlScore, distYd, canReach) {
 }
 
 export const SWING_ISSUES = {
-  none:          { label: 'None',          desc: 'No swing issue', effect: 'No modifier' },
-  earlyExt:      { label: 'Early Extension',    desc: 'Hips fire early, direction lost',     effect: 'Aim −2, large lateral', aimMod: -2, offsetMult: 1.5 },
-  casting:       { label: 'Casting',             desc: 'Casting the club, losing lag',        effect: 'Distance −25%',          distMult: 0.75 },
-  overTheTop:    { label: 'Over the Top',        desc: 'Out-to-in path, right bias',          effect: 'Right-biased offset',    offsetBias: 'right' },
-  poorFace:      { label: 'Poor Face Control',   desc: 'Clubface inconsistent at impact',     effect: 'Aim −2, random dir',     aimMod: -2, randomDir: true },
-  sway:          { label: 'Sway',                desc: 'Lateral sway ruins balance',           effect: 'Distance ±10–25%',       distRandom: true },
-  slide:         { label: 'Slide',               desc: 'Lower body slides past, small loss',   effect: 'Distance −10%',          distMult: 0.90 },
-  reverseSpine:  { label: 'Reverse Spine Angle', desc: 'Spine tilts toward target',           effect: 'Double outcome penalty',  outcomeDrop: 2 },
-  lossOfPosture: { label: 'Loss of Posture',     desc: 'Stand up through impact',             effect: 'Outcome downgrade',       outcomeDrop: 1 },
-  hangingBack:   { label: 'Hanging Back',        desc: 'Weight stuck on back foot',           effect: 'Max Push −20%',          maxPushMult: 0.80 },
-  poorTempo:     { label: 'Poor Tempo',          desc: 'Occasional total rhythm breakdown',    effect: 'Random small penalty',   randomPenalty: true },
+  none:          { label: 'None',               desc: 'No swing issue', effect: 'No modifier' },
+  earlyExt:      { label: 'Early Extension',     desc: 'Hips fire early, direction lost',       effect: 'Aim −2, large lateral', aimMod: -2, offsetMult: 1.5 },
+  casting:       { label: 'Casting',             desc: 'Casting the club, losing lag',          effect: 'Distance −25%',          distMult: 0.75 },
+  overTheTop:    { label: 'Over the Top',        desc: 'Out-to-in path, right bias',            effect: 'Right-biased offset',    offsetBias: 'right' },
+  poorFace:      { label: 'Poor Face Control',   desc: 'Clubface inconsistent at impact',       effect: 'Aim −2, random dir',     aimMod: -2, randomDir: true },
+  poorTempo:     { label: 'Poor Tempo',          desc: 'Occasional total rhythm breakdown',      effect: 'Random small penalty',   randomPenalty: true },
+  sway:          { label: 'Sway',                desc: 'Lateral sway ruins balance',             effect: 'Distance ±10–25%',       distRandom: true },
+  slide:         { label: 'Slide',               desc: 'Lower body slides past, small loss',     effect: 'Distance −10%',          distMult: 0.90 },
+  reverseSpine:  { label: 'Reverse Spine Angle', desc: 'Spine tilts toward target',             effect: 'Double outcome penalty',  outcomeDrop: 2 },
+  lossOfPosture: { label: 'Loss of Posture',     desc: 'Stand up through impact',               effect: 'Outcome downgrade',       outcomeDrop: 1 },
+  hangingBack:   { label: 'Hanging Back',        desc: 'Weight stuck on back foot',             effect: 'Max Push −20%',          maxPushMult: 0.80 },
+  chickenWing:   { label: 'Chicken Wing',        desc: 'Lead elbow flares out through impact',  effect: 'Aim −1, random offset',  aimMod: -1, randomDir: true },
+  slideHip:      { label: 'Hip Slide',           desc: 'Excessive lateral hip shift',           effect: 'Distance −15%',          distMult: 0.85 },
+  reversePivot:  { label: 'Reverse Pivot',       desc: 'Weight shifts the wrong way',           effect: 'Outcome downgrade',       outcomeDrop: 1 },
+  scoop:         { label: 'Scoop',               desc: 'Flipping wrists at impact',             effect: 'Distance −20%, touch −1', distMult: 0.80 },
+  fatShot:       { label: 'Fat Shot',            desc: 'Hitting the ground before the ball',    effect: 'Distance −30%',          distMult: 0.70 },
+  thinShot:      { label: 'Thin Shot',           desc: 'Catching the ball clean but low',       effect: 'Distance −15%, aim −1',  distMult: 0.85, aimMod: -1 },
 }
 
 export function applySwingIssue(stats, issueName) {
