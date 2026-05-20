@@ -160,6 +160,14 @@
   opacity: 0;
 }
 
+.opp-card-dimmed {
+  opacity: .55;
+}
+
+.opp-card-dimmed:hover {
+  opacity: .85;
+}
+
 /* Background image — fills entire card */
 .opp-card-bg {
   object-fit: cover;

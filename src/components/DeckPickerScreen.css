@@ -227,6 +227,12 @@
   gap: 4px;
 }
 
+.dk-preview-emoji {
+  font-size: 32px;
+  text-align: center;
+  line-height: 1.1;
+}
+
 .dk-preview-badge {
   font-family: 'DM Sans', sans-serif;
   font-size: 8px;

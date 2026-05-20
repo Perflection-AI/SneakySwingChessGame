@@ -47,6 +47,7 @@ function PreviewCard({ card, position }) {
       }}
     >
       <div className="dk-preview-card-inner">
+        <span className="dk-preview-emoji">{card.emoji}</span>
         <span className="dk-preview-badge" style={{ background: colors.solidBg, color: colors.base }}>{colors.label}</span>
         <span className="dk-preview-name" style={{ color: colors.base }}>{card.name}</span>
         <span className="dk-preview-desc">{card.description}</span>

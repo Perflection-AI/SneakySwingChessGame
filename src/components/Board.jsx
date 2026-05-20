@@ -578,6 +578,7 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
               onClick={handleClick}
               mapImageUrl={activeMapImageUrl}
               mapTransform={mapTransform}
+              darkBg={mode === 'test' && !activeMapImageUrl}
             >
               <HoleMarker x={state.holePos.x} y={state.holePos.y} />
               {(mode === 'game' || mode === 'test') && (

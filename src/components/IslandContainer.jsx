@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback, useEffect, useMemo } from 'react'
+import { useState, useRef, useCallback, useEffect, useMemo, useSyncExternalStore, Children } from 'react'
 import Palette from '../Palette'
 import Board from './Board'
 import GameControls from './board/GameControls'
@@ -13,6 +13,48 @@ import trainingRecords, { computeStatsFromTraining } from '../data/trainingRecor
 import PracticeRange from './PracticeRange'
 import './IslandContainer.css'
 
+const PHASE_ORDER = [
+  'training_select', 'opponent_select', 'map_select', 'deck_select', 'playing', 'practice_range',
+]
+
+function phaseKey(mode, gamePhase) {
+  if (mode === 'mapping') return 'mapping'
+  if (mode === 'test' && gamePhase !== 'practice_range') return 'test'
+  if (mode === 'illustrate') return 'illustrate'
+  return gamePhase
+}
+
+function SlideTransition({ slideKey, children }) {
+  const [animClass, setAnimClass] = useState('')
+  const prevKeyRef = useRef(slideKey)
+  const childRef = useRef(children)
+  const timerRef = useRef(null)
+
+  if (slideKey !== prevKeyRef.current) {
+    const prevIdx = PHASE_ORDER.indexOf(prevKeyRef.current)
+    const nextIdx = PHASE_ORDER.indexOf(slideKey)
+    const forward = nextIdx > prevIdx
+    prevKeyRef.current = slideKey
+    childRef.current = children
+    setAnimClass(forward ? 'slide-enter' : 'slide-enter-back')
+    if (timerRef.current) clearTimeout(timerRef.current)
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        setAnimClass(forward ? 'slide-enter slide-active' : 'slide-enter-back slide-active')
+      })
+    })
+    timerRef.current = setTimeout(() => setAnimClass(''), 530)
+  } else {
+    childRef.current = children
+  }
+
+  return (
+    <div className={`slide-wrapper${animClass ? ' ' + animClass : ''}`}>
+      {childRef.current}
+    </div>
+  )
+}
+
 const STAT_META = [
   { key: 'power', label: 'Power' },
   { key: 'aim', label: 'Aim' },
@@ -22,6 +64,29 @@ const STAT_META = [
 const STAT_VALUES = [1, 3, 5, 7, 9]
 
 const ISSUE_KEYS = Object.keys(SWING_ISSUES)
+
+const MOBILE_BREAKPOINT = 768
+
+function useIsMobile() {
+  return useSyncExternalStore(
+    (cb) => { window.addEventListener('resize', cb); return () => window.removeEventListener('resize', cb) },
+    () => window.innerWidth <= MOBILE_BREAKPOINT,
+    () => false,
+  )
+}
+
+function useViewportHeight() {
+  return useSyncExternalStore(
+    (cb) => {
+      const vv = window.visualViewport
+      vv.addEventListener('resize', cb)
+      vv.addEventListener('scroll', cb)
+      return () => { vv.removeEventListener('resize', cb); vv.removeEventListener('scroll', cb) }
+    },
+    () => window.visualViewport?.height ?? window.innerHeight,
+    () => window.innerHeight,
+  )
+}
 
 const ONBOARDING_LINES = [
   'Stats ← training report',
@@ -33,6 +98,8 @@ const ONBOARDING_LINES = [
 ]
 
 export default function IslandContainer() {
+  const isMobile = useIsMobile()
+  const viewportHeight = useViewportHeight()
   const [activePlayerId, setActivePlayerId] = useState('marcus')
   const [mode, setMode] = useState('game')
   const [controls, setControls] = useState(null)
@@ -41,7 +108,7 @@ export default function IslandContainer() {
 
   const [gamePhase, setGamePhase] = useState('training_select') // 'training_select' | 'opponent_select' | 'map_select' | 'deck_select' | 'playing' | 'practice_range'
   const [playerTraining, setPlayerTraining] = useState(null)
-  const [selectedOpponents, setSelectedOpponents] = useState(['marcus', 'sofia', 'david'])
+  const [selectedOpponents, setSelectedOpponents] = useState([])
   const [selectedDeck, setSelectedDeck] = useState('base')
   const [mapsLoading, setMapsLoading] = useState(false)
 
@@ -258,7 +325,12 @@ export default function IslandContainer() {
     if (gamePhase !== 'map_select') return
     if (discoveredMaps.length > 0) return
     setMapsLoading(true)
-    discoverMaps().finally(() => setMapsLoading(false))
+    discoverMaps().then(maps => {
+      // Preload map images after discovery
+      maps.forEach(m => {
+        if (m.imageUrl) { const img = new Image(); img.src = m.imageUrl }
+      })
+    }).finally(() => setMapsLoading(false))
   }, [gamePhase, discoveredMaps.length, discoverMaps])
 
   const handleCheckMap = useCallback((mapId) => {
@@ -273,8 +345,8 @@ export default function IslandContainer() {
   }, [discoveredMaps, rebuildMapConfig])
 
   return (
-    <div className="app-layout">
-      <aside className="debug-panel">
+    <div className={`app-layout${isMobile ? ' app-layout-mobile' : ''}`} style={isMobile ? { height: viewportHeight + 'px' } : undefined}>
+      {!isMobile && <aside className="debug-panel">
         <div className="debug-title">Debug</div>
         <div className="debug-label">Mode</div>
         <div className="debug-buttons">
@@ -384,12 +456,12 @@ export default function IslandContainer() {
             <button className="control-btn control-start" onClick={handleNewGame}>New Game</button>
           </div>
         )}
-      </aside>
+      </aside>}
 
-      <div className="island">
-        <div className="island-notch" />
+      <div className={`island${isMobile ? ' island-mobile' : ''}`} style={isMobile ? { height: viewportHeight + 'px' } : undefined}>
+        {!isMobile && <div className="island-notch" />}
 
-        <header className="island-header">
+        {!isMobile && <header className="island-header">
           <span className="header-time">9:41</span>
           <div className="header-island-bar" />
           <div className="header-icons">
@@ -397,73 +469,75 @@ export default function IslandContainer() {
             <svg width="16" height="12" viewBox="0 0 16 12" fill="white"><path d="M8 2.5C5.5 2.5 3.3 3.8 2 5.8L0 4.2C1.7 1.7 4.7 0 8 0s6.3 1.7 8 4.2l-2 1.6C12.7 3.8 10.5 2.5 8 2.5z" opacity="0.3"/><path d="M8 5.5c-1.7 0-3.2.8-4.2 2L2 6.2C3.3 4.7 5.5 3.5 8 3.5s4.7 1.2 6 2.7l-1.8 1.3C11.2 6.3 9.7 5.5 8 5.5z" opacity="0.6"/><circle cx="8" cy="10" r="2"/></svg>
             <svg width="25" height="12" viewBox="0 0 25 12" fill="white"><rect x="0" y="1" width="22" height="10" rx="2" stroke="white" strokeWidth="1" fill="none"/><rect x="23" y="4" width="2" height="4" rx="1" opacity="0.4"/><rect x="1.5" y="2.5" width="16" height="7" rx="1" fill="white"/></svg>
           </div>
-        </header>
+        </header>}
 
         <div className={`island-body${(mode === 'game' && gamePhase === 'playing') || gamePhase === 'practice_range' ? ' island-body-game' : ''}${(mode === 'game' && (gamePhase === 'training_select' || gamePhase === 'opponent_select' || gamePhase === 'map_select' || gamePhase === 'deck_select')) ? ' island-body-picker' : ''}`}>
-          {mode === 'mapping' ? (
-            <MappingView />
-          ) : mode === 'game' && gamePhase === 'deck_select' ? (
-            <DeckPickerScreen
-              selected={selectedDeck}
-              onSelect={setSelectedDeck}
-              onConfirm={handleConfirmDeck}
-              onBack={() => setGamePhase('map_select')}
-            />
-          ) : mode === 'game' && gamePhase === 'map_select' ? (
-            <MapPicker
-              discoveredMaps={discoveredMaps}
-              selectedMapIds={selectedMapIds}
-              onToggleMap={handleCheckMap}
-              onConfirm={handleConfirmMap}
-              onSkip={() => { setSelectedMapIds([]); setGamePhase('deck_select') }}
-              onBack={() => setGamePhase('opponent_select')}
-              loading={mapsLoading}
-            />
-          ) : mode === 'game' && gamePhase === 'opponent_select' ? (
-            <OpponentPicker
-              aiPlayers={aiPlayers}
-              selected={selectedOpponents}
-              onToggle={id => setSelectedOpponents(prev =>
-                prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
-              )}
-              onConfirm={handleConfirmOpponents}
-              onBack={() => setGamePhase('training_select')}
-            />
-          ) : mode === 'game' && gamePhase === 'training_select' ? (
-            <TrainingPicker
-              trainingRecords={trainingRecords}
-              onSelectTraining={handleSelectTraining}
-              onPracticeRange={handleEnterPracticeRange}
-            />
-          ) : gamePhase === 'practice_range' ? (
-            <PracticeRange
-              playerTraining={playerTraining}
-              testConfig={testConfig}
-              onBack={handleExitPracticeRange}
-              players={players}
-              mapImageUrl={(() => {
-                const m = discoveredMaps.find(m => m.id === selectedMapIds[0])
-                return m?.imageUrl || (selectedMapIds.length > 0 ? `/map/${selectedMapIds[0]}/map.png` : null)
-              })()}
-            />
-          ) : (
-            <>
-              {mode !== 'game' && <h1 className="game-title">Sneaky Swing</h1>}
-              {mode !== 'game' && <p className="game-subtitle">Auto Chess</p>}
-              <Board
-                players={players}
-                activePlayerId={activePlayerId}
-                mode={mode}
-                onControls={setControls}
-                illustrateConfig={illustrateConfig}
+          <SlideTransition slideKey={phaseKey(mode, gamePhase)}>
+            {mode === 'mapping' ? (
+              <MappingView />
+            ) : mode === 'game' && gamePhase === 'deck_select' ? (
+              <DeckPickerScreen
+                selected={selectedDeck}
+                onSelect={setSelectedDeck}
+                onConfirm={handleConfirmDeck}
+                onBack={() => setGamePhase('map_select')}
+              />
+            ) : mode === 'game' && gamePhase === 'map_select' ? (
+              <MapPicker
+                discoveredMaps={discoveredMaps}
+                selectedMapIds={selectedMapIds}
+                onToggleMap={handleCheckMap}
+                onConfirm={handleConfirmMap}
+                onSkip={() => { setSelectedMapIds([]); setGamePhase('deck_select') }}
+                onBack={() => setGamePhase('opponent_select')}
+                loading={mapsLoading}
+              />
+            ) : mode === 'game' && gamePhase === 'opponent_select' ? (
+              <OpponentPicker
+                aiPlayers={aiPlayers}
+                selected={selectedOpponents}
+                onToggle={id => setSelectedOpponents(prev =>
+                  prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]
+                )}
+                onConfirm={handleConfirmOpponents}
+                onBack={() => setGamePhase('training_select')}
+              />
+            ) : mode === 'game' && gamePhase === 'training_select' ? (
+              <TrainingPicker
+                trainingRecords={trainingRecords}
+                onSelectTraining={handleSelectTraining}
+                onPracticeRange={handleEnterPracticeRange}
+              />
+            ) : gamePhase === 'practice_range' ? (
+              <PracticeRange
+                playerTraining={playerTraining}
                 testConfig={testConfig}
+                onBack={handleExitPracticeRange}
+                players={players}
                 mapImageUrl={(() => {
                   const m = discoveredMaps.find(m => m.id === selectedMapIds[0])
                   return m?.imageUrl || (selectedMapIds.length > 0 ? `/map/${selectedMapIds[0]}/map.png` : null)
                 })()}
               />
-            </>
-          )}
+            ) : (
+              <>
+                {mode !== 'game' && <h1 className="game-title">Sneaky Swing</h1>}
+                {mode !== 'game' && <p className="game-subtitle">Auto Chess</p>}
+                <Board
+                  players={players}
+                  activePlayerId={activePlayerId}
+                  mode={mode}
+                  onControls={setControls}
+                  illustrateConfig={illustrateConfig}
+                  testConfig={testConfig}
+                  mapImageUrl={(() => {
+                    const m = discoveredMaps.find(m => m.id === selectedMapIds[0])
+                    return m?.imageUrl || (selectedMapIds.length > 0 ? `/map/${selectedMapIds[0]}/map.png` : null)
+                  })()}
+                />
+              </>
+            )}
+          </SlideTransition>
         </div>
       </div>
     </div>

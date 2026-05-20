@@ -1,6 +1,7 @@
 import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
 import { computeStatsFromTraining } from '../data/trainingRecords'
 import { SWING_ISSUES, YD_TO_PCT, distPct } from '../utils/shotPhysics'
+import { discoverPhotos } from '../imageCache'
 import Board from './Board'
 import Palette from '../Palette'
 import './TrainingPicker.css'
@@ -19,22 +20,19 @@ function tierColor(score) {
   return '#B0B0B0'
 }
 
-const IMAGES = Array.from({ length: 10 }, (_, i) => `/mock-record/day-1/P_${i + 1}.jpg`)
 const CLUBS = ['Driver', '6-Iron', '7-Iron', '8-Iron', '9-Iron', 'PW', 'SW', 'GW', '5-Iron', 'Putter']
 
 function randInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1))
 }
 
-function makeSessions(count) {
+function makeSessions(images, count) {
   return Array.from({ length: count }, () => ({
-    src: IMAGES[randInt(0, IMAGES.length - 1)],
+    src: images[randInt(0, images.length - 1)],
     club: CLUBS[randInt(0, CLUBS.length - 1)],
     score: randInt(30, 95),
   }))
 }
-
-const SESSION_THUMBS = [makeSessions(7), makeSessions(5), makeSessions(8), makeSessions(4), makeSessions(6)]
 
 function StatBadge({ value, label, size = 'sm' }) {
   const tier = value >= 8 ? 'S' : value >= 6 ? 'A' : value >= 4 ? 'B' : 'C'
@@ -46,11 +44,19 @@ function StatBadge({ value, label, size = 'sm' }) {
   )
 }
 
-export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
+export default function TrainingPicker({ trainingRecords, onSelectTraining, onPracticeRange }) {
   const [selectedIdx, setSelectedIdx] = useState(null)
   const [shotLabel, setShotLabel] = useState(null)
+  const [sessionThumbs, setSessionThumbs] = useState([])
   const lastShotTime = useRef(0)
   const labelTimeout = useRef(null)
+
+  useEffect(() => {
+    discoverPhotos('/mock-record/day-1').then(images => {
+      if (images.length === 0) return
+      setSessionThumbs([makeSessions(images, 7), makeSessions(images, 5), makeSessions(images, 8), makeSessions(images, 4), makeSessions(images, 6)])
+    })
+  }, [])
 
   const selectedDay = selectedIdx !== null ? trainingRecords[selectedIdx] : null
   const playerStats = useMemo(() => {
@@ -157,7 +163,7 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
               <div className="tp-day-body">
                 <div className="tp-day-left">
                   <div className="tp-sessions">
-                    {(SESSION_THUMBS[i] || []).map((s, si) => (
+                    {(sessionThumbs[i] || []).map((s, si) => (
                       <div key={si} className="tp-session">
                         <div className="tp-session-thumb">
                           <img src={s.src} alt="" loading="lazy" />
@@ -187,24 +193,25 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
         })}
       </div>
 
-      <div className="tp-board-area">
-        <Board
-          players={practicePlayers}
-          activePlayerId="you"
-          mode="test"
-          testConfig={testConfig}
-          illustrateConfig={{ varyStat: 'power', baseStats: { power: 5, aim: 5, touch: 5 }, paused: true }}
-          onShotResult={handleShotResult}
-        />
-        {shotLabel && (
-          <div className="tp-shot-label" style={{ color: shotLabel.color }}>
-            {shotLabel.label}
-            {shotLabel.distYd > 0 && <span className="tp-shot-dist">{shotLabel.distYd}yd</span>}
-          </div>
-        )}
-      </div>
+      <div className="tp-bottom">
+        <div className="tp-board-area">
+          <Board
+            players={practicePlayers}
+            activePlayerId="you"
+            mode="test"
+            testConfig={testConfig}
+            illustrateConfig={{ varyStat: 'power', baseStats: { power: 5, aim: 5, touch: 5 }, paused: true }}
+            onShotResult={handleShotResult}
+          />
+          {shotLabel && (
+            <div className="tp-shot-label" style={{ color: shotLabel.color }}>
+              {shotLabel.label}
+              {shotLabel.distYd > 0 && <span className="tp-shot-dist">{shotLabel.distYd}yd</span>}
+            </div>
+          )}
+        </div>
 
-      <div className="tp-hud">
+        <div className="tp-hud">
         <button
           className={`tp-hud-match-btn${selectedDay && playerStats ? ' tp-hud-match-cover' : ''}${!selectedDay ? ' tp-hud-match-disabled' : ''}`}
           onClick={handleStart}
@@ -243,6 +250,7 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
             <span className="tp-hud-match-label">Select a day</span>
           )}
         </button>
+        </div>
       </div>
     </div>
   )

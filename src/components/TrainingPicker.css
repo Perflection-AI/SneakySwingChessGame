@@ -5,7 +5,7 @@
   flex-direction: column;
   height: 100%;
   overflow: hidden;
-  padding: 0 24px;
+  padding: 0;
 }
 
 /* Nav bar */
@@ -13,7 +13,6 @@
   background: #FFF;
   border-bottom: 0.5px solid #F2F2F2;
   flex-shrink: 0;
-  margin: 0 -24px;
   padding: 14px 24px 10px;
 }
 .tp-nav-label {
@@ -25,7 +24,7 @@
 
 /* Header */
 .tp-header {
-  padding: 12px 0 6px;
+  padding: 12px 24px 6px;
   flex-shrink: 0;
 }
 .tp-title {
@@ -50,7 +49,7 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
-  padding: 4px 6px 6px 0;
+  padding: 4px 24px 6px;
   overflow-y: auto;
   flex: 1;
   min-height: 0;
@@ -207,20 +206,20 @@
 }
 .tp-stat-badge-xs .tp-stat-badge-label { font-size: 6px; }
 
+/* Bottom section: board + HUD */
+.tp-bottom {
+  flex-shrink: 0;
+  padding: 6px 24px 24px;
+}
+
 /* Test field */
 .tp-board-area {
-  flex: 0 0 auto;
-  height: 200px;
-  flex-shrink: 0;
-  overflow: hidden;
   position: relative;
-  margin: 6px 0;
-  border-radius: 12px;
-  border: 2px solid #E0E0E0;
-  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  height: 180px;
+  background: var(--dsd-green300, #E8F3D8);
 }
-.tp-day-card-active .tp-board-area { border-color: rgba(113, 146, 65, 0.2); }
-.tp-board-area .board { height: 100%; }
+.tp-board-area .board { height: 100%; padding: 0; }
 .tp-board-area .board .board-clip { height: 100%; }
 
 /* Shot label — arcade style */
@@ -244,8 +243,9 @@
 
 /* HUD */
 .tp-hud {
-  flex-shrink: 0; display: flex;
-  padding: 8px 0 24px;
+  flex-shrink: 0;
+  display: flex;
+  padding-top: 8px;
 }
 
 /* MATCH button — game style */

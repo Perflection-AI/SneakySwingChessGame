@@ -56,3 +56,15 @@ body {
   position: relative;
   z-index: 1;
 }
+
+@media (max-width: 768px) {
+  body {
+    min-height: unset;
+    align-items: stretch;
+    justify-content: stretch;
+  }
+
+  #root {
+    width: 100%;
+  }
+}

@@ -63,7 +63,7 @@ export default function MapPicker({ discoveredMaps, selectedMapIds, onToggleMap,
               key={m.id}
               map={m}
               isSelected={selectedMapIds.includes(m.id)}
-              isDimmed={hasSelection && !selectedMapIds.includes(m.id)}
+              isDimmed={!selectedMapIds.includes(m.id)}
               onToggle={onToggleMap}
             />
           ))

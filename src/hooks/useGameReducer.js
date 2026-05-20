@@ -383,6 +383,13 @@ function gameReducer(state, action) {
     }
 
     case 'CAMERA_SETTLED': {
+      // If someone just holed, don't transition to card_picking — wait for RESUME_AFTER_HOLE
+      if (state.holedIn) {
+        return {
+          ...state,
+          secondaryStatus: 'settled',
+        }
+      }
       // Stage-based lifecycle: stage completes when all active players have swung
       const stageJustCompleted = state.swingsThisStage >= state.stageActivePlayerCount
 

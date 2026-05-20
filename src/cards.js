@@ -2,6 +2,7 @@ const CARD_DEFS = {
   red_bull: {
     id: 'red_bull',
     name: 'Red Bull',
+    emoji: '🐂',
     system: 'player_stat',
     target: 'self',
     description: 'Power +2, Nerve -1',
@@ -11,6 +12,7 @@ const CARD_DEFS = {
   drunk_swing: {
     id: 'drunk_swing',
     name: 'Drunk Swing',
+    emoji: '🍺',
     system: 'player_stat',
     target: 'self',
     description: 'Power random +/-3',
@@ -20,6 +22,7 @@ const CARD_DEFS = {
   zen_mode: {
     id: 'zen_mode',
     name: 'Zen Mode',
+    emoji: '🧘',
     system: 'player_stat',
     target: 'self',
     description: 'Nerve +2, Power -1',
@@ -29,6 +32,7 @@ const CARD_DEFS = {
   hot_head: {
     id: 'hot_head',
     name: 'Hot Head',
+    emoji: '😤',
     system: 'player_stat',
     target: 'self',
     description: 'Power +1, Aim +1, Curse +30%',
@@ -40,6 +44,7 @@ const CARD_DEFS = {
   iron_grip: {
     id: 'iron_grip',
     name: 'Iron Grip',
+    emoji: '🦾',
     system: 'player_stat',
     deck: 'base',
     target: 'self',
@@ -50,6 +55,7 @@ const CARD_DEFS = {
   power_nap: {
     id: 'power_nap',
     name: 'Power Nap',
+    emoji: '😴',
     system: 'player_stat',
     deck: 'base',
     target: 'self',
@@ -60,6 +66,7 @@ const CARD_DEFS = {
   blind_faith: {
     id: 'blind_faith',
     name: 'Blind Faith',
+    emoji: '🙈',
     system: 'player_stat',
     deck: 'base',
     target: 'self',
@@ -72,6 +79,7 @@ const CARD_DEFS = {
   left_wind: {
     id: 'left_wind',
     name: 'Left Wind',
+    emoji: '💨',
     system: 'weather',
     deck: 'base',
     target: 'all',
@@ -82,6 +90,7 @@ const CARD_DEFS = {
   right_wind: {
     id: 'right_wind',
     name: 'Right Wind',
+    emoji: '🌬️',
     system: 'weather',
     deck: 'base',
     target: 'all',
@@ -92,6 +101,7 @@ const CARD_DEFS = {
   rain: {
     id: 'rain',
     name: 'Rain',
+    emoji: '🌧️',
     system: 'weather',
     deck: 'base',
     target: 'all',
@@ -102,6 +112,7 @@ const CARD_DEFS = {
   tailwind: {
     id: 'tailwind',
     name: 'Tailwind',
+    emoji: '🏃',
     system: 'weather',
     deck: 'base',
     target: 'all',
@@ -112,6 +123,7 @@ const CARD_DEFS = {
   fog: {
     id: 'fog',
     name: 'Fog',
+    emoji: '🌫️',
     system: 'weather',
     deck: 'base',
     target: 'all',
@@ -124,6 +136,7 @@ const CARD_DEFS = {
   squirrel_tax: {
     id: 'squirrel_tax',
     name: 'Squirrel Tax',
+    emoji: '🐿️',
     system: 'animal_event',
     deck: 'base',
     target: 'opponent',
@@ -134,6 +147,7 @@ const CARD_DEFS = {
   mole_tunnel: {
     id: 'mole_tunnel',
     name: 'Mole Tunnel',
+    emoji: '🕳️',
     system: 'animal_event',
     deck: 'base',
     target: 'self',
@@ -144,6 +158,7 @@ const CARD_DEFS = {
   angry_goose: {
     id: 'angry_goose',
     name: 'Angry Goose',
+    emoji: '🦆',
     system: 'animal_event',
     deck: 'base',
     target: 'opponent',
@@ -154,6 +169,7 @@ const CARD_DEFS = {
   sly_fox: {
     id: 'sly_fox',
     name: 'Sly Fox',
+    emoji: '🦊',
     system: 'animal_event',
     deck: 'base',
     target: 'opponent',
@@ -164,6 +180,7 @@ const CARD_DEFS = {
   lucky_rabbit: {
     id: 'lucky_rabbit',
     name: 'Lucky Rabbit',
+    emoji: '🐰',
     system: 'animal_event',
     deck: 'base',
     target: 'self',
@@ -182,6 +199,7 @@ const BRAINROT_DEFS = {
   br_red_bull_ultra: {
     id: 'br_red_bull_ultra',
     name: 'Red Bull Ultra™',
+    emoji: '⚡',
     system: 'player_stat',
     deck: 'brainrot',
     target: 'self',
@@ -192,6 +210,7 @@ const BRAINROT_DEFS = {
   br_mystery_flask: {
     id: 'br_mystery_flask',
     name: 'Mystery Flask',
+    emoji: '🧪',
     system: 'player_stat',
     deck: 'brainrot',
     target: 'self',
@@ -202,6 +221,7 @@ const BRAINROT_DEFS = {
   br_scope_creep: {
     id: 'br_scope_creep',
     name: 'Scope Creep',
+    emoji: '🔭',
     system: 'player_stat',
     deck: 'brainrot',
     target: 'self',
@@ -214,6 +234,7 @@ const BRAINROT_DEFS = {
   br_dragon: {
     id: 'br_dragon',
     name: "Dragon's Hoard",
+    emoji: '🐉',
     system: 'animal_event',
     deck: 'brainrot',
     target: 'opponent',
@@ -224,6 +245,7 @@ const BRAINROT_DEFS = {
   br_void_fish: {
     id: 'br_void_fish',
     name: 'Void Fish',
+    emoji: '🐟',
     system: 'animal_event',
     deck: 'brainrot',
     target: 'opponent',
@@ -236,6 +258,7 @@ const BRAINROT_DEFS = {
   br_gravity: {
     id: 'br_gravity',
     name: 'Gravity Anomaly',
+    emoji: '🌍',
     system: 'weather',
     deck: 'brainrot',
     target: 'all',
@@ -246,6 +269,7 @@ const BRAINROT_DEFS = {
   br_wildfire: {
     id: 'br_wildfire',
     name: 'Wildfire',
+    emoji: '🔥',
     system: 'weather',
     deck: 'brainrot',
     target: 'all',
@@ -258,6 +282,7 @@ const BRAINROT_DEFS = {
   br_ball_swap: {
     id: 'br_ball_swap',
     name: 'Ball Swap',
+    emoji: '🔄',
     system: 'animal_event',
     deck: 'brainrot',
     target: 'both',
@@ -268,6 +293,7 @@ const BRAINROT_DEFS = {
   br_identity_theft: {
     id: 'br_identity_theft',
     name: 'Identity Theft',
+    emoji: '🎭',
     system: 'player_stat',
     deck: 'brainrot',
     target: 'self',
@@ -278,6 +304,7 @@ const BRAINROT_DEFS = {
   br_nuclear_option: {
     id: 'br_nuclear_option',
     name: 'Nuclear Option',
+    emoji: '☢️',
     system: 'brainrot_meta',
     deck: 'brainrot',
     target: 'all',

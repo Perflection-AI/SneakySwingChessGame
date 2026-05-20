@@ -33,6 +33,10 @@
   cursor: grabbing;
 }
 
+.board-area.dark-bg {
+  background: #2a3a1f;
+}
+
 .ball-layer {
   position: absolute;
   inset: 0;

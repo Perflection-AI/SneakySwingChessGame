@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { discoverPhotos } from '../imageCache'
 import './OpponentPicker.css'
 
 const STAT_KEYS = [
@@ -16,33 +17,6 @@ function getTier(val) {
   if (val >= 7) return 'A'
   if (val >= 5) return 'B'
   return 'C'
-}
-
-function tryLoad(url) {
-  return new Promise(resolve => {
-    const img = new Image()
-    img.onload = () => resolve(true)
-    img.onerror = () => resolve(false)
-    img.src = url
-  })
-}
-
-async function discoverImages(id) {
-  const images = []
-  const exts = ['jpg', 'png']
-  for (let i = 1; i <= 30; i++) {
-    let found = false
-    for (const ext of exts) {
-      const url = `/mock-record/opponents/${id}/P_${i}.${ext}`
-      if (await tryLoad(url)) {
-        images.push(url)
-        found = true
-        break
-      }
-    }
-    if (!found) break
-  }
-  return images
 }
 
 function useBoomerang(images, active) {
@@ -78,7 +52,7 @@ function OpponentCard({ player, images, isSelected, onToggle, meta }) {
 
   return (
     <div
-      className={`opp-card${isSelected ? ' opp-card-selected' : ''}`}
+      className={`opp-card${isSelected ? ' opp-card-selected' : ' opp-card-dimmed'}`}
       onClick={onToggle}
     >
       {src && <img className="opp-card-bg" src={src} alt={player.name} />}
@@ -135,9 +109,9 @@ export default function OpponentPicker({ aiPlayers, selected, onToggle, onConfir
     let cancelled = false
     async function load() {
       const map = {}
-      for (const p of aiPlayers) {
-        map[p.id] = await discoverImages(p.id)
-      }
+      await Promise.all(aiPlayers.map(async p => {
+        map[p.id] = await discoverPhotos(`/mock-record/opponents/${p.id}`)
+      }))
       if (!cancelled) setImageMap(map)
     }
     load()

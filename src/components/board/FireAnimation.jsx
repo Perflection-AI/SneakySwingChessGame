@@ -1,35 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import appConfig from '../../appConfig'
+import { discoverPhotos } from '../../imageCache'
 
 const FRAME_DURATION = appConfig.game.timing.introFrameDuration
-
-// ─── Shared image cache ───
-const imageCache = new Map()
-
-function tryImg(url) {
-  return new Promise(resolve => {
-    const img = new Image()
-    img.onload = () => resolve(url)
-    img.onerror = () => resolve(null)
-    img.src = url
-  })
-}
-
-export async function discoverPhotos(dir) {
-  if (imageCache.has(dir)) return imageCache.get(dir)
-  const photos = []
-  for (let i = 1; i <= 30; i++) {
-    let found = null
-    for (const ext of ['jpg', 'png']) {
-      found = await tryImg(`${dir}/P_${i}.${ext}`)
-      if (found) break
-    }
-    if (!found) break
-    photos.push(found)
-  }
-  imageCache.set(dir, photos)
-  return photos
-}
 
 export async function precachePlayers(players) {
   const dirs = [...new Set(players.map(p => p.photoDir).filter(Boolean))]

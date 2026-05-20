@@ -1,27 +1,88 @@
+import { useState } from 'react'
 import { getCardDef } from '../../cards'
+import Palette from '../../Palette'
 import './CardPicker.css'
 
-export default function CardPicker({ hand, onUseCard, onSkipCard, currentPlayerName }) {
-  const slots = [0, 1]
+const EFFECT_COLORS = Palette.effect
+
+function SystemBadge({ system }) {
+  const c = EFFECT_COLORS[system] || EFFECT_COLORS.player_stat
+  return (
+    <span className="cp-badge" style={{ background: c.solidBg, color: c.base, borderColor: c.base }}>
+      {c.label}
+    </span>
+  )
+}
+
+export default function CardPicker({ hand, onUseCard, onSkipCard, onExchange, currentPlayerName }) {
+  const [selected, setSelected] = useState(new Set())
+
+  const toggleSelect = (cardId) => {
+    setSelected(prev => {
+      const next = new Set(prev)
+      if (next.has(cardId)) {
+        next.delete(cardId)
+      } else if (next.size < 2) {
+        next.add(cardId)
+      }
+      return next
+    })
+  }
+
   return (
     <div className="card-picker">
-      <div className="cp-cards">
-        {slots.map((_, i) => {
+      <div className="cp-header">
+        <span className="cp-title">Choose a Card</span>
+        <span className="cp-player">{currentPlayerName}</span>
+      </div>
+      <div className="cp-hint">Cards spawn randomly along the path — land your ball nearby to pick them up!</div>
+      <div className="cp-grid">
+        {[0, 1, 2].map((_, i) => {
           const cardId = hand[i]
-          if (!cardId) return <div key={i} className="cp-slot cp-slot-empty" />
-          const card = getCardDef(cardId)
+          const card = cardId ? getCardDef(cardId) : null
+          const isSelected = selected.has(cardId)
           if (!card) return <div key={i} className="cp-slot cp-slot-empty" />
+          const colors = EFFECT_COLORS[card.system] || EFFECT_COLORS.player_stat
           return (
-            <div key={i} className="cp-slot">
-              <div className="cp-name">{card.name}</div>
+            <div
+              key={i}
+              className={`cp-slot${isSelected ? ' cp-slot-selected' : ''}`}
+              style={{ borderColor: isSelected ? '#EF4444' : colors.base }}
+              onClick={() => toggleSelect(cardId)}
+            >
+              <div className="cp-emoji">{card.emoji}</div>
+              <div className="cp-badge-row">
+                <SystemBadge system={card.system} />
+                <span className="cp-name" style={{ color: isSelected ? '#EF4444' : colors.base }}>{card.name}</span>
+              </div>
               <div className="cp-desc">{card.description}</div>
               <div className="cp-flavor">{card.flavorText}</div>
-              <button className="cp-use-btn" onClick={() => onUseCard(cardId)}>USE</button>
+              <button
+                className="cp-use-btn"
+                style={{ background: colors.base }}
+                onClick={(e) => { e.stopPropagation(); onUseCard(cardId) }}
+              >
+                USE
+              </button>
             </div>
           )
         })}
       </div>
-      <button className="cp-skip" onClick={onSkipCard}>Skip →</button>
+      <div className="cp-actions">
+        <button className="cp-skip" onClick={onSkipCard}>Skip</button>
+        <button
+          className={`cp-exchange${selected.size === 2 ? ' cp-exchange-ready' : ''}`}
+          disabled={selected.size !== 2}
+          onClick={() => {
+            if (selected.size === 2) {
+              onExchange([...selected])
+              setSelected(new Set())
+            }
+          }}
+        >
+          Trade Selected (2 → 1)
+        </button>
+      </div>
     </div>
   )
 }

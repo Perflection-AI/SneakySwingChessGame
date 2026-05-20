@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 const mapImgTransition = 'left 1.5s cubic-bezier(0.25,0.1,0.25,1),top 1.5s cubic-bezier(0.25,0.1,0.25,1),width 1.5s cubic-bezier(0.25,0.1,0.25,1),height 1.5s cubic-bezier(0.25,0.1,0.25,1)'
 
-const BoardArea = forwardRef(function BoardArea({ zoom, pan, aspectRatio, fullscreen, onClick, mapImageUrl, mapTransform, children }, boardRef) {
+const BoardArea = forwardRef(function BoardArea({ zoom, pan, aspectRatio, fullscreen, onClick, mapImageUrl, mapTransform, darkBg, children }, boardRef) {
   const ar = aspectRatio || 1
   const style = {
     '--zoom': zoom,
@@ -23,7 +23,7 @@ const BoardArea = forwardRef(function BoardArea({ zoom, pan, aspectRatio, fullsc
     : undefined
   return (
     <div
-      className={`board-area${zoom > 1 ? ' zoomed' : ''}${fullscreen ? ' board-area-fullscreen' : ''}${mapImageUrl ? ' has-map' : ''}`}
+      className={`board-area${zoom > 1 ? ' zoomed' : ''}${fullscreen ? ' board-area-fullscreen' : ''}${(mapImageUrl || darkBg) ? ' has-map' : ''}${darkBg && !mapImageUrl ? ' dark-bg' : ''}`}
       ref={boardRef}
       style={style}
       onClick={onClick}

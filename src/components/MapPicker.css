@@ -75,11 +75,11 @@
 }
 
 .mp-card-dimmed {
-  opacity: .45;
+  opacity: .55;
 }
 
 .mp-card-dimmed:hover {
-  opacity: .7;
+  opacity: .85;
   border-color: #B8D085;
 }
 
