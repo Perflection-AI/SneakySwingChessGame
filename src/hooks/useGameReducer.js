@@ -501,8 +501,7 @@ function gameReducer(state, action) {
     case 'DEAL_CARD': {
       if (!isCardsEnabled()) return state
       if (state.hand.length >= 4) return state
-      const cardId = dealCard(getPool(appConfig.cards.deckType))
-      return { ...state, hand: [...state.hand, cardId] }
+      return state
     }
 
     case 'USE_CARD': {

@@ -317,6 +317,7 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
               activePlayerId="you"
               mode="test"
               testConfig={testConfig}
+              illustrateConfig={{ varyStat: 'power', baseStats: { power: 5, aim: 5, touch: 5 }, paused: true }}
               onShotResult={handleShotResult}
             />
           </div>
