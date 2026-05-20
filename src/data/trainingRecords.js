@@ -5,6 +5,18 @@ const SWING_ISSUES = [
   'slideHip', 'reversePivot', 'scoop', 'fatShot', 'thinShot',
 ]
 
+// 5-tier difficulty progression — one tier per training day
+const TIERS = [
+  { radarMin: 2, radarMax: 4.5, scoreMin: 25, scoreMax: 50, stabMin: 1, stabMax: 2 },
+  { radarMin: 3, radarMax: 5.5, scoreMin: 35, scoreMax: 60, stabMin: 1, stabMax: 3 },
+  { radarMin: 4, radarMax: 6.5, scoreMin: 45, scoreMax: 70, stabMin: 2, stabMax: 4 },
+  { radarMin: 5, radarMax: 7.5, scoreMin: 55, scoreMax: 80, stabMin: 2, stabMax: 5 },
+  { radarMin: 6, radarMax: 9,   scoreMin: 65, scoreMax: 95, stabMin: 3, stabMax: 5 },
+]
+
+// Deterministic archetype per day
+const ARCHETYPES = ['Raw Talent', 'Wildcard', 'Steady Eddie', 'The Bomber', 'The Closer']
+
 function rand(min, max) {
   return min + Math.random() * (max - min)
 }
@@ -13,16 +25,16 @@ function randInt(min, max) {
   return Math.floor(rand(min, max + 1))
 }
 
-function generateSwing(index) {
+function generateSwing(index, dayProfile) {
   const club = CLUBS[randInt(0, CLUBS.length - 1)]
-  const rotation = +rand(2, 9.5).toFixed(1)
-  const sequencing = +rand(2, 9.5).toFixed(1)
-  const balance = +rand(1.5, 9.5).toFixed(1)
-  const planeControl = +rand(1.5, 9.5).toFixed(1)
-  const impactControl = +rand(1.5, 9.5).toFixed(1)
-  const score = randInt(25, 95)
+  const rotation = +rand(dayProfile.radarMin, dayProfile.radarMax).toFixed(1)
+  const sequencing = +rand(dayProfile.radarMin, dayProfile.radarMax).toFixed(1)
+  const balance = +rand(dayProfile.radarMin, dayProfile.radarMax).toFixed(1)
+  const planeControl = +rand(dayProfile.radarMin, dayProfile.radarMax).toFixed(1)
+  const impactControl = +rand(dayProfile.radarMin, dayProfile.radarMax).toFixed(1)
+  const score = randInt(dayProfile.scoreMin, dayProfile.scoreMax)
   const potential = randInt(1, 5)
-  const stability = randInt(1, 5)
+  const stability = randInt(dayProfile.stabMin, dayProfile.stabMax)
   const issue = SWING_ISSUES[randInt(0, SWING_ISSUES.length - 1)]
 
   return {
@@ -44,13 +56,12 @@ function generateSwing(index) {
 
 function generateDay(dayOffset) {
   const date = new Date(2026, 4, 13 - dayOffset)
+  const dayProfile = TIERS[dayOffset] || TIERS[TIERS.length - 1]
   const swingCount = randInt(5, 10)
-  const swings = Array.from({ length: swingCount }, (_, i) => generateSwing(i))
+  const swings = Array.from({ length: swingCount }, (_, i) => generateSwing(i, dayProfile))
 
   const avgScore = Math.round(swings.reduce((s, sw) => s + sw.score, 0) / swings.length)
-
-  const archetypes = ['The Bomber', 'The Sniper', 'The Closer', 'Wildcard', 'Steady Eddie', 'Raw Talent']
-  const archetype = archetypes[randInt(0, archetypes.length - 1)]
+  const archetype = ARCHETYPES[dayOffset] || 'Steady Eddie'
 
   return {
     id: `day_${dayOffset}`,

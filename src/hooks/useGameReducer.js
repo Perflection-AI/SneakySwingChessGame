@@ -354,6 +354,7 @@ function gameReducer(state, action) {
       if (isHoled) {
         return {
           ...state,
+          holedIn: true,
           playerPos: finalPlayerPos,
           turnIdx: nextTi,
           secondaryStatus: 'camera_followup',

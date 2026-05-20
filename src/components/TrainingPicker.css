@@ -376,6 +376,27 @@
   color: rgba(255, 255, 255, 0.4);
 }
 
+/* Practice Range button (outlined, secondary) */
+.tp-hud-range-btn {
+  display: flex; align-items: center; gap: 3px; padding: 5px 9px;
+  border: 1.5px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer; flex-shrink: 0;
+  transition: border-color 0.15s, background 0.15s, transform 0.12s;
+  color: rgba(255, 255, 255, 0.6);
+}
+.tp-hud-range-btn:hover {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
+}
+.tp-hud-range-btn:active { transform: translateY(0); }
+.tp-hud-range-label {
+  font-family: 'DM Sans', sans-serif; font-size: 8px; font-weight: 800;
+  color: rgba(255, 255, 255, 0.6); letter-spacing: 1px;
+}
+.tp-hud-range-btn:hover .tp-hud-range-label { color: rgba(255, 255, 255, 0.85); }
+
 .tp-hud-match-btn {
   display: flex; align-items: center; gap: 3px; padding: 6px 10px;
   border: none; border-radius: 8px;

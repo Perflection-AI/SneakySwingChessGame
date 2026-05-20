@@ -90,6 +90,30 @@ const commentaryTemplates = {
     { id: 'cm_3', text: 'The ball slides by. {playerName} will have to try again from {distanceAfter} yards.' },
     { id: 'cm_4', text: '{playerName} can\'t convert. {distanceAfter} yards to go. The pressure builds.' },
   ],
+
+  cardUse: [
+    { id: 'cu_1', text: '{playerName} pops a Red Bull. Wings incoming.', conditions: { cardId: 'red_bull' } },
+    { id: 'cu_2', text: '{playerName} closes their eyes... Drunk Swing activated.', conditions: { cardId: 'drunk_swing' } },
+    { id: 'cu_3', text: '{playerName} enters Zen Mode. Total calm.', conditions: { cardId: 'zen_mode' } },
+    { id: 'cu_4', text: '{playerName} gets mad. Hot Head is ON.', conditions: { cardId: 'hot_head' } },
+    { id: 'cu_5', text: '{playerName} plays {cardName}. {cardFlavor}' },
+  ],
+
+  brainrot_cardUse: [
+    { id: 'br1', text: '{playerName} cracks open a Red Bull Ultra. The physics engine starts shaking.', conditions: { cardId: 'br_red_bull_ultra' } },
+    { id: 'br2', text: '{playerName} chugs a Mystery Flask. Not even the game knows what happens next.', conditions: { cardId: 'br_mystery_flask' } },
+    { id: 'br3', text: 'Scope Creep. {playerName} wants everything. Gets 30 yards.', conditions: { cardId: 'br_scope_creep' } },
+    { id: 'br4', text: 'A dragon swoops in and grabs {targetName}\'s ball. It has opinions.', conditions: { cardId: 'br_dragon' } },
+    { id: 'br5', text: 'The Void Fish swallows {targetName}\'s ball. Spits it out near the hole. Maybe.', conditions: { cardId: 'br_void_fish' } },
+    { id: 'br6', text: 'Gravity is now optional. All balls fly 80% further.', conditions: { cardId: 'br_gravity' } },
+    { id: 'br7', text: 'The course is on fire! All balls scattering wildly.', conditions: { cardId: 'br_wildfire' } },
+    { id: 'br8', text: '{playerName} and {targetName} swap ball positions. Yours is mine.', conditions: { cardId: 'br_ball_swap' } },
+    { id: 'br9', text: '{playerName} steals {targetName}\'s identity. This shot uses their stats.', conditions: { cardId: 'br_identity_theft' } },
+    { id: 'br10', text: 'Nuclear Option. Everything resets. Back to square one.', conditions: { cardId: 'br_nuclear_option' } },
+    { id: 'br11', text: '{playerName} plays {cardName}. {cardFlavor}' },
+    { id: 'br12', text: 'Overflow! Power exceeds 10! The ball is out of control...' },
+    { id: 'br13', text: 'Mystery Flask result: P{power}/A{aim}/T{touch}. Fate rolls the dice.' },
+  ],
 }
 
 export default commentaryTemplates

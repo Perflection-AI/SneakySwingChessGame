@@ -74,6 +74,15 @@
   border-color: #719241;
 }
 
+.mp-card-dimmed {
+  opacity: .45;
+}
+
+.mp-card-dimmed:hover {
+  opacity: .7;
+  border-color: #B8D085;
+}
+
 /* Preview area — map thumbnail */
 .mp-card-preview {
   position: relative;

@@ -84,7 +84,7 @@ function StatBadge({ value, label, color, size = 'sm' }) {
   )
 }
 
-export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
+export default function TrainingPicker({ trainingRecords, onSelectTraining, onPracticeRange }) {
   const [selectedIdx, setSelectedIdx] = useState(null)
   const [practiceStats, setPracticeStats] = useState({
     totalShots: 0, holedCount: 0, bestDistanceYd: Infinity,
@@ -147,6 +147,11 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
   const handleStart = () => {
     if (!selectedDay || !playerStats) return
     onSelectTraining({ day: selectedDay, stats: playerStats })
+  }
+
+  const handlePracticeRange = () => {
+    if (!selectedDay || !playerStats) return
+    onPracticeRange({ day: selectedDay, stats: playerStats })
   }
 
   const handleShotResult = useCallback(({ endX, endY, holeX, holeY, outcome }) => {
@@ -369,6 +374,17 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
               </div>
               <span className="tp-hud-xp-text">{practiceStats.xp}XP</span>
             </div>
+
+            <button className="tp-hud-range-btn" onClick={handlePracticeRange}>
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="8" cy="8" r="3" />
+                <line x1="8" y1="1" x2="8" y2="3" />
+                <line x1="8" y1="13" x2="8" y2="15" />
+                <line x1="1" y1="8" x2="3" y2="8" />
+                <line x1="13" y1="8" x2="15" y2="8" />
+              </svg>
+              <span className="tp-hud-range-label">RANGE</span>
+            </button>
 
             <button className="tp-hud-match-btn" onClick={handleStart}>
               <span className="tp-hud-match-label">MATCH</span>

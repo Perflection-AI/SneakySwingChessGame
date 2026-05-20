@@ -529,6 +529,14 @@
   opacity:.35;
 }
 
+.commentary-feed-compact {
+  overflow:hidden;
+}
+
+.commentary-feed-compact .commentary-line {
+  opacity:1;
+}
+
 .commentary-stroke {
   color:var(--dsd-broadcast-dim);
   flex-shrink:0;

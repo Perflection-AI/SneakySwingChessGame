@@ -18,6 +18,13 @@ const DECKS = [
     desc: 'Overflow, teleport, chaos',
     color: '#8B5CF6',
   },
+  {
+    type: 'none',
+    label: 'I Want It RAW',
+    count: 0,
+    desc: 'No cards, pure skill only',
+    color: '#828282',
+  },
 ]
 
 function sampleCards(pool, n) {
@@ -69,7 +76,8 @@ export default function DeckPickerScreen({ selected, onSelect, onConfirm, onBack
         {DECKS.map(d => {
           const isSelected = selected === d.type
           const pool = d.type === 'brainrot' ? BRAINROT_CARD_POOL : STAT_CARD_POOL
-          const previewCards = useMemo(() => sampleCards(pool, 3), [pool])
+          const showPreview = isSelected && d.type !== 'none'
+          const previewCards = useMemo(() => showPreview ? sampleCards(pool, 3) : [], [pool, showPreview])
 
           return (
             <div
@@ -78,22 +86,24 @@ export default function DeckPickerScreen({ selected, onSelect, onConfirm, onBack
               style={isSelected ? { borderColor: d.color, '--dk-accent': d.color } : {}}
               onClick={() => onSelect(d.type)}
             >
-              <div className="dk-card-color-bar" style={{ background: isSelected ? d.color : '#CDCDCD' }} />
-              <div className="dk-card-info">
-                <div className="dk-card-text">
-                  <span className="dk-card-name" style={isSelected ? { color: d.color } : {}}>{d.label}</span>
-                  <span className="dk-card-desc">{d.desc}</span>
-                </div>
-                <div className="dk-card-right">
-                  <span className="dk-card-count" style={isSelected ? { color: d.color } : {}}>{d.count}</span>
-                  <div className={`dk-card-check${isSelected ? ' dk-card-check-on' : ''}`}
-                    style={isSelected ? { background: d.color, borderColor: d.color } : {}}
-                  >
-                    {isSelected ? '✓' : ''}
+              <div className="dk-card-top">
+                <div className="dk-card-color-bar" style={{ background: isSelected ? d.color : '#CDCDCD' }} />
+                <div className="dk-card-info">
+                  <div className="dk-card-text">
+                    <span className="dk-card-name" style={isSelected ? { color: d.color } : {}}>{d.label}</span>
+                    <span className="dk-card-desc">{d.desc}</span>
+                  </div>
+                  <div className="dk-card-right">
+                    {d.count > 0 && <span className="dk-card-count" style={isSelected ? { color: d.color } : {}}>{d.count}</span>}
+                    <div className={`dk-card-check${isSelected ? ' dk-card-check-on' : ''}`}
+                      style={isSelected ? { background: d.color, borderColor: d.color } : {}}
+                    >
+                      {isSelected ? '✓' : ''}
+                    </div>
                   </div>
                 </div>
               </div>
-              {isSelected && (
+              {showPreview && (
                 <div className="dk-card-preview">
                   <div className="dk-preview-fan">
                     {previewCards.map((card, i) => (

@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react'
 import './MapPicker.css'
 
-function MapCard({ map, isSelected, onToggle }) {
+const MAP_NAMES = { map_1: "CMU Campus", map_2: "The White House", map_3: "World", map_4: "Strait of Hormuz" }
+
+function MapCard({ map, isSelected, isDimmed, onToggle }) {
   const holes = map.pointCount - 1
-  const label = map.id.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase())
+  const label = MAP_NAMES[map.id] || map.id.replace('_', ' ').replace(/\b\w/g, c => c.toUpperCase())
 
   return (
     <div
-      className={`mp-card${isSelected ? ' mp-card-selected' : ''}`}
+      className={`mp-card${isSelected ? ' mp-card-selected' : ''}${isDimmed ? ' mp-card-dimmed' : ''}`}
       onClick={() => onToggle(map.id)}
     >
       <div className="mp-card-preview">
@@ -61,6 +63,7 @@ export default function MapPicker({ discoveredMaps, selectedMapIds, onToggleMap,
               key={m.id}
               map={m}
               isSelected={selectedMapIds.includes(m.id)}
+              isDimmed={hasSelection && !selectedMapIds.includes(m.id)}
               onToggle={onToggleMap}
             />
           ))
@@ -76,7 +79,7 @@ export default function MapPicker({ discoveredMaps, selectedMapIds, onToggleMap,
           disabled={!hasSelection}
           onClick={onConfirm}
         >
-          {hasSelection ? 'Start Match' : 'Select a Course'}
+          {hasSelection ? 'Go Next' : 'Select a Course'}
         </button>
       </div>
     </div>

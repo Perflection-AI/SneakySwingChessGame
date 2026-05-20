@@ -10,10 +10,17 @@ function fillTemplate(text, ctx) {
     .replace(/\{stroke\}/g, ctx.stroke ?? '')
     .replace(/\{hole\}/g, ctx.hole ?? '')
     .replace(/\{par\}/g, ctx.par ?? '')
+    .replace(/\{cardName\}/g, ctx.cardName || '')
+    .replace(/\{cardFlavor\}/g, ctx.cardFlavor || '')
+    .replace(/\{targetName\}/g, ctx.targetName || 'opponent')
+    .replace(/\{power\}/g, ctx.power ?? '')
+    .replace(/\{aim\}/g, ctx.aim ?? '')
+    .replace(/\{touch\}/g, ctx.touch ?? '')
 }
 
 function matchConditions(conditions, ctx) {
   if (!conditions) return true
+  if (conditions.cardId && conditions.cardId !== ctx.cardUsed) return false
   if (conditions.minProgressYd != null && (ctx.progressYd ?? 0) < conditions.minProgressYd) return false
   if (conditions.maxDistanceAfter != null && (ctx.distanceAfter ?? 0) > conditions.maxDistanceAfter) return false
   if (conditions.minDistanceAfter != null && (ctx.distanceAfter ?? 0) < conditions.minDistanceAfter) return false
@@ -31,7 +38,8 @@ function weightedRandom(pool) {
 }
 
 function getPoolKey(ctx) {
-  // Priority: miracle > holed > pinseeker > clutchEnter > clutchMiss > outcome
+  // Priority: cardUsed > miracle > holed > pinseeker > clutchEnter > clutchMiss > outcome
+  if (ctx.cardUsed) return ctx.cardUsed.startsWith('br_') ? 'brainrot_cardUse' : 'cardUse'
   if (ctx.outcome === 'miracle') return 'miracle'
   if (ctx.outcome === 'holed') return 'holed'
   if (ctx.outcome === 'pinseeker') return 'pinseeker'
