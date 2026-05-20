@@ -580,7 +580,7 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
               mapTransform={mapTransform}
             >
               <HoleMarker x={state.holePos.x} y={state.holePos.y} />
-              {mode === 'game' && (
+              {(mode === 'game' || mode === 'test') && (
                 <DistanceGuide
                   activePos={activePos}
                   holePos={state.holePos}

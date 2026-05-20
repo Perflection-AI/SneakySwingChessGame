@@ -36,15 +36,6 @@ function makeSessions(count) {
 
 const SESSION_THUMBS = [makeSessions(7), makeSessions(5), makeSessions(8), makeSessions(4), makeSessions(6)]
 
-function classifyShot(distYd) {
-  if (distYd <= 0) return { grade: 'holed', label: 'HOLED!', color: '#FFD700' }
-  if (distYd <= 1) return { grade: 'pinseeker', label: 'PINSEEKER!', color: '#FFD700' }
-  if (distYd <= 5) return { grade: 'great', label: 'GREAT!', color: '#719241' }
-  if (distYd <= 15) return { grade: 'good', label: 'GOOD', color: '#5B9BD5' }
-  if (distYd <= 30) return { grade: 'ok', label: 'OK', color: '#B0B0B0' }
-  return { grade: 'rough', label: 'ROUGH', color: '#EF4444' }
-}
-
 function StatBadge({ value, label, size = 'sm' }) {
   const tier = value >= 8 ? 'S' : value >= 6 ? 'A' : value >= 4 ? 'B' : 'C'
   return (
@@ -55,29 +46,17 @@ function StatBadge({ value, label, size = 'sm' }) {
   )
 }
 
-export default function TrainingPicker({ trainingRecords, onSelectTraining, onPracticeRange }) {
+export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
   const [selectedIdx, setSelectedIdx] = useState(null)
-  const [shotCount, setShotCount] = useState(0)
-  const [bestDist, setBestDist] = useState(null)
   const [shotLabel, setShotLabel] = useState(null)
   const lastShotTime = useRef(0)
   const labelTimeout = useRef(null)
-  const prevSelectedIdx = useRef(null)
 
   const selectedDay = selectedIdx !== null ? trainingRecords[selectedIdx] : null
   const playerStats = useMemo(() => {
     if (!selectedDay) return null
     return computeStatsFromTraining(selectedDay)
   }, [selectedDay])
-
-  useEffect(() => {
-    if (prevSelectedIdx.current !== selectedIdx && selectedIdx !== null) {
-      setShotCount(0)
-      setBestDist(null)
-      setShotLabel(null)
-    }
-    prevSelectedIdx.current = selectedIdx
-  }, [selectedIdx])
 
   useEffect(() => {
     return () => { if (labelTimeout.current) clearTimeout(labelTimeout.current) }
@@ -107,11 +86,6 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
     onSelectTraining({ day: selectedDay, stats: playerStats })
   }
 
-  const handlePracticeRange = () => {
-    if (!selectedDay || !playerStats) return
-    onPracticeRange({ day: selectedDay, stats: playerStats })
-  }
-
   const handleShotResult = useCallback(({ endX, endY, holeX, holeY, outcome }) => {
     const now = Date.now()
     if (now - lastShotTime.current < 300) return
@@ -122,30 +96,44 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
 
     let shot
     if (outcome === 'holed' || outcome === 'miracle') {
-      shot = { grade: 'holed', label: outcome === 'miracle' ? 'MIRACLE!' : 'HOLED!', color: '#FFD700', distYd: 0 }
+      shot = { label: outcome === 'miracle' ? 'MIRACLE!' : 'HOLED!', color: '#FFD700', distYd: 0 }
     } else {
-      shot = { ...classifyShot(distYd), distYd: Math.round(distYd) }
+      const dist = Math.round(distYd)
+      shot = {
+        label: dist <= 5 ? 'GREAT!' : dist <= 15 ? 'GOOD' : 'OK',
+        color: dist <= 5 ? '#719241' : dist <= 15 ? '#5B9BD5' : '#B0B0B0',
+        distYd: dist,
+      }
     }
 
-    setShotCount(c => c + 1)
-    setBestDist(prev => prev === null ? shot.distYd : Math.min(prev, shot.distYd))
     setShotLabel(shot)
     if (labelTimeout.current) clearTimeout(labelTimeout.current)
     labelTimeout.current = setTimeout(() => setShotLabel(null), 1200)
   }, [])
 
-  const bestDistDisplay = bestDist === null ? '--' : `${Math.round(bestDist)}yd`
   const issueDef = playerStats?.issue && playerStats.issue !== 'none' ? SWING_ISSUES[playerStats.issue] : null
+  const issueKey = playerStats?.issue && playerStats.issue !== 'none' ? playerStats.issue : null
+
+  // Determine which stats are debuffed by the current swing issue
+  const debuffedStats = useMemo(() => {
+    if (!issueKey || !issueDef) return {}
+    return {
+      power: !!(issueDef.distMult || issueDef.distRandom || issueDef.maxPushMult),
+      aim: !!(issueDef.aimMod || issueDef.offsetMult || issueDef.offsetBias || issueDef.randomDir),
+      touch: !!(issueDef.randomPenalty || issueDef.outcomeDrop),
+    }
+  }, [issueKey, issueDef])
 
   return (
     <div className="tp-container">
-      {/* Header */}
+      <div className="tp-nav">
+        <span className="tp-nav-label">Sneaky Swing</span>
+      </div>
       <div className="tp-header">
         <h2 className="tp-title">Training Records</h2>
-        <span className="tp-subtitle">Pick a day to preview & test</span>
+        <span className="tp-subtitle">Pick a day to build your stats</span>
       </div>
 
-      {/* Day cards list — scrollable, compact */}
       <div className="tp-day-list">
         {trainingRecords.map((day, i) => {
           const stats = computeStatsFromTraining(day)
@@ -199,7 +187,6 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
         })}
       </div>
 
-      {/* Test field — small, always visible */}
       <div className="tp-board-area">
         <Board
           players={practicePlayers}
@@ -217,47 +204,44 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
         )}
       </div>
 
-      {/* HUD */}
-      <div className="tp-practice-hud">
-        <div className="tp-hud-stat">
-          <span className="tp-hud-stat-val">{shotCount}</span>
-          <span className="tp-hud-stat-label">SHOTS</span>
-        </div>
-        <div className="tp-hud-stat">
-          <span className="tp-hud-stat-val">{bestDistDisplay}</span>
-          <span className="tp-hud-stat-label">BEST</span>
-        </div>
-
-        {selectedDay && playerStats && (
-          <>
-            <div className="tp-hud-stat tp-hud-stat-preview">
-              <span className="tp-hud-preview-label">SELECTED</span>
-              <div className="tp-hud-preview-stats">
-                <span style={{ color: '#EF4444' }}>P{playerStats.power}</span>
-                <span style={{ color: '#008BFF' }}>A{playerStats.aim}</span>
-                <span style={{ color: '#719241' }}>T{playerStats.touch}</span>
-                {issueDef && <span className="tp-hud-issue-tag">{issueDef.label}</span>}
+      <div className="tp-hud">
+        <button
+          className={`tp-hud-match-btn${selectedDay && playerStats ? ' tp-hud-match-cover' : ''}${!selectedDay ? ' tp-hud-match-disabled' : ''}`}
+          onClick={handleStart}
+          disabled={!selectedDay}
+        >
+          {selectedDay && playerStats ? (
+            <div className="tp-hud-match-inner">
+              <div className="tp-hud-match-top">
+                <div className="tp-hud-match-stats">
+                  <span className="tp-hud-match-stat">
+                    <span className={`tp-hud-match-stat-val${debuffedStats.power ? ' tp-hud-debuffed' : ''}`}>{playerStats.power}</span>
+                    <span className="tp-hud-match-stat-lbl">PWR</span>
+                  </span>
+                  <span className="tp-hud-match-stat">
+                    <span className={`tp-hud-match-stat-val${debuffedStats.aim ? ' tp-hud-debuffed' : ''}`}>{playerStats.aim}</span>
+                    <span className="tp-hud-match-stat-lbl">AIM</span>
+                  </span>
+                  <span className="tp-hud-match-stat">
+                    <span className={`tp-hud-match-stat-val${debuffedStats.touch ? ' tp-hud-debuffed' : ''}`}>{playerStats.touch}</span>
+                    <span className="tp-hud-match-stat-lbl">TCH</span>
+                  </span>
+                </div>
+                <span className="tp-hud-match-go">GO &#x2192;</span>
               </div>
+              {issueDef && (
+                <div className="tp-hud-match-debuff">
+                  <div className="tp-hud-match-debuff-left">
+                    <span className="tp-hud-match-debuff-icon">!</span>
+                    <span className="tp-hud-match-debuff-name">{issueDef.label}</span>
+                  </div>
+                  <span className="tp-hud-match-debuff-desc">{issueDef.effect}</span>
+                </div>
+              )}
             </div>
-          </>
-        )}
-
-        <div className="tp-hud-spacer" />
-
-        <button className="tp-hud-range-btn" onClick={handlePracticeRange}>
-          <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="8" cy="8" r="3" />
-            <line x1="8" y1="1" x2="8" y2="3" />
-            <line x1="8" y1="13" x2="8" y2="15" />
-            <line x1="1" y1="8" x2="3" y2="8" />
-            <line x1="13" y1="8" x2="15" y2="8" />
-          </svg>
-          <span className="tp-hud-range-label">RANGE</span>
-        </button>
-
-        <button className={`tp-hud-match-btn${!selectedDay ? ' tp-hud-match-disabled' : ''}`} onClick={handleStart} disabled={!selectedDay}>
-          <span className="tp-hud-match-label">MATCH</span>
-          <span className="tp-hud-match-arrow">&#x2192;</span>
+          ) : (
+            <span className="tp-hud-match-label">Select a day</span>
+          )}
         </button>
       </div>
     </div>
