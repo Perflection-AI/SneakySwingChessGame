@@ -15,7 +15,7 @@ function MapCard({ map, isSelected, isDimmed, onToggle }) {
       <div className="mp-card-preview">
         <img
           className="mp-card-img"
-          src={`/map/${map.id}/map.png`}
+          src={map.imageUrl || `/map/${map.id}/map.png`}
           alt={label}
           onError={(e) => { e.target.style.display = 'none' }}
         />

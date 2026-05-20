@@ -415,6 +415,7 @@ export default function IslandContainer() {
               selectedMapIds={selectedMapIds}
               onToggleMap={handleCheckMap}
               onConfirm={handleConfirmMap}
+              onSkip={() => { setSelectedMapIds([]); setGamePhase('deck_select') }}
               onBack={() => setGamePhase('opponent_select')}
               loading={mapsLoading}
             />

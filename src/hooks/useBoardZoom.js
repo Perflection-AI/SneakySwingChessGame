@@ -29,7 +29,7 @@ function calcZoomForPoints(points, boardWidth, boardHeight) {
   const spanX = Math.max(maxX - minX, 4)
   const spanY = Math.max(maxY - minY, 4)
 
-  const fillX = 0.85
+  const fillX = 0.65
   const fillY = 0.7
   const zFromX = (100 * fillX) / spanX
   const zFromY = (100 * fillY) / spanY

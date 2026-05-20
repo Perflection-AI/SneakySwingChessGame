@@ -38,19 +38,14 @@ export function generateHoleForPar(par, count) {
   return { hole: { x: holeX, y: holeY }, positions, distYd: targetDistYd }
 }
 
-export function generateHoleFromMap(holeIndex, mapPoints, playerCount) {
-  const N = mapPoints.length
-  const startPt = mapPoints[holeIndex % N]
-  const endPt = mapPoints[(holeIndex + 1) % N]
+export function generateHoleFromMap(holeIndex, plan, playerCount) {
+  // Switch map image from plan metadata (matches archive ce())
+  if (plan.imageUrl) appConfig.map.imageUrl = plan.imageUrl
+  if (plan.imageWidth) appConfig.map.imageWidth = plan.imageWidth
+  if (plan.imageHeight) appConfig.map.imageHeight = plan.imageHeight
 
-  // Switch to the source map's image when crossing map boundaries
-  const mapId = startPt.mapId
-  const mapMeta = appConfig.map.availableMaps?.find(m => m.id === mapId)
-  if (mapMeta) {
-    appConfig.map.imageUrl = mapMeta.imageUrl || `/map/${mapId}/map.png`
-    appConfig.map.imageWidth = mapMeta.data.image?.width ?? 0
-    appConfig.map.imageHeight = mapMeta.data.image?.height ?? 0
-  }
+  const startPt = plan.startPt
+  const endPt = plan.endPt
 
   const du = endPt.uv.u - startPt.uv.u
   const dv = endPt.uv.v - startPt.uv.v
@@ -413,4 +408,52 @@ export function calculateGameLanding(pp, hole, mx, my, stats) {
   const outcome = labelShot(remainingYd, distYd, offsetYd)
 
   return { endX: adjustedEndX, endY: adjustedEndY, outcome, remainingYd, isClutch: false }
+}
+
+/**
+ * Resolve animal event position updates when a ball lands.
+ * Computes displacement/teleport effects from animal cards.
+ * @param {Object|null} card - The active card definition (from getCardDef)
+ * @param {number} playerIdx - Index of the player who took the shot
+ * @param {Array} playerPos - Array of {x,y} for all players
+ * @param {{x:number,y:number}} holePos - Hole position
+ * @param {{x:number,y:number}} landingPos - Ball landing position
+ * @returns {{ updates: Array|null, swapPositions: boolean }}
+ */
+export function resolveAnimalEventPositions(card, playerIdx, playerPos, holePos, landingPos) {
+  if (!card || card.system !== 'animal_event') return { updates: null, swapPositions: false }
+  const eff = card.effect
+  if (!eff) return { updates: null, swapPositions: false }
+
+  const updates = []
+  const targets = card.target === 'opponent'
+    ? playerPos.map((_, i) => i).filter(i => i !== playerIdx)
+    : card.target === 'both'
+      ? playerPos.map((_, i) => i)
+      : [playerIdx]
+
+  for (const idx of targets) {
+    const pos = idx === playerIdx && landingPos ? landingPos : playerPos[idx]
+    if (!pos) continue
+
+    if (eff.teleportNearHole) {
+      const dist = (eff.teleportRange[0] + Math.random() * (eff.teleportRange[1] - eff.teleportRange[0])) * YD_TO_PCT
+      const angle = Math.random() * Math.PI * 2
+      updates.push({ idx, x: holePos.x + Math.cos(angle) * dist, y: holePos.y + Math.sin(angle) * dist })
+    } else if (eff.displacementRange) {
+      const dist = (eff.displacementRange[0] + Math.random() * (eff.displacementRange[1] - eff.displacementRange[0])) * YD_TO_PCT
+      if (eff.displacementAxis === 'forward') {
+        const dx = holePos.x - pos.x, dy = holePos.y - pos.y
+        const len = Math.sqrt(dx * dx + dy * dy)
+        if (len < 1) continue
+        const push = Math.min(dist, len * 0.5)
+        updates.push({ idx, x: pos.x + dx / len * push, y: pos.y + dy / len * push })
+      } else {
+        const angle = Math.random() * Math.PI * 2
+        updates.push({ idx, x: pos.x + Math.cos(angle) * dist, y: pos.y + Math.sin(angle) * dist })
+      }
+    }
+  }
+
+  return { updates: updates.length > 0 ? updates : null, swapPositions: eff.swapPositions || false }
 }

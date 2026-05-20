@@ -1,23 +1,28 @@
 import { useRef, useEffect } from 'react'
-import { FLIGHT_DURATION, FADE_DURATION, LAND_DELAY } from '../utils/shotPhysics'
+import { FLIGHT_DURATION, FADE_DURATION, LAND_DELAY, resolveAnimalEventPositions } from '../utils/shotPhysics'
+import { getCardDef } from '../cards'
 
 export function useBallAnimation({ gameRef, dispatch, modeRef, players }) {
-  const moveTimer = useRef(null)
+  const pendingTimers = useRef(new Map())
   const prevHoleNumber = useRef(gameRef.current.holeNumber)
 
   useEffect(() => {
+    const ballMap = new Map()
     let last = null, frameId
 
     const tick = (time) => {
       const gs = gameRef.current
 
-      // Detect hole transition: clear pending moveTimer
+      // Detect hole transition: clear all pending timers and ball state
       if (gs.holeNumber !== prevHoleNumber.current) {
         prevHoleNumber.current = gs.holeNumber
-        if (moveTimer.current) { clearTimeout(moveTimer.current); moveTimer.current = null }
+        for (const timer of pendingTimers.current.values()) clearTimeout(timer)
+        pendingTimers.current.clear()
+        ballMap.clear()
       }
 
-      if (gs.primaryStatus === 'pause' || gs.primaryStatus === 'off') {
+      // Pause for both 'pause' and 'off' (but not 'off' in test mode)
+      if (gs.primaryStatus === 'pause' || (gs.primaryStatus === 'off' && modeRef.current !== 'test')) {
         last = null
         frameId = requestAnimationFrame(tick)
         return
@@ -27,45 +32,75 @@ export function useBallAnimation({ gameRef, dispatch, modeRef, players }) {
       const dt = (time - last) / 1000
       last = time
 
-      const cur = gs.balls
-      let changed = false
-      const next = []
+      // Sync ballMap with current game state balls
+      const currentIds = new Set(gs.balls.map(b => b.id))
+      for (const b of gs.balls) {
+        if (!ballMap.has(b.id)) ballMap.set(b.id, { ...b })
+      }
+      // Remove balls that are no longer in game state
+      for (const [id] of ballMap) {
+        if (!currentIds.has(id)) ballMap.delete(id)
+      }
 
-      for (const b of cur) {
-        if (b.phase === 'flying') {
-          const p = Math.min(b.progress + dt / FLIGHT_DURATION, 1)
-          changed = true
+      const updated = []
+      const removed = []
 
-          if (p >= 1 && modeRef.current === 'game' && !moveTimer.current) {
-            const bx = b.ex, by = b.ey
-            const bpi = b.playerIdx ?? gs.turnIdx
-            moveTimer.current = setTimeout(() => {
+      for (const [ballId, ball] of ballMap) {
+        if (ball.phase === 'flying') {
+          const p = Math.min(ball.progress + dt / FLIGHT_DURATION, 1)
+          ball.progress = p
+          if (p >= 1) ball.phase = 'fading'
+
+          if (p >= 1 && modeRef.current === 'game' && !pendingTimers.current.has(ballId)) {
+            const bx = ball.ex, by = ball.ey
+            const bPlayerIdx = ball.playerIdx ?? gs.turnIdx
+            const activeCardId = gs.activeCard?.id
+            const holeNum = gs.holeNumber
+
+            const timer = setTimeout(() => {
+              const currentState = gameRef.current
+              // Bail if hole changed since timer was set
+              if (currentState.holeNumber !== holeNum) {
+                pendingTimers.current.delete(ballId)
+                return
+              }
+              // Resolve animal event card effects at landing time
+              const card = activeCardId ? getCardDef(activeCardId) : null
+              const landingPos = { x: bx, y: by }
+              const animalResult = resolveAnimalEventPositions(card, bPlayerIdx, currentState.playerPos, currentState.holePos, landingPos)
+
               dispatch({
                 type: 'BALL_LANDED',
                 payload: {
-                  playerIdx: bpi,
+                  playerIdx: bPlayerIdx,
                   endX: bx,
                   endY: by,
-                  isHoled: b.outcome === 'holed' || b.outcome === 'miracle',
+                  isHoled: ball.outcome === 'holed' || ball.outcome === 'miracle',
+                  animalUpdates: animalResult.updates,
+                  swapPositions: animalResult.swapPositions,
                 },
               })
-              moveTimer.current = null
+              pendingTimers.current.delete(ballId)
             }, LAND_DELAY)
+            pendingTimers.current.set(ballId, timer)
           }
 
-          next.push({ ...b, progress: p, phase: p >= 1 ? 'fading' : 'flying' })
-        } else if (b.phase === 'fading') {
-          const f = b.fade + dt / FADE_DURATION
-          if (f >= 1) { changed = true; continue }
-          changed = true
-          next.push({ ...b, fade: f })
-        } else {
-          next.push(b)
+          updated.push({ ...ball })
+        } else if (ball.phase === 'fading') {
+          const fadeDur = modeRef.current === 'test' ? 3 : FADE_DURATION
+          const f = ball.fade + dt / fadeDur
+          ball.fade = f
+          if (f >= 1) {
+            ballMap.delete(ballId)
+            removed.push(ballId)
+            continue
+          }
+          updated.push({ ...ball })
         }
       }
 
-      if (changed) {
-        dispatch({ type: 'TICK_ANIMATION', payload: { balls: next } })
+      if (updated.length > 0 || removed.length > 0) {
+        dispatch({ type: 'TICK_ANIMATION', payload: { balls: updated, removed } })
       }
       frameId = requestAnimationFrame(tick)
     }
@@ -73,7 +108,8 @@ export function useBallAnimation({ gameRef, dispatch, modeRef, players }) {
     frameId = requestAnimationFrame(tick)
     return () => {
       cancelAnimationFrame(frameId)
-      if (moveTimer.current) clearTimeout(moveTimer.current)
+      for (const timer of pendingTimers.current.values()) clearTimeout(timer)
+      pendingTimers.current.clear()
     }
   }, [gameRef, dispatch, modeRef, players])
 }

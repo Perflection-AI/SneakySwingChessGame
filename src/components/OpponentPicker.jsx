@@ -11,6 +11,13 @@ const ROLES = { marcus: 'The Bomber', sofia: 'The Sniper', david: 'The Closer' }
 
 const FOLLOWING_IDS = ['marcus', 'sofia']
 
+function getTier(val) {
+  if (val >= 9) return 'S'
+  if (val >= 7) return 'A'
+  if (val >= 5) return 'B'
+  return 'C'
+}
+
 function tryLoad(url) {
   return new Promise(resolve => {
     const img = new Image()
@@ -90,21 +97,16 @@ function OpponentCard({ player, images, isSelected, onToggle, meta }) {
           </div>
         </div>
         <div className="opp-card-stats">
-          {STAT_KEYS.map(s => (
-            <div key={s.key} className="opp-stat">
-              <span className="opp-stat-label" style={{ color: s.color }}>{s.label}</span>
-              <div className="opp-stat-bar-track">
-                <div
-                  className="opp-stat-bar-fill"
-                  style={{
-                    width: `${(player.stats[s.key] / 10) * 100}%`,
-                    background: s.color,
-                  }}
-                />
+          {STAT_KEYS.map(s => {
+            const val = player.stats[s.key]
+            const tier = getTier(val)
+            return (
+              <div key={s.key} className="opp-stat-badge" data-tier={tier}>
+                <span className="opp-stat-val">{val}</span>
+                <span className="opp-stat-label">{s.label}</span>
               </div>
-              <span className="opp-stat-val" style={{ color: s.color }}>{player.stats[s.key]}</span>
-            </div>
-          ))}
+            )
+          })}
           {meta?.distance && (
             <span className="opp-distance">{meta.distance}</span>
           )}
@@ -114,9 +116,9 @@ function OpponentCard({ player, images, isSelected, onToggle, meta }) {
   )
 }
 
-const TABS = [
-  { id: 'following', label: '关注' },
-  { id: 'nearby', label: '附近' },
+const SECTIONS = [
+  { id: 'following', label: 'Following' },
+  { id: 'nearby', label: 'Nearby' },
 ]
 
 // Per-player metadata (online status, distance)
@@ -128,7 +130,6 @@ const PLAYER_META = {
 
 export default function OpponentPicker({ aiPlayers, selected, onToggle, onConfirm, onBack }) {
   const [imageMap, setImageMap] = useState({})
-  const [tab, setTab] = useState('following')
 
   useEffect(() => {
     let cancelled = false
@@ -145,7 +146,11 @@ export default function OpponentPicker({ aiPlayers, selected, onToggle, onConfir
 
   const following = aiPlayers.filter(p => FOLLOWING_IDS.includes(p.id))
   const nearby = aiPlayers.filter(p => !FOLLOWING_IDS.includes(p.id))
-  const visible = tab === 'following' ? following : nearby
+
+  const sections = [
+    { ...SECTIONS[0], players: following },
+    { ...SECTIONS[1], players: nearby },
+  ]
 
   return (
     <div className="opp-container">
@@ -162,31 +167,26 @@ export default function OpponentPicker({ aiPlayers, selected, onToggle, onConfir
         <span className="opp-subtitle">Select who you want to challenge</span>
       </div>
 
-      <div className="opp-tabs">
-        {TABS.map(t => (
-          <button
-            key={t.id}
-            className={`opp-tab${tab === t.id ? ' opp-tab-active' : ''}`}
-            onClick={() => setTab(t.id)}
-          >
-            {t.label}
-            <span className="opp-tab-count">
-              {t.id === 'following' ? following.length : nearby.length}
-            </span>
-          </button>
-        ))}
-      </div>
-
-      <div className="opp-grid">
-        {visible.map(p => (
-          <OpponentCard
-            key={p.id}
-            player={p}
-            images={imageMap[p.id] || []}
-            isSelected={selected.includes(p.id)}
-            onToggle={() => onToggle(p.id)}
-            meta={PLAYER_META[p.id]}
-          />
+      <div className="opp-scroll">
+        {sections.map(sec => (
+          <div key={sec.id} className="opp-section">
+            <div className="opp-section-header">
+              <span className="opp-section-label">{sec.label}</span>
+              <span className="opp-section-count">{sec.players.length}</span>
+            </div>
+            <div className="opp-grid">
+              {sec.players.map(p => (
+                <OpponentCard
+                  key={p.id}
+                  player={p}
+                  images={imageMap[p.id] || []}
+                  isSelected={selected.includes(p.id)}
+                  onToggle={() => onToggle(p.id)}
+                  meta={PLAYER_META[p.id]}
+                />
+              ))}
+            </div>
+          </div>
         ))}
       </div>
 

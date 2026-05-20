@@ -132,7 +132,7 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
     if (map?.holePlan?.length > 0) {
       const plan = map.holePlan[holeIndex % map.holePlan.length]
       if (plan) {
-        return generateHoleFromMap(holeIndex, [plan.startPt, plan.endPt], playerCount)
+        return generateHoleFromMap(holeIndex, plan, playerCount)
       }
     }
     const par = PAR_LAYOUT[holeIndex]

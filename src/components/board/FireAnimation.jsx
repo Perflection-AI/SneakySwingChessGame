@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
+import appConfig from '../../appConfig'
 
-const FRAME_DURATION = 100
+const FRAME_DURATION = appConfig.game.timing.introFrameDuration
 
 // ─── Shared image cache ───
 const imageCache = new Map()
