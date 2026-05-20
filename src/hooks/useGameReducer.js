@@ -97,8 +97,11 @@ function spawnFieldCards(positions, holePos) {
 
 function makeHole(holeIndex, playerCount) {
   const map = appConfig.map
-  if (map?.imageUrl && map.points.length >= 2) {
-    return generateHoleFromMap(holeIndex, map.points, playerCount)
+  if (map?.holePlan?.length > 0) {
+    const plan = map.holePlan[holeIndex % map.holePlan.length]
+    if (plan) {
+      return generateHoleFromMap(holeIndex, [plan.startPt, plan.endPt], playerCount)
+    }
   }
   const par = PAR_LAYOUT[holeIndex]
   return generateHoleForPar(par, playerCount)
@@ -498,7 +501,8 @@ function gameReducer(state, action) {
     case 'DEAL_CARD': {
       if (!isCardsEnabled()) return state
       if (state.hand.length >= 4) return state
-      return state
+      const cardId = dealCard(getPool(appConfig.cards.deckType))
+      return { ...state, hand: [...state.hand, cardId] }
     }
 
     case 'USE_CARD': {

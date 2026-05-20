@@ -1,78 +1,46 @@
 import { useState, useMemo, useRef, useCallback, useEffect } from 'react'
-import { YD_TO_PCT, distPct } from '../utils/shotPhysics'
+import { computeStatsFromTraining } from '../data/trainingRecords'
+import { SWING_ISSUES, applySwingIssue, YD_TO_PCT, distPct } from '../utils/shotPhysics'
 import Board from './Board'
 import Palette from '../Palette'
-import appConfig from '../appConfig'
 import './TrainingPicker.css'
 
 const STAT_META = [
   { key: 'power', label: 'PWR', color: '#EF4444' },
   { key: 'aim', label: 'AIM', color: '#008BFF' },
-  { key: 'nerve', label: 'NRV', color: '#719241' },
+  { key: 'touch', label: 'TCH', color: '#719241' },
 ]
 
-const IMAGES = Array.from({ length: 10 }, (_, i) => `/mock-record/day-1/P_${i + 1}.jpg`)
-const CLUBS = ['Driver', '6-Iron', '7-Iron', '8-Iron', '9-Iron', 'PW', 'SW', 'GW', '5-Iron', 'Putter']
-const ARCHETYPE_PROGRESSION = ['Raw Talent', 'Wildcard', 'Steady Eddie', 'The Bomber', 'The Closer']
-
-function randInt(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min }
-function rand(min, max) { return min + Math.random() * (max - min) }
-
-const PROGRESSION = [
-  { radarMin: 2, radarMax: 4.5, scoreMin: 25, scoreMax: 50, stabMin: 1, stabMax: 2 },
-  { radarMin: 3, radarMax: 5.5, scoreMin: 35, scoreMax: 60, stabMin: 1, stabMax: 3 },
-  { radarMin: 4, radarMax: 6.5, scoreMin: 45, scoreMax: 70, stabMin: 2, stabMax: 4 },
-  { radarMin: 5, radarMax: 7.5, scoreMin: 55, scoreMax: 80, stabMin: 2, stabMax: 5 },
-  { radarMin: 6, radarMax: 9,   scoreMin: 65, scoreMax: 95, stabMin: 3, stabMax: 5 },
-]
-
-function generateTrainingRecords() {
-  return Array.from({ length: 5 }, (_, dayIdx) => {
-    const prog = PROGRESSION[dayIdx]
-    const swingCount = randInt(5, 10)
-    const swings = Array.from({ length: swingCount }, (_, i) => ({
-      id: `swing_${dayIdx}_${i}`,
-      club: CLUBS[randInt(0, CLUBS.length - 1)],
-      score: randInt(prog.scoreMin, prog.scoreMax),
-      rotation: +rand(prog.radarMin, prog.radarMax).toFixed(1),
-      sequencing: +rand(prog.radarMin, prog.radarMax).toFixed(1),
-      balance: +rand(prog.radarMin, prog.radarMax).toFixed(1),
-      planeControl: +rand(prog.radarMin, prog.radarMax).toFixed(1),
-      impactControl: +rand(prog.radarMin, prog.radarMax).toFixed(1),
-      stability: randInt(prog.stabMin, prog.stabMax),
-    }))
-    const avgScore = Math.round(swings.reduce((s, sw) => s + sw.score, 0) / swings.length)
-    const date = new Date(2026, 4, 13 - dayIdx)
-    return {
-      id: `day_${dayIdx}`,
-      date: date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
-      swingCount, avgScore,
-      archetype: ARCHETYPE_PROGRESSION[dayIdx],
-      swings,
-    }
-  })
+function tierOf(score) {
+  if (score >= 80) return 'S'
+  if (score >= 60) return 'A'
+  if (score >= 40) return 'B'
+  return 'C'
 }
 
-function computeStats(day) {
-  const s = day.swings, n = s.length
-  const avgRotation = s.reduce((a, w) => a + w.rotation, 0) / n
-  const avgSequencing = s.reduce((a, w) => a + w.sequencing, 0) / n
-  const avgBalance = s.reduce((a, w) => a + w.balance, 0) / n
-  const avgPlane = s.reduce((a, w) => a + w.planeControl, 0) / n
-  const avgImpact = s.reduce((a, w) => a + w.impactControl, 0) / n
-  const avgStab = s.reduce((a, w) => a + w.stability, 0) / n
-  const power = Math.max(1, Math.min(10, Math.round((avgRotation + avgSequencing) / 2)))
-  const aim = Math.max(1, Math.min(10, Math.round((avgPlane + avgImpact) / 2)))
-  const nerve = Math.max(1, Math.min(10, Math.round((avgBalance + avgStab) / 2)))
-  return { power, aim, nerve }
+function tierColor(score) {
+  if (score >= 80) return '#FFD700'
+  if (score >= 60) return '#719241'
+  if (score >= 40) return '#5B9BD5'
+  return '#B0B0B0'
 }
-
-function statTier(v) { return v >= 8 ? 'S' : v >= 6 ? 'A' : v >= 4 ? 'B' : 'C' }
-function tierColor(v) { return v >= 80 ? '#FFD700' : v >= 60 ? '#719241' : v >= 40 ? '#5B9BD5' : '#B0B0B0' }
-function scoreTier(v) { return v >= 80 ? 'S' : v >= 60 ? 'A' : v >= 40 ? 'B' : 'C' }
 
 const LEVEL_THRESHOLDS = [0, 50, 120, 200, 300, 420, 560, 720, 900, 1100]
-function getLevel(xp) { for (let i = LEVEL_THRESHOLDS.length - 1; i >= 0; i--) if (xp >= LEVEL_THRESHOLDS[i]) return i + 1; return 1 }
+
+function statTier(val) {
+  if (val >= 8) return 'S'
+  if (val >= 6) return 'A'
+  if (val >= 4) return 'B'
+  return 'C'
+}
+
+function getLevel(xp) {
+  for (let i = LEVEL_THRESHOLDS.length - 1; i >= 0; i--) {
+    if (xp >= LEVEL_THRESHOLDS[i]) return i + 1
+  }
+  return 1
+}
+
 function getLevelProgress(xp) {
   const lv = getLevel(xp)
   const cur = LEVEL_THRESHOLDS[lv - 1] || 0
@@ -89,16 +57,34 @@ function classifyShot(distYd) {
   return { grade: 'rough', xp: 2, label: 'ROUGH', color: '#EF4444' }
 }
 
-const SESSION_THUMBS = Array.from({ length: 5 }, () =>
-  Array.from({ length: randInt(4, 7) }, () => ({
+const IMAGES = Array.from({ length: 10 }, (_, i) => `/mock-record/day-1/P_${i + 1}.jpg`)
+const CLUBS = ['Driver', '6-Iron', '7-Iron', '8-Iron', '9-Iron', 'PW', 'SW', 'GW', '5-Iron', 'Putter']
+
+function randInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1))
+}
+
+function makeSessions(count) {
+  return Array.from({ length: count }, () => ({
     src: IMAGES[randInt(0, IMAGES.length - 1)],
     club: CLUBS[randInt(0, CLUBS.length - 1)],
     score: randInt(30, 95),
   }))
-)
+}
 
-export default function TrainingPicker({ onSelectTraining }) {
-  const [trainingRecords] = useState(() => generateTrainingRecords())
+const SESSION_THUMBS = [makeSessions(7), makeSessions(5), makeSessions(8), makeSessions(4), makeSessions(6)]
+
+function StatBadge({ value, label, color, size = 'sm' }) {
+  const tier = value >= 8 ? 'S' : value >= 6 ? 'A' : value >= 4 ? 'B' : 'C'
+  return (
+    <div className={`tp-stat-badge tp-stat-badge-${size}`} data-tier={tier}>
+      <span className="tp-stat-badge-val">{value}</span>
+      <span className="tp-stat-badge-label">{label}</span>
+    </div>
+  )
+}
+
+export default function TrainingPicker({ trainingRecords, onSelectTraining }) {
   const [selectedIdx, setSelectedIdx] = useState(null)
   const [practiceStats, setPracticeStats] = useState({
     totalShots: 0, holedCount: 0, bestDistanceYd: Infinity,
@@ -111,41 +97,72 @@ export default function TrainingPicker({ onSelectTraining }) {
   const prevSelectedIdx = useRef(null)
 
   const selectedDay = selectedIdx !== null ? trainingRecords[selectedIdx] : null
-  const playerStats = useMemo(() => selectedDay ? computeStats(selectedDay) : null, [selectedDay])
+  const playerStats = useMemo(() => {
+    if (!selectedDay) return null
+    return computeStatsFromTraining(selectedDay)
+  }, [selectedDay])
+
+  const effectiveStats = useMemo(() => {
+    if (!playerStats) return null
+    return applySwingIssue(playerStats, playerStats.issue)
+  }, [playerStats])
+
   const inPractice = selectedIdx !== null
 
   useEffect(() => {
     if (prevSelectedIdx.current !== selectedIdx && selectedIdx !== null) {
-      setPracticeStats({ totalShots: 0, holedCount: 0, bestDistanceYd: Infinity, currentStreak: 0, bestStreak: 0, totalAccuracyYd: 0, xp: 0 })
-      setShotHistory([]); setShotLabel(null)
+      setPracticeStats({
+        totalShots: 0, holedCount: 0, bestDistanceYd: Infinity,
+        currentStreak: 0, bestStreak: 0, totalAccuracyYd: 0, xp: 0,
+      })
+      setShotHistory([])
+      setShotLabel(null)
     }
     prevSelectedIdx.current = selectedIdx
   }, [selectedIdx])
 
-  useEffect(() => () => { if (labelTimeout.current) clearTimeout(labelTimeout.current) }, [])
+  useEffect(() => {
+    return () => { if (labelTimeout.current) clearTimeout(labelTimeout.current) }
+  }, [])
+
+  const testConfig = useMemo(() => {
+    if (!playerStats) return { stats: { power: 5, aim: 5, touch: 5 }, issue: 'none' }
+    return { stats: { power: playerStats.power, aim: playerStats.aim, touch: playerStats.touch }, issue: playerStats.issue || 'none' }
+  }, [playerStats])
 
   const practicePlayers = useMemo(() => {
     if (!playerStats || !selectedDay) return []
     return [{
-      id: 'you', name: 'You', abbr: 'YOU', score: selectedDay.avgScore,
-      color: Palette.red[700], stats: playerStats,
-      curse: { issue: 'None', desc: '', effect: { stat: null, mod: 0, label: '' } },
+      id: 'you',
+      name: 'You',
+      abbr: 'YOU',
+      score: selectedDay.avgScore,
+      color: Palette.red[700],
+      stats: playerStats,
+      issue: playerStats.issue,
+      photoDir: '/mock-record/day-1',
     }]
   }, [playerStats, selectedDay])
 
   const handleStart = () => {
     if (!selectedDay || !playerStats) return
-    onSelectTraining?.({ day: selectedDay, stats: playerStats })
+    onSelectTraining({ day: selectedDay, stats: playerStats })
   }
 
-  const handleShotResult = useCallback(({ endX, endY, holeX, holeY }) => {
+  const handleShotResult = useCallback(({ endX, endY, holeX, holeY, outcome }) => {
     const now = Date.now()
     if (now - lastShotTime.current < 300) return
     lastShotTime.current = now
 
     const distPctVal = distPct({ x: endX, y: endY }, { x: holeX, y: holeY })
     const distYd = distPctVal / YD_TO_PCT
-    const shot = { ...classifyShot(distYd), distYd: Math.round(distYd) }
+
+    let shot
+    if (outcome === 'holed' || outcome === 'miracle') {
+      shot = { grade: 'holed', xp: 50, label: outcome === 'miracle' ? 'MIRACLE!' : 'HOLED!', color: '#FFD700', distYd: 0 }
+    } else {
+      shot = { ...classifyShot(distYd), distYd: Math.round(distYd) }
+    }
 
     setPracticeStats(prev => {
       const isAccurate = shot.distYd <= 10
@@ -172,9 +189,14 @@ export default function TrainingPicker({ onSelectTraining }) {
   const level = getLevel(practiceStats.xp)
   const levelProgress = getLevelProgress(practiceStats.xp)
   const bestDistDisplay = practiceStats.bestDistanceYd === Infinity ? '--' : `${Math.round(practiceStats.bestDistanceYd)}yd`
+  const issueDef = playerStats?.issue && playerStats.issue !== 'none' ? SWING_ISSUES[playerStats.issue] : null
 
   const handleSelectDay = (i) => {
-    setSelectedIdx(prev => prev === i ? null : i)
+    if (selectedIdx === i) {
+      setSelectedIdx(null)
+    } else {
+      setSelectedIdx(i)
+    }
   }
 
   return (
@@ -188,10 +210,14 @@ export default function TrainingPicker({ onSelectTraining }) {
 
           <div className="tp-day-list">
             {trainingRecords.map((day, i) => {
-              const stats = computeStats(day)
-              const tier = scoreTier(day.avgScore)
+              const stats = computeStatsFromTraining(day)
+              const tier = tierOf(day.avgScore)
               return (
-                <div key={day.id} className="tp-day-card" onClick={() => setSelectedIdx(i)}>
+                <div
+                  key={day.id}
+                  className="tp-day-card"
+                  onClick={() => setSelectedIdx(i)}
+                >
                   <div className="tp-day-top">
                     <div className="tp-day-meta">
                       <span className="tp-day-num">DAY {i + 1}</span>
@@ -217,16 +243,16 @@ export default function TrainingPicker({ onSelectTraining }) {
                     </div>
                     <div className="tp-day-right">
                       <div className="tp-day-stat-row">
-                        {STAT_META.map(({ key, label }) => {
-                          const v = stats[key], t = statTier(v)
-                          return (
-                            <div key={key} className="tp-stat-badge" data-tier={t}>
-                              <span className="tp-stat-badge-val">{v}</span>
-                              <span className="tp-stat-badge-label">{label}</span>
-                            </div>
-                          )
-                        })}
+                        <StatBadge value={stats.power} label="PWR" color="#EF4444" />
+                        <StatBadge value={stats.aim} label="AIM" color="#008BFF" />
+                        <StatBadge value={stats.touch} label="TCH" color="#719241" />
                       </div>
+                      {stats.issue && stats.issue !== 'none' && (
+                        <div className="tp-day-debuff">
+                          <span className="tp-debuff-icon">!</span>
+                          <span className="tp-debuff-name">{SWING_ISSUES[stats.issue]?.label || stats.issue}</span>
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -235,7 +261,7 @@ export default function TrainingPicker({ onSelectTraining }) {
           </div>
 
           <div className="tp-summary">
-            <span className="tp-summary-empty">Select a day above to start practice</span>
+            <span className="tp-summary-empty">Select a day above to preview stats</span>
           </div>
         </>
       ) : (
@@ -248,29 +274,40 @@ export default function TrainingPicker({ onSelectTraining }) {
             </button>
 
             <div className="tp-pill-strip">
-              {trainingRecords.map((day, i) => (
-                <button
-                  key={day.id}
-                  className={`tp-pill${selectedIdx === i ? ' tp-pill-active' : ''}`}
-                  data-tier={scoreTier(day.avgScore)}
-                  onClick={() => handleSelectDay(i)}
-                >
-                  <span className="tp-pill-day">D{i + 1}</span>
-                  <span className="tp-pill-score">{day.avgScore}</span>
-                </button>
-              ))}
+              {trainingRecords.map((day, i) => {
+                const tier = tierOf(day.avgScore)
+                const active = selectedIdx === i
+                return (
+                  <button
+                    key={day.id}
+                    className={`tp-pill${active ? ' tp-pill-active' : ''}`}
+                    data-tier={tier}
+                    onClick={() => handleSelectDay(i)}
+                  >
+                    <span className="tp-pill-day">D{i + 1}</span>
+                    <span className="tp-pill-score">{day.avgScore}</span>
+                  </button>
+                )
+              })}
             </div>
 
             <div className="tp-practice-stats">
               {STAT_META.map(({ key, label }) => {
                 const val = playerStats?.[key] ?? 0
+                const tier = statTier(val)
                 return (
-                  <div key={key} className="tp-practice-stat" data-tier={statTier(val)}>
+                  <div key={key} className="tp-practice-stat" data-tier={tier}>
                     <span className="tp-practice-stat-val">{val}</span>
                     <span className="tp-practice-stat-label">{label}</span>
                   </div>
                 )
               })}
+              {issueDef && (
+                <div className="tp-practice-issue">
+                  <span className="tp-practice-issue-dot">!</span>
+                  <span className="tp-practice-issue-name">{issueDef.label}</span>
+                </div>
+              )}
             </div>
           </div>
 
@@ -279,6 +316,7 @@ export default function TrainingPicker({ onSelectTraining }) {
               players={practicePlayers}
               activePlayerId="you"
               mode="test"
+              testConfig={testConfig}
               onShotResult={handleShotResult}
             />
           </div>
@@ -333,7 +371,7 @@ export default function TrainingPicker({ onSelectTraining }) {
 
             <button className="tp-hud-match-btn" onClick={handleStart}>
               <span className="tp-hud-match-label">MATCH</span>
-              <span className="tp-hud-match-arrow">→</span>
+              <span className="tp-hud-match-arrow">&#x2192;</span>
             </button>
           </div>
         </>

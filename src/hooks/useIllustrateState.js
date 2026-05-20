@@ -47,12 +47,21 @@ function computeCellLayout() {
 
 export const ILLUSTRATE_CELLS = computeCellLayout()
 
+const DEFAULT_CONFIG = { paused: true, varyStat: 'power', baseStats: { power: 5, aim: 5, touch: 5 } }
+
 export function useIllustrateState(config) {
+  const safe = config || DEFAULT_CONFIG
   const ballsRef = useRef([])
   const [balls, setBalls] = useState([])
   const nextId = useRef(0)
-  const configRef = useRef(config)
-  configRef.current = config
+  const configRef = useRef(safe)
+  configRef.current = safe
+
+  const syncBalls = useCallback(() => {
+    if (ballsRef.current.length > 0) {
+      setBalls([...ballsRef.current])
+    }
+  }, [])
 
   const fireShots = useCallback(() => {
     const { varyStat, baseStats, paused } = configRef.current
@@ -92,25 +101,20 @@ export function useIllustrateState(config) {
   }, [])
 
   useEffect(() => {
-    if (config.paused) return
+    if (safe.paused) return
     const id = setInterval(fireShots, 500)
     return () => clearInterval(id)
-  }, [config.paused, fireShots])
+  }, [safe.paused, fireShots])
 
   useEffect(() => {
-    const raf = () => {
-      if (ballsRef.current.length > 0) {
-        setBalls([...ballsRef.current])
-      }
-    }
-    const id = setInterval(raf, 50)
+    const id = setInterval(syncBalls, 50)
     return () => clearInterval(id)
-  }, [])
+  }, [syncBalls])
 
   useEffect(() => {
     ballsRef.current = []
     setBalls([])
-  }, [config.varyStat, config.baseStats])
+  }, [safe.varyStat, safe.baseStats])
 
-  return { balls, ballsRef }
+  return { balls, ballsRef, syncBalls }
 }

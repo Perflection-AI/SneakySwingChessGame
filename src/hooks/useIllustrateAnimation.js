@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { FLIGHT_DURATION, FADE_DURATION } from '../utils/shotPhysics'
 
-export function useIllustrateAnimation(ballsRef, pausedRef) {
+export function useIllustrateAnimation(ballsRef, pausedRef, syncBalls) {
   const rafId = useRef(null)
 
   useEffect(() => {
@@ -39,6 +39,7 @@ export function useIllustrateAnimation(ballsRef, pausedRef) {
 
       if (changed) {
         ballsRef.current = next
+        syncBalls?.()
       }
 
       rafId.current = requestAnimationFrame(tick)
@@ -46,5 +47,5 @@ export function useIllustrateAnimation(ballsRef, pausedRef) {
 
     rafId.current = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(rafId.current)
-  }, [ballsRef, pausedRef])
+  }, [ballsRef, pausedRef, syncBalls])
 }

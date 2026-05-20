@@ -130,7 +130,10 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
   const makeHole = useCallback((holeIndex, playerCount) => {
     const map = appConfig.map
     if (map?.holePlan?.length > 0) {
-      return generateHoleFromMap(holeIndex, playerCount)
+      const plan = map.holePlan[holeIndex % map.holePlan.length]
+      if (plan) {
+        return generateHoleFromMap(holeIndex, [plan.startPt, plan.endPt], playerCount)
+      }
     }
     const par = PAR_LAYOUT[holeIndex]
     return generateHoleForPar(par, playerCount)

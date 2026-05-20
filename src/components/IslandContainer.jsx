@@ -94,6 +94,8 @@ export default function IslandContainer() {
     appConfig.map.points = []
     appConfig.map.imageWidth = 0
     appConfig.map.imageHeight = 0
+    appConfig.map.holePlan = []
+    appConfig.map.transform = null
     setActivePlayerId('you')
   }, [])
 
