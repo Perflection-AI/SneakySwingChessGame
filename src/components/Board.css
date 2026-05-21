@@ -336,7 +336,7 @@
   100% { opacity: 0; transform: translate(-50%, -50%) translateY(-16px); }
 }
 
-/* Card pick hint flash */
+/* Card pick hint — stays visible while card picker is active */
 .card-pick-banner {
   position: absolute;
   top: 36%;
@@ -353,15 +353,13 @@
   color: #fff;
   background: #8B5CF6;
   white-space: nowrap;
-  animation: card-pick-flash 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: card-pick-pop 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-@keyframes card-pick-flash {
+@keyframes card-pick-pop {
   0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
-  15%  { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
-  25%  { transform: translate(-50%, -50%) scale(1); }
-  60%  { opacity: 1; }
-  100% { opacity: 0; transform: translate(-50%, -50%) translateY(-16px); }
+  60%  { transform: translate(-50%, -50%) scale(1.05); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 }
 
 /* Game exit button — top-left overlay */

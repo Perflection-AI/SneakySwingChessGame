@@ -201,12 +201,8 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
     recentTemplateIds.current = []
     precachePlayers(players)
     dispatch({ type: 'START_GAME', payload: { players } })
-    setTimeout(() => {
-      const gs = gameRef.current
-      applyFollowUpZoom(gs.playerPos[gs.turnIdx], gs.holePos)
-      dispatch({ type: 'SPAWN_FIELD_CARDS' })
-    }, 0)
-  }, [players, dispatch, gameRef, applyFollowUpZoom])
+    dispatch({ type: 'SPAWN_FIELD_CARDS' })
+  }, [players, dispatch])
 
   // --- Auto-start: 0.5s after entering game mode ---
 
@@ -477,15 +473,12 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
     const settleTimer = setTimeout(() => {
       dispatch({ type: 'CAMERA_SETTLED' })
     }, timing.cameraFollowUp)
-    // Skip camera move when someone holed — just wait for settle
-    if (!state.holedIn) {
-      const moveTimer = setTimeout(() => {
-        const ti = state.turnIdx
-        applyFollowUpZoom(state.playerPos[ti], state.holePos)
-      }, 250)
-      return () => { clearTimeout(settleTimer); clearTimeout(moveTimer) }
-    }
-    return () => clearTimeout(settleTimer)
+    // Always relocate camera to next player, even during holed celebration
+    const moveTimer = setTimeout(() => {
+      const ti = state.turnIdx
+      applyFollowUpZoom(state.playerPos[ti], state.holePos)
+    }, 250)
+    return () => { clearTimeout(settleTimer); clearTimeout(moveTimer) }
   }, [mode, state.primaryStatus, state.secondaryStatus, state.turnIdx,
       state.playerPos, state.holePos, state.gameFinished, state.holedIn,
       applyFollowUpZoom, dispatch])
@@ -608,7 +601,7 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
           />
         ) : (
           <>
-            {mode === 'game' && state.primaryStatus !== 'off' && (
+            {mode === 'game' && appConfig.debug && state.primaryStatus !== 'off' && (
               <div className="phase-badge">
                 <span className="pb-primary">{state.primaryStatus}</span>
                 {state.secondaryStatus && <span className="pb-secondary">{state.secondaryStatus}</span>}
@@ -627,8 +620,8 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
             {mode === 'game' && state.lastOutcome && state.primaryStatus === 'run' && (
               <ShotBanner outcome={state.lastOutcome} shotCount={state.shotCount} />
             )}
-            {mode === 'game' && cardPickFlash > 0 && state.secondaryStatus === 'card_picking' && state.cardPending && state.hand.length > 0 && state.turnIdx === 0 && (
-              <div key={cardPickFlash} className="card-pick-banner">PICK A CARD</div>
+            {mode === 'game' && state.cardPending && state.hand.length > 0 && state.turnIdx === 0 && introPlayer === null && (
+              <div key={cardPickFlash || 1} className="card-pick-banner">PICK A CARD</div>
             )}
             {mode === 'game' && !state.gameFinished && state.commentary?.length > 0 && (
               <div className="floating-commentary">

@@ -1,4 +1,6 @@
 const appConfig = {
+  debug: false,
+
   board: {
     aspectRatio: 1,
   },

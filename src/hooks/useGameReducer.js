@@ -162,7 +162,7 @@ function gameReducer(state, action) {
       return {
         ...state,
         primaryStatus: 'run',
-        secondaryStatus: 'card_picking',
+        secondaryStatus: 'camera_followup',
         savedSecondary: null,
         holeNumber: 1,
         holePos: firstHole.hole,
@@ -417,13 +417,9 @@ function gameReducer(state, action) {
     }
 
     case 'CAMERA_SETTLED': {
-      // If someone just holed, don't transition to card_picking — wait for RESUME_AFTER_HOLE
-      if (state.holedIn) {
-        return {
-          ...state,
-          secondaryStatus: 'settled',
-        }
-      }
+      // holedIn no longer short-circuits — camera relocates and card_picking still
+      // transitions normally. The holedIn flag only blocks auto-firing in Board.jsx
+      // until RESUME_AFTER_HOLE clears it after the celebration delay.
       // Stage-based lifecycle: stage completes when all active players have swung
       const stageJustCompleted = state.swingsThisStage >= state.stageActivePlayerCount
 
@@ -533,10 +529,12 @@ function gameReducer(state, action) {
     }
 
     case 'RESUME_AFTER_HOLE': {
+      const pending = isCardsEnabled() ? state.hand.length > 0 : false
       return {
         ...state,
         holedIn: false,
         secondaryStatus: 'card_picking',
+        cardPending: pending,
         activeCard: null,
         activeWeather: null,
       }
