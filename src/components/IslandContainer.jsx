@@ -346,7 +346,7 @@ export default function IslandContainer() {
 
   return (
     <div className={`app-layout${isMobile ? ' app-layout-mobile' : ''}`} style={isMobile ? { height: viewportHeight + 'px' } : undefined}>
-      {!isMobile && appConfig.debug && <aside className="debug-panel">
+      {!isMobile && <aside className="debug-panel">
         <div className="debug-title">Debug</div>
         <div className="debug-label">Mode</div>
         <div className="debug-buttons">

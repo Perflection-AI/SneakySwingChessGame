@@ -518,6 +518,41 @@
 .ball-glow-golden { stroke: #FFD700; opacity: 0.5; }
 .ball-trail-golden { stroke: #FFD700; opacity: 0.7; }
 
+/* --- Nuclear bomb flash: red/black/white flicker --- */
+
+.ball-dot-nuclear {
+  animation: nuclear-ball-flicker 0.15s steps(1) infinite;
+}
+.ball-glow-nuclear {
+  animation: nuclear-glow-flicker 0.15s steps(1) infinite;
+}
+.ball-trail-nuclear {
+  animation: nuclear-trail-flicker 0.15s steps(1) infinite;
+  opacity: 0.8;
+}
+.ball-landed-nuclear {
+  animation: nuclear-ball-flicker 0.15s steps(1) infinite;
+}
+
+@keyframes nuclear-ball-flicker {
+  0%   { fill: #EF4444; }
+  33%  { fill: #000; }
+  66%  { fill: #fff; }
+  100% { fill: #EF4444; }
+}
+@keyframes nuclear-glow-flicker {
+  0%   { stroke: #EF4444; opacity: 0.6; }
+  33%  { stroke: #000; opacity: 0.4; }
+  66%  { stroke: #fff; opacity: 0.7; }
+  100% { stroke: #EF4444; opacity: 0.6; }
+}
+@keyframes nuclear-trail-flicker {
+  0%   { stroke: #EF4444; }
+  33%  { stroke: #000; }
+  66%  { stroke: #fff; }
+  100% { stroke: #EF4444; }
+}
+
 /* --- Type 2: Weather overlay --- */
 
 .weather-overlay {

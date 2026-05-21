@@ -79,9 +79,10 @@ function currentPool() {
   return getPool(appConfig.cards?.deckType || 'base')
 }
 
-function spawnFieldCards(positions, holePos) {
+function spawnFieldCards(positions, holePos, par) {
   const cfg = appConfig.cards.field
-  const count = cfg.minCount + Math.floor(Math.random() * (cfg.maxCount - cfg.minCount + 1))
+  const [min, max] = cfg.countByPar[par] || [3, 5]
+  const count = min + Math.floor(Math.random() * (max - min + 1))
   // Use average player position as start reference
   const avgX = positions.reduce((s, p) => s + p.x, 0) / positions.length
   const avgY = positions.reduce((s, p) => s + p.y, 0) / positions.length
@@ -462,7 +463,8 @@ function gameReducer(state, action) {
 
     case 'SPAWN_FIELD_CARDS': {
       if (!isCardsEnabled()) return state
-      const newFieldCards = spawnFieldCards(state.playerPos, state.holePos)
+      const curPar = PAR_LAYOUT[(state.holeNumber - 1) % 18]
+      const newFieldCards = spawnFieldCards(state.playerPos, state.holePos, curPar)
       return {
         ...state,
         fieldCards: newFieldCards,
@@ -486,8 +488,9 @@ function gameReducer(state, action) {
         newScorecard[pid][hn - 1] = ts[i]
       })
       // Generate field cards for the new hole
+      const nextPar = PAR_LAYOUT[(nextHoleNum - 1) % 18]
       const newFieldCards = isCardsEnabled()
-        ? spawnFieldCards(positions, hole)
+        ? spawnFieldCards(positions, hole, nextPar)
         : []
       return {
         ...state,
@@ -633,9 +636,10 @@ function gameReducer(state, action) {
 
     case 'NUCLEAR_FLASH_COMPLETE': {
       const nextHoleNum = state.holeNumber
+      const curPar = PAR_LAYOUT[(nextHoleNum - 1) % 18]
       const newHole = makeHole(nextHoleNum - 1, state.playerIds.length)
       const resetFieldCards = isCardsEnabled()
-        ? spawnFieldCards(newHole.positions, newHole.hole)
+        ? spawnFieldCards(newHole.positions, newHole.hole, curPar)
         : []
       return {
         ...state,

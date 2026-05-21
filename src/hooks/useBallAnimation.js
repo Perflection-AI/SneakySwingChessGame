@@ -87,7 +87,7 @@ export function useBallAnimation({ gameRef, dispatch, modeRef, players }) {
 
           updated.push({ ...ball })
         } else if (ball.phase === 'fading') {
-          const fadeDur = modeRef.current === 'test' ? 3 : FADE_DURATION
+          const fadeDur = modeRef.current === 'test' ? 0.5 : FADE_DURATION
           const f = ball.fade + dt / fadeDur
           ball.fade = f
           if (f >= 1) {

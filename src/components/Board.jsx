@@ -251,13 +251,65 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
     panRef.current = { x: 0, y: 0 }
     // Reset to initial positions when entering test mode
     if (mode === 'test') {
-      const initPos = Array.from({ length: players.length }, () => ({ x: 15, y: 50 }))
-      dispatch({ type: 'TRANSITION_HOLE', payload: { nextHoleNum: 1, hole: { x: 85, y: 50 }, positions: initPos } })
+      const initPos = Array.from({ length: players.length }, () => ({ x: 50, y: 50 }))
+      dispatch({ type: 'TRANSITION_HOLE', payload: { nextHoleNum: 1, hole: { x: 50, y: 12 }, positions: initPos } })
       setTimeout(() => {
-        applyAutoZoom(initPos, { x: 85, y: 50 })
+        applyAutoZoom(initPos, { x: 50, y: 12 })
       }, 0)
     }
   }, [mode, players, dispatch, setZoom, setPan, panRef, applyAutoZoom])
+
+  // --- Test mode: auto-fire shots toward hole ---
+
+  useEffect(() => {
+    if (mode !== 'test') return
+    if (!testConfig?.stats) return
+
+    const interval = setInterval(() => {
+      const gs = gameRef.current
+      let pos = gs.playerPos[aIdxRef.current]
+      const hole = gs.holePos
+      const tc = testConfigRef.current
+      if (!pos || !tc?.stats) return
+
+      // Don't fire if there's already a flying ball
+      if (gs.balls.some(b => b.phase === 'flying')) return
+
+      // If too close to hole or past it, reset to starting position
+      const distToHole = distPct(pos, hole) / YD_TO_PCT
+      if (distToHole < 3) {
+        const resetPos = { x: 50, y: 50 }
+        const newPos = [...gs.playerPos]
+        newPos[aIdxRef.current] = resetPos
+        dispatch({ type: 'TICK_ANIMATION', payload: { balls: gs.balls, playerPos: newPos } })
+        return
+      }
+
+      const landing = calculateTestLanding(pos.x, pos.y, hole.x, hole.y, tc.stats, tc.issue)
+      if (!landing) return
+
+      onShotResult?.({
+        endX: landing.endX, endY: landing.endY,
+        holeX: hole.x, holeY: hole.y,
+        outcome: landing.outcome
+      })
+
+      const ball = {
+        id: Date.now() + Math.random(),
+        sx: pos.x, sy: pos.y,
+        ex: landing.endX, ey: landing.endY,
+        progress: 0, phase: 'flying', fade: 0,
+        outcome: landing.outcome,
+        playerIdx: aIdxRef.current,
+      }
+
+      const newPos = [...gs.playerPos]
+      newPos[aIdxRef.current] = { x: landing.endX, y: landing.endY }
+      dispatch({ type: 'TICK_ANIMATION', payload: { balls: [...gs.balls, ball], playerPos: newPos } })
+    }, 120)
+
+    return () => clearInterval(interval)
+  }, [mode, testConfig?.stats])
 
   // --- Card pick hint flash ---
 
@@ -294,33 +346,8 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
   testConfigRef.current = testConfig
 
   const handleClick = useCallback((e) => {
-    if (modeRef.current !== 'test') return
-    const el = boardRef.current
-    if (!el) return
-    const rect = el.getBoundingClientRect()
-    const mx = ((e.clientX - rect.left) / rect.width) * 100
-    const my = ((e.clientY - rect.top) / rect.height) * 100
-
-    const pp = gameRef.current.playerPos[aIdxRef.current]
-    const tc = testConfigRef.current
-    const landing = calculateTestLanding(pp.x, pp.y, mx, my, tc.stats, tc.issue)
-    if (!landing) return
-
-    onShotResult?.({
-      endX: landing.endX, endY: landing.endY,
-      holeX: gameRef.current?.hole?.x, holeY: gameRef.current?.hole?.y,
-      outcome: landing.outcome
-    })
-
-    const ball = {
-      id: Date.now() + Math.random(),
-      sx: pp.x, sy: pp.y,
-      ex: landing.endX, ey: landing.endY,
-      progress: 0, phase: 'flying', fade: 0,
-      outcome: null,
-    }
-    dispatch({ type: 'TICK_ANIMATION', payload: { balls: [...gameRef.current.balls, ball] } })
-  }, [dispatch, gameRef])
+    // Click-to-fire disabled — test mode auto-fires
+  }, [])
 
   // --- Game mode: fire shot ---
 
@@ -650,7 +677,7 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
                   clutchRadius={CLUTCH_THRESHOLD_YD * YD_TO_PCT}
                 />
               )}
-              <BallLayer balls={state.balls} ydToPct={YD_TO_PCT} ballEffect={ballEffect} weatherActive={weatherActive} penaltyPlayerIdxs={penaltyPlayerIdxs} />
+              <BallLayer balls={state.balls} ydToPct={YD_TO_PCT} ballEffect={ballEffect} weatherActive={weatherActive} penaltyPlayerIdxs={penaltyPlayerIdxs} nuclearFlash={state.nuclearPhase === 'flash'} />
               {appConfig.cards?.enabled && state.fieldCards.length > 0 && state.fieldCards.map((fc, idx) => (
                 <FieldCardMarker
                   key={`fc-${idx}-${fc.cardId}`}

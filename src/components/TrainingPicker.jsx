@@ -63,15 +63,6 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
   const [sessionThumbs, setSessionThumbs] = useState([])
   const lastShotTime = useRef(0)
   const labelTimeout = useRef(null)
-  const listRef = useRef(null)
-
-  // Scroll selected card into view when test board appears
-  useEffect(() => {
-    if (selectedIdx !== null && listRef.current) {
-      const cards = listRef.current.querySelectorAll('.tp-day-card')
-      cards[selectedIdx]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-    }
-  }, [selectedIdx])
 
   const subtitle = useMemo(() => SARCASTIC_SUBTITLES[Math.floor(Math.random() * SARCASTIC_SUBTITLES.length)], [])
 
@@ -164,7 +155,7 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
         <span className="tp-subtitle">{subtitle}</span>
       </div>
 
-      <div className="tp-day-list" ref={listRef}>
+      <div className="tp-day-list">
         {trainingRecords.map((day, i) => {
           const stats = computeStatsFromTraining(day)
           const tier = tierOf(day.avgScore)

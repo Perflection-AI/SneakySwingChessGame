@@ -1,6 +1,4 @@
 const appConfig = {
-  debug: false,
-
   board: {
     aspectRatio: 1,
   },
@@ -9,8 +7,7 @@ const appConfig = {
     enabled: false,
     deckType: 'base',
     field: {
-      minCount: 4,              // min cards spawned per hole
-      maxCount: 7,              // max cards spawned per hole
+      countByPar: { 3: [3, 5], 4: [5, 7], 5: [7, 10] },
       acquireRadiusYd: 25,      // ball landing within this radius acquires card
       pathStartPct: 0.05,       // spawn zone start along player→hole path
       pathEndPct: 0.95,         // spawn zone end along player→hole path

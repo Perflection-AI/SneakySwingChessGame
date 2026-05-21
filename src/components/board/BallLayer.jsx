@@ -1,4 +1,4 @@
-export default function BallLayer({ balls, ydToPct, ballEffect, weatherActive, penaltyPlayerIdxs }) {
+export default function BallLayer({ balls, ydToPct, ballEffect, weatherActive, penaltyPlayerIdxs, nuclearFlash }) {
   const penaltySet = penaltyPlayerIdxs?.length ? new Set(penaltyPlayerIdxs) : null
 
   return (
@@ -14,14 +14,17 @@ export default function BallLayer({ balls, ydToPct, ballEffect, weatherActive, p
 
         const isPenalty = penaltySet?.has(b.playerIdx)
         const isGolden = ballEffect === 'golden' && !isPenalty
-        const trailClass = isGolden ? 'ball-trail ball-trail-golden'
+        const trailClass = nuclearFlash ? 'ball-trail ball-trail-nuclear'
+          : isGolden ? 'ball-trail ball-trail-golden'
           : isPenalty ? 'ball-trail ball-trail-penalty'
           : weatherActive ? 'ball-trail ball-trail-weather'
           : 'ball-trail'
-        const dotClass = isGolden ? 'ball-dot ball-dot-golden'
+        const dotClass = nuclearFlash ? 'ball-dot ball-dot-nuclear'
+          : isGolden ? 'ball-dot ball-dot-golden'
           : isPenalty ? 'ball-dot ball-dot-penalty'
           : 'ball-dot'
-        const glowClass = isGolden ? 'ball-glow ball-glow-golden'
+        const glowClass = nuclearFlash ? 'ball-glow ball-glow-nuclear'
+          : isGolden ? 'ball-glow ball-glow-golden'
           : isPenalty ? 'ball-glow ball-glow-penalty'
           : 'ball-glow'
 
@@ -40,7 +43,7 @@ export default function BallLayer({ balls, ydToPct, ballEffect, weatherActive, p
               </>
             )}
             {b.phase === 'fading' && b.outcome !== 'holed' && (
-              <circle className="ball-landed" cx={b.ex} cy={b.ey} r="0.6" />
+              <circle className={nuclearFlash ? 'ball-landed ball-landed-nuclear' : 'ball-landed'} cx={b.ex} cy={b.ey} r="0.6" />
             )}
           </g>
         )
