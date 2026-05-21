@@ -1,0 +1,345 @@
+{
+  "reportId": "report_jb_1045",
+  "videoId": "video_jb_1045",
+  "userId": "user_jamie_balanced",
+  "title": "Face-on | Right-handed | Wedge",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775004500000,
+  "updatedAt": 1775004500000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "jb_1045/frame_0.jpg",
+    "P2": "jb_1045/frame_1.jpg",
+    "P3": "jb_1045/frame_2.jpg",
+    "P4": "jb_1045/frame_3.jpg",
+    "P5": "jb_1045/frame_4.jpg",
+    "P6": "jb_1045/frame_5.jpg",
+    "P7": "jb_1045/frame_6.jpg",
+    "P8": "jb_1045/frame_7.jpg",
+    "P9": "jb_1045/frame_8.jpg",
+    "P10": "jb_1045/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 45,
+        "P2_takeaway": 97,
+        "P3_halfway_back": 117,
+        "P4_top": 140,
+        "P5_early_downswing": 151,
+        "P6_pre_impact": 160,
+        "P7_impact": 169,
+        "P8_release": 173,
+        "P9_follow_through": 179,
+        "P10_end": 194
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 160,
+        "max_lead_shoulder_linear_speed_idx": 165,
+        "max_mid_hands_linear_speed_idx": 167,
+        "max_chest_rotational_speed_idx": 162,
+        "max_arm_rotational_speed_idx": 152,
+        "max_pelvis_rotational_speed_idx": 161
+      },
+      "processingDuration": 0.18,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 0.94,
+        "backswingDuration": 0.54,
+        "downswingDuration": 0.17,
+        "xFactorDegrees": -9.5,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.38,
+          "atTakeaway": 0.82,
+          "atEarlyDownswing": 2.2,
+          "atTop": 2.8,
+          "atImpact": -4.8
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.0,
+          "atTop": 40,
+          "atEarlyDownswing": 27.0,
+          "atImpact": 5.5,
+          "atFollowThrough": 18
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.5,
+          "atTop": 48,
+          "atEarlyDownswing": 34,
+          "atImpact": 3.0
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 88.8,
+          "leftShoulderHorizontalAbductionAtAddress": 93.8,
+          "rightShoulderHorizontalAbductionAtTop": 72.8,
+          "leftShoulderHorizontalAbductionAtTop": 79.8,
+          "rightShoulderHorizontalAbductionAtImpact": 79.8,
+          "leftShoulderHorizontalAbductionAtImpact": 102.8,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 39.5,
+          "leftElbowAtAddress": 26.5,
+          "rightElbowAtTop": 50.5,
+          "leftElbowAtTop": 43.5,
+          "rightElbowAtImpact": 57.5,
+          "leftElbowAtImpact": 51.5
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 27.0,
+          "rightKneeAtAddress": 30.5,
+          "leftKneeAtTop": 20.5,
+          "rightKneeAtTop": 27.5,
+          "leftKneeAtImpact": 22.5,
+          "rightKneeAtImpact": 25.8
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 54.0,
+          "leftHipFlexAtAddress": 53.5,
+          "rightHipFlexAtTop": 39.5,
+          "leftHipFlexAtTop": 36.5,
+          "rightHipFlexAtImpact": 44.0,
+          "leftHipFlexAtImpact": 41.0
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -46.0,
+          "leftWristFlexionAtAddress": -57.0,
+          "rightWristFlexionAtTop": 36.0,
+          "leftWristFlexionAtTop": 33.0,
+          "rightWristFlexionAtImpact": -25.0,
+          "leftWristFlexionAtImpact": -37.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 47.5,
+          "atTop": 42.0,
+          "atImpact": 39.5,
+          "maxDeviation": 8.0
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.018,
+          "atEarlyDownswing": -0.009,
+          "atTop": -0.04,
+          "atImpact": 0.012
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.005,
+          "atEarlyDownswing": -0.055,
+          "atTop": -0.08,
+          "atImpact": 0.01
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 420,
+          "pelvisMaxSpeedFrame": 161,
+          "torsoMaxSpeed": 490,
+          "torsoMaxSpeedFrame": 162,
+          "armMaxSpeed": 15,
+          "armMaxSpeedFrame": 152,
+          "leadHipMaxSpeed": 0.45,
+          "leadHipMaxSpeedFrame": 160,
+          "leadShoulderMaxSpeed": 1.55,
+          "leadShoulderMaxSpeedFrame": 165,
+          "midHandsMaxSpeed": 3.2,
+          "midHandsMaxSpeedFrame": 167,
+          "wristMaxSpeed": 3.5,
+          "wristMaxSpeedFrame": 168,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 45,
+      "tokenUsage": {
+        "input": 9230,
+        "output": 1710,
+        "total": 10940
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Par Machine",
+          "score": 55,
+          "potential": 3,
+          "stability": 3,
+          "comment": "Wedge is the best club by a margin — mostly because shorter swings hide the flaws. Spine deviates 8.0 deg, which is the same as every club, but with a wedge it matters less. Ball proximity to pin averages 20-25 feet. Not close enough for birdie, not far enough for bogey. Your wedge game is the golf equivalent of ordering a medium coffee — nobody complains, nobody celebrates.",
+          "vibe": {
+            "name": "Plain Coffee",
+            "value": 5.0
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 5.5
+            },
+            {
+              "name": "Sequencing",
+              "value": 5.3
+            },
+            {
+              "name": "Balance",
+              "value": 5.7
+            },
+            {
+              "name": "Plane Control",
+              "value": 5.5
+            },
+            {
+              "name": "Impact Control",
+              "value": 5.3
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 4,
+            "summary": "Sway of 0.04m at top. Same pattern as full swing. Less impactful on short shots but still present.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Lateral hip slide persists even on wedge. Same old sway.",
+                  "direction": {
+                    "x": -1,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "circle",
+                  "description": "Turn hips, don't slide. Keep weight over arches on every club.",
+                  "radius": 10
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "Spine at 39.5 deg — 8.0 deg lost. Same moderate posture loss as every club.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Same mild early extension pattern. Consistent in its mediocrity.",
+                  "direction": {
+                    "x": 1,
+                    "y": -0.5
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Stay in posture. Same advice as every club. One fix, all clubs improve.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Same Pattern, Shorter Swing",
+            "summary": "Wedge shows identical dynamics to full swing but shorter duration. Less time to go wrong = slightly better results.",
+            "phases": [
+              4,
+              5,
+              7
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Clock System",
+            "front_action": "Practice 8, 9, 10 o'clock wedge swings. Map distances. Your consistency will improve.",
+            "back_roast_title": "The 15-Foot Circle",
+            "back_roast_text": "Your wedge shots land in a consistent 15-foot circle around the pin. That's impressive until you realize it's 15 feet from the pin in every direction."
+          },
+          {
+            "front_title": "Divot Check",
+            "front_action": "Check where your divot starts relative to the ball. If inconsistent, the sway is the cause.",
+            "back_roast_title": "The Routine",
+            "back_roast_text": "Your wedge routine is so predictable that caddies could book tee times based on your ball position alone."
+          },
+          {
+            "front_title": "100-Yard Shot Repeater",
+            "front_action": "Hit 20 wedge shots to 100 yards. Track dispersion. Work on reducing the spread.",
+            "back_roast_title": "The Spreadsheet",
+            "back_roast_text": "Your wedge dispersion chart would make a perfect circle. Mathematical symmetry is beautiful, but you're here to make birdies."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 47.5 deg spine; 27.0 deg knee flex. Fine wedge posture."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — acceptable. Nothing special."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — slight sway, 2.5 deg spine lost."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 42.0 deg spine (5.5 deg lost). 48 deg turn. 0.04m sway. The usual."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — moderate. Average transition from an average top."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — mild posture loss beginning."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 39.5 deg — 8.0 deg total loss. Ball hits green somewhere near the pin."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — standard contact. Some spin, some roll."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — balanced enough for a wedge."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — ball within 20 feet. Two-putt. Par. Same story, different hole."
+          }
+        ]
+      }
+    }
+  }
+}

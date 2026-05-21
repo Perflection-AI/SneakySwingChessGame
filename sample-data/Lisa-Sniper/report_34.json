@@ -1,0 +1,356 @@
+{
+  "reportId": "report_ls_1034",
+  "videoId": "video_ls_1034",
+  "userId": "user_lisa_sniper",
+  "title": "Face-on | Right-handed | Hybrid",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775003400000,
+  "updatedAt": 1775003400000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "ls_1034/frame_0.jpg",
+    "P2": "ls_1034/frame_1.jpg",
+    "P3": "ls_1034/frame_2.jpg",
+    "P4": "ls_1034/frame_3.jpg",
+    "P5": "ls_1034/frame_4.jpg",
+    "P6": "ls_1034/frame_5.jpg",
+    "P7": "ls_1034/frame_6.jpg",
+    "P8": "ls_1034/frame_7.jpg",
+    "P9": "ls_1034/frame_8.jpg",
+    "P10": "ls_1034/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 34,
+        "P2_takeaway": 82,
+        "P3_halfway_back": 102,
+        "P4_top": 122,
+        "P5_early_downswing": 131,
+        "P6_pre_impact": 139,
+        "P7_impact": 146,
+        "P8_release": 150,
+        "P9_follow_through": 156,
+        "P10_end": 171
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 139,
+        "max_lead_shoulder_linear_speed_idx": 144,
+        "max_mid_hands_linear_speed_idx": 146,
+        "max_chest_rotational_speed_idx": 141,
+        "max_arm_rotational_speed_idx": 130,
+        "max_pelvis_rotational_speed_idx": 140
+      },
+      "processingDuration": 0.14,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.31,
+        "backswingDuration": 0.72,
+        "downswingDuration": 0.22,
+        "xFactorDegrees": -8.0,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.39,
+          "atTakeaway": 0.71,
+          "atEarlyDownswing": 1.82,
+          "atTop": 2.25,
+          "atImpact": -4.55
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 1.85,
+          "atTop": 34,
+          "atEarlyDownswing": 21.5,
+          "atImpact": 5.1,
+          "atFollowThrough": 18.5
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.1,
+          "atTop": 43,
+          "atEarlyDownswing": 31,
+          "atImpact": 2.9
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 89.9,
+          "leftShoulderHorizontalAbductionAtAddress": 94.9,
+          "rightShoulderHorizontalAbductionAtTop": 74.9,
+          "leftShoulderHorizontalAbductionAtTop": 81.9,
+          "rightShoulderHorizontalAbductionAtImpact": 81.9,
+          "leftShoulderHorizontalAbductionAtImpact": 104.9,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 39.8,
+          "leftElbowAtAddress": 26.8,
+          "rightElbowAtTop": 51.8,
+          "leftElbowAtTop": 44.8,
+          "rightElbowAtImpact": 57.8,
+          "leftElbowAtImpact": 51.8
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 23.5,
+          "rightKneeAtAddress": 27.0,
+          "leftKneeAtTop": 18.2,
+          "rightKneeAtTop": 25.2,
+          "leftKneeAtImpact": 20.8,
+          "rightKneeAtImpact": 24.1
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 48.2,
+          "leftHipFlexAtAddress": 47.7,
+          "rightHipFlexAtTop": 39.0,
+          "leftHipFlexAtTop": 36.0,
+          "rightHipFlexAtImpact": 42.6,
+          "leftHipFlexAtImpact": 39.6
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -44.2,
+          "leftWristFlexionAtAddress": -55.2,
+          "rightWristFlexionAtTop": 32.2,
+          "leftWristFlexionAtTop": 29.2,
+          "rightWristFlexionAtImpact": -28.2,
+          "leftWristFlexionAtImpact": -40.2,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 40.8,
+          "atTop": 39.5,
+          "atImpact": 39.1,
+          "maxDeviation": 1.7
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.001,
+          "atTakeaway": 0.016,
+          "atEarlyDownswing": -0.007,
+          "atTop": -0.029,
+          "atImpact": 0.006
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.004,
+          "atEarlyDownswing": -0.045,
+          "atTop": -0.065,
+          "atImpact": 0.006
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 370,
+          "pelvisMaxSpeedFrame": 140,
+          "torsoMaxSpeed": 440,
+          "torsoMaxSpeedFrame": 141,
+          "armMaxSpeed": 13.5,
+          "armMaxSpeedFrame": 130,
+          "leadHipMaxSpeed": 0.41,
+          "leadHipMaxSpeedFrame": 139,
+          "leadShoulderMaxSpeed": 1.48,
+          "leadShoulderMaxSpeedFrame": 144,
+          "midHandsMaxSpeed": 3.1,
+          "midHandsMaxSpeedFrame": 146,
+          "wristMaxSpeed": 3.4,
+          "wristMaxSpeedFrame": 147,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 43,
+      "tokenUsage": {
+        "input": 9140,
+        "output": 1670,
+        "total": 10810
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Surgeon",
+          "score": 71,
+          "potential": 3,
+          "stability": 4,
+          "comment": "Hybrid swing mirrors Driver — precise but underpowered. Spine deviates 1.7 deg. Shoulder turn 43 deg. The hybrid lands where you aim but rolls less than you'd like because there's not enough speed for proper launch conditions. You use the hybrid like a laser-guided dart. It works, but darts don't have loft.",
+          "vibe": {
+            "name": "Surgical Strike",
+            "value": 7.5
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 4.3
+            },
+            {
+              "name": "Sequencing",
+              "value": 4.4
+            },
+            {
+              "name": "Balance",
+              "value": 9.3
+            },
+            {
+              "name": "Plane Control",
+              "value": 9.5
+            },
+            {
+              "name": "Impact Control",
+              "value": 9.2
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 4,
+            "summary": "Top — shoulder turn only 43 deg. Arms lift steep, body stays quiet. Restricts power and shallowing.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Limited coil — shoulders not reaching 90 deg. Arms go up instead of body turning.",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Full shoulder turn to 90 deg. Lead shoulder under chin. Deep coil.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 5,
+            "summary": "Over-the-top from restricted backswing. Outside-in path produces reliable fade but costs distance.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "right shoulder",
+                  "type": "line",
+                  "description": "Fires outward in transition instead of dropping into slot",
+                  "direction": {
+                    "x": 1,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "right shoulder",
+                  "type": "line",
+                  "description": "Drop right shoulder down and inward. Shallow the club for more power.",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "F reliable Accuracy, Limited Power",
+            "summary": "Hybrid flies straight but 20-30 yards short of potential. Restricted turn caps distance.",
+            "phases": [
+              4,
+              5,
+              7
+            ]
+          },
+          {
+            "title": "Consistent Strike Quality",
+            "summary": "Ball contact is clean and centered every time. Hybrid behaves like a 7-Iron — reliable.",
+            "phases": [
+              7,
+              8
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Full Turn with Hybrid",
+            "front_action": "Hold hybrid across chest. Turn back until club points at ball. Now swing — feel the difference.",
+            "back_roast_title": "The Dart Thrower",
+            "back_roast_text": "Your hybrid shots land with dart-like precision. Unfortunately, darts don't roll. Neither do your hybrid shots."
+          },
+          {
+            "front_title": "Right Arm Only Swings",
+            "front_action": "Hit hybrids with right arm only. Forces you to make a bigger turn for leverage.",
+            "back_roast_title": "The Measuring Tape",
+            "back_roast_text": "You know the exact yardage to every target but get there with the flight time of a commercial airline."
+          },
+          {
+            "front_title": "Turn Belt",
+            "front_action": "Put a belt around chest at shoulder height. Turn until belt is at 90 deg. Feel the full coil.",
+            "back_roast_title": "The Microwave",
+            "back_roast_text": "Your hybrid swing cooks the ball at low temperature. Accurate but slow-roasted. We'd like medium-rare at least."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 40.8 deg spine; 23.5 deg knee flex. Solid hybrid posture."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — smooth, connected. Arms lift slightly more than body turns."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — restricted turn continuing. Shaft slightly steep."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 39.5 deg spine (1.3 deg lost). 43 deg shoulder turn. Arms high, body quiet."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — over-the-top initiating. Outside path beginning."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — club above plane. Cut-across trajectory loading."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 39.1 deg — 1.7 deg total deviation. Clean contact, controlled fade."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — balanced fade. Ball lands in the short grass."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — on-plane, controlled. Not much energy to dissipate."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — posed. Ball on fairway. Roll stops 20 yards short of where it could have been."
+          }
+        ]
+      }
+    }
+  }
+}

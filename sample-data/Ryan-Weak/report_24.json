@@ -1,0 +1,387 @@
+{
+  "reportId": "report_rw_1024",
+  "videoId": "video_rw_1024",
+  "userId": "user_ryan_weak",
+  "title": "Face-on | Right-handed | Hybrid",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775002400000,
+  "updatedAt": 1775002400000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "rw_1024/frame_0.jpg",
+    "P2": "rw_1024/frame_1.jpg",
+    "P3": "rw_1024/frame_2.jpg",
+    "P4": "rw_1024/frame_3.jpg",
+    "P5": "rw_1024/frame_4.jpg",
+    "P6": "rw_1024/frame_5.jpg",
+    "P7": "rw_1024/frame_6.jpg",
+    "P8": "rw_1024/frame_7.jpg",
+    "P9": "rw_1024/frame_8.jpg",
+    "P10": "rw_1024/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 36,
+        "P2_takeaway": 90,
+        "P3_halfway_back": 112,
+        "P4_top": 133,
+        "P5_early_downswing": 143,
+        "P6_pre_impact": 153,
+        "P7_impact": 163,
+        "P8_release": 170,
+        "P9_follow_through": 178,
+        "P10_end": 196
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 153,
+        "max_lead_shoulder_linear_speed_idx": 160,
+        "max_mid_hands_linear_speed_idx": 165,
+        "max_chest_rotational_speed_idx": 155,
+        "max_arm_rotational_speed_idx": 145,
+        "max_pelvis_rotational_speed_idx": 154
+      },
+      "processingDuration": 0.23,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.45,
+        "backswingDuration": 0.87,
+        "downswingDuration": 0.30,
+        "xFactorDegrees": -4.5,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.28,
+          "atTakeaway": 1.4,
+          "atEarlyDownswing": 3.6,
+          "atTop": 4.8,
+          "atImpact": -8.2
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 1.3,
+          "atTop": 24,
+          "atEarlyDownswing": 16.0,
+          "atImpact": 3.5,
+          "atFollowThrough": 11
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.2,
+          "atTop": 30,
+          "atEarlyDownswing": 22,
+          "atImpact": 2.8
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 91.8,
+          "leftShoulderHorizontalAbductionAtAddress": 96.8,
+          "rightShoulderHorizontalAbductionAtTop": 81.5,
+          "leftShoulderHorizontalAbductionAtTop": 87.5,
+          "rightShoulderHorizontalAbductionAtImpact": 94.5,
+          "leftShoulderHorizontalAbductionAtImpact": 107.5,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 41.5,
+          "leftElbowAtAddress": 29.5,
+          "rightElbowAtTop": 56.5,
+          "leftElbowAtTop": 50.5,
+          "rightElbowAtImpact": 60.5,
+          "leftElbowAtImpact": 54.5
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 17.8,
+          "rightKneeAtAddress": 21.3,
+          "leftKneeAtTop": 8.8,
+          "rightKneeAtTop": 14.5,
+          "leftKneeAtImpact": 3.8,
+          "rightKneeAtImpact": 7.5
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 34.5,
+          "leftHipFlexAtAddress": 34.0,
+          "rightHipFlexAtTop": 17.8,
+          "leftHipFlexAtTop": 14.8,
+          "rightHipFlexAtImpact": 7.5,
+          "leftHipFlexAtImpact": 4.5
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -37.5,
+          "leftWristFlexionAtAddress": -48.5,
+          "rightWristFlexionAtTop": 50.5,
+          "leftWristFlexionAtTop": 46.5,
+          "rightWristFlexionAtImpact": -14.5,
+          "leftWristFlexionAtImpact": -27.5,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 29.0,
+          "atTop": 15.8,
+          "atImpact": 8.5,
+          "maxDeviation": 20.5
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.005,
+          "atTakeaway": 0.041,
+          "atEarlyDownswing": -0.021,
+          "atTop": -0.082,
+          "atImpact": 0.031
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.003,
+          "atTakeaway": -0.012,
+          "atEarlyDownswing": -0.102,
+          "atTop": -0.148,
+          "atImpact": 0.026
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 205,
+          "pelvisMaxSpeedFrame": 154,
+          "torsoMaxSpeed": 272,
+          "torsoMaxSpeedFrame": 155,
+          "armMaxSpeed": 8.5,
+          "armMaxSpeedFrame": 145,
+          "leadHipMaxSpeed": 0.21,
+          "leadHipMaxSpeedFrame": 153,
+          "leadShoulderMaxSpeed": 0.78,
+          "leadShoulderMaxSpeedFrame": 160,
+          "midHandsMaxSpeed": 1.45,
+          "midHandsMaxSpeedFrame": 165,
+          "wristMaxSpeed": 1.75,
+          "wristMaxSpeedFrame": 167,
+          "hip2shoulderKinematicSequence": false
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 56,
+      "tokenUsage": {
+        "input": 9420,
+        "output": 2120,
+        "total": 11540
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Weekend Warrior",
+          "score": 15,
+          "potential": 1,
+          "stability": 1,
+          "comment": "Hybrid swing is the worst of the bunch — spine drops from 29.0 to 8.5 deg (20.5 deg lost). Hip flex from 34.5 to 7.5 deg. The hybrid was supposed to be the easy club. This swing makes it look like medieval torture equipment. Contact varies from thin to fat to air with no predictable pattern.",
+          "vibe": {
+            "name": "Chaos Theory in Cleats",
+            "value": 0.8
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 2.2
+            },
+            {
+              "name": "Sequencing",
+              "value": 1.9
+            },
+            {
+              "name": "Balance",
+              "value": 2.2
+            },
+            {
+              "name": "Plane Control",
+              "value": 2.5
+            },
+            {
+              "name": "Impact Control",
+              "value": 1.8
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 1,
+            "summary": "Address spine at 29.0 deg — too upright even for hybrid. Ball position likely wrong.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Standing too tall, insufficient athletic posture",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Create 38+ deg spine angle with proper hip hinge",
+                  "direction": {
+                    "x": 0,
+                    "y": 1
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 4,
+            "summary": "Top of backswing — spine at 15.8 deg (13.2 deg lost). 30 deg shoulder turn. No stored energy.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Lifting arms up instead of coiling body around spine",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Rotate shoulders 90 deg around a stable spine. Turn, don't lift.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "Impact at 8.5 deg — stood up 20.5 deg. Complete posture loss.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Hips thrust upward and forward — classic early extension",
+                  "direction": {
+                    "x": 1,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Stay in posture. Turn hips in a barrel.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Full Posture Collapse",
+            "summary": "Spine angle lost 20.5 deg — 70% of posture gone by impact. Complete structural failure.",
+            "phases": [
+              1,
+              4,
+              7
+            ]
+          },
+          {
+            "title": "No Kinematic Chain",
+            "summary": "Arms fire at frame 145, pelvis at 154. Reversed sequence means zero power transfer.",
+            "phases": [
+              5,
+              6,
+              7
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Mirror Check",
+            "front_action": "Set up in front of a mirror. Compare your posture to a tour pro photo. Adjust until it matches.",
+            "back_roast_title": "The Slouch",
+            "back_roast_text": "Your setup posture looks like you're trying to see what's on the bottom shelf at a grocery store. Bend from the hips, not the spine."
+          },
+          {
+            "front_title": "The Belly Button Drill",
+            "front_action": "Hold a club across your belly button. Turn back and through. Feel your CORE rotate.",
+            "back_roast_title": "The Disco Dancer",
+            "back_roast_text": "Your hips move less than a mannequin in a store window. The only thing rotating is your hopes and dreams."
+          },
+          {
+            "front_title": "Half-Swing Only",
+            "front_action": "Hit hybrids with swings that only go to hip height. Learn balance before adding length.",
+            "back_roast_title": "The Architect's Dream",
+            "back_roast_text": "Your full swing has the engineering quality of a popsicle-stick bridge. Start smaller before someone gets hurt."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 29.0 deg spine; 17.8 deg knee flex. Upright and rigid."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — arms lift club. No body engagement."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — spine dropping to 23 deg (6 deg lost). Lift pattern continues."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 15.8 deg spine (13.2 deg lost). 30 deg shoulder turn. Energy: zero."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — arms lunge forward. No ground-up initiation."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — body rising rapidly. Knees nearly straight."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 8.5 deg — 20.5 deg total loss. Contact unpredictable."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — clubhead rising through zone. Thin or topped contact likely."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — weight on trail foot, falling back."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — facing right of target. Knees bent the wrong way. Needs lessons, not practice."
+          }
+        ]
+      }
+    }
+  }
+}

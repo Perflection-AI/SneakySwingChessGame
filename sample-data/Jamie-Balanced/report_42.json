@@ -1,0 +1,353 @@
+{
+  "reportId": "report_jb_1042",
+  "videoId": "video_jb_1042",
+  "userId": "user_jamie_balanced",
+  "title": "Face-on | Right-handed | 7-Iron",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775004200000,
+  "updatedAt": 1775004200000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "jb_1042/frame_0.jpg",
+    "P2": "jb_1042/frame_1.jpg",
+    "P3": "jb_1042/frame_2.jpg",
+    "P4": "jb_1042/frame_3.jpg",
+    "P5": "jb_1042/frame_4.jpg",
+    "P6": "jb_1042/frame_5.jpg",
+    "P7": "jb_1042/frame_6.jpg",
+    "P8": "jb_1042/frame_7.jpg",
+    "P9": "jb_1042/frame_8.jpg",
+    "P10": "jb_1042/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 40,
+        "P2_takeaway": 90,
+        "P3_halfway_back": 110,
+        "P4_top": 132,
+        "P5_early_downswing": 143,
+        "P6_pre_impact": 152,
+        "P7_impact": 160,
+        "P8_release": 164,
+        "P9_follow_through": 170,
+        "P10_end": 185
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 152,
+        "max_lead_shoulder_linear_speed_idx": 157,
+        "max_mid_hands_linear_speed_idx": 159,
+        "max_chest_rotational_speed_idx": 154,
+        "max_arm_rotational_speed_idx": 142,
+        "max_pelvis_rotational_speed_idx": 153
+      },
+      "processingDuration": 0.17,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.23,
+        "backswingDuration": 0.68,
+        "downswingDuration": 0.22,
+        "xFactorDegrees": -10.0,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.42,
+          "atTakeaway": 0.88,
+          "atEarlyDownswing": 2.3,
+          "atTop": 2.9,
+          "atImpact": -5.1
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.3,
+          "atTop": 46,
+          "atEarlyDownswing": 31.0,
+          "atImpact": 6.2,
+          "atFollowThrough": 22
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 4.0,
+          "atTop": 54,
+          "atEarlyDownswing": 39,
+          "atImpact": 3.5
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 88.5,
+          "leftShoulderHorizontalAbductionAtAddress": 93.5,
+          "rightShoulderHorizontalAbductionAtTop": 72.5,
+          "leftShoulderHorizontalAbductionAtTop": 79.5,
+          "rightShoulderHorizontalAbductionAtImpact": 79.5,
+          "leftShoulderHorizontalAbductionAtImpact": 102.5,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 39.0,
+          "leftElbowAtAddress": 26.0,
+          "rightElbowAtTop": 50.0,
+          "leftElbowAtTop": 43.0,
+          "rightElbowAtImpact": 57.0,
+          "leftElbowAtImpact": 51.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 25.0,
+          "rightKneeAtAddress": 28.5,
+          "leftKneeAtTop": 18.5,
+          "rightKneeAtTop": 25.5,
+          "leftKneeAtImpact": 20.0,
+          "rightKneeAtImpact": 23.3
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 50.5,
+          "leftHipFlexAtAddress": 50.0,
+          "rightHipFlexAtTop": 35.5,
+          "leftHipFlexAtTop": 32.5,
+          "rightHipFlexAtImpact": 40.0,
+          "leftHipFlexAtImpact": 37.0
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -47.0,
+          "leftWristFlexionAtAddress": -58.0,
+          "rightWristFlexionAtTop": 37.0,
+          "leftWristFlexionAtTop": 34.0,
+          "rightWristFlexionAtImpact": -26.0,
+          "leftWristFlexionAtImpact": -38.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 43.0,
+          "atTop": 37.5,
+          "atImpact": 34.8,
+          "maxDeviation": 8.2
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.024,
+          "atEarlyDownswing": -0.011,
+          "atTop": -0.048,
+          "atImpact": 0.016
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.006,
+          "atEarlyDownswing": -0.068,
+          "atTop": -0.098,
+          "atImpact": 0.013
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 470,
+          "pelvisMaxSpeedFrame": 153,
+          "torsoMaxSpeed": 545,
+          "torsoMaxSpeedFrame": 154,
+          "armMaxSpeed": 17,
+          "armMaxSpeedFrame": 142,
+          "leadHipMaxSpeed": 0.48,
+          "leadHipMaxSpeedFrame": 152,
+          "leadShoulderMaxSpeed": 1.65,
+          "leadShoulderMaxSpeedFrame": 157,
+          "midHandsMaxSpeed": 3.5,
+          "midHandsMaxSpeedFrame": 159,
+          "wristMaxSpeed": 3.8,
+          "wristMaxSpeedFrame": 160,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 44,
+      "tokenUsage": {
+        "input": 9220,
+        "output": 1700,
+        "total": 10920
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Par Machine",
+          "score": 53,
+          "potential": 3,
+          "stability": 3,
+          "comment": "7-Iron swing is perfectly average in every dimension. Spine deviates 8.2 deg, shoulder turn 54 deg, hip sway 0.048m. The kinematic sequence fires in the right order at moderate speeds. Contact is decent — not pure, not awful. Ball flies to the green area with boring regularity. Bogey to birdie, every hole. Your handicap has been the same for three years and shows no signs of moving.",
+          "vibe": {
+            "name": "Beige Interior",
+            "value": 5.0
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 5.3
+            },
+            {
+              "name": "Sequencing",
+              "value": 5.4
+            },
+            {
+              "name": "Balance",
+              "value": 5.6
+            },
+            {
+              "name": "Plane Control",
+              "value": 5.5
+            },
+            {
+              "name": "Impact Control",
+              "value": 5.2
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 4,
+            "summary": "Moderate sway at top — 0.048m hip slide creates inconsistency. Not terrible but not tight.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Hips sliding laterally instead of turning in place",
+                  "direction": {
+                    "x": -1,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "circle",
+                  "description": "Turn hips in a barrel. Keep weight centered over arches.",
+                  "radius": 12
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "Spine at 34.8 deg — 8.2 deg lost. Moderate early extension affects consistency.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Mild hip thrust toward ball at impact",
+                  "direction": {
+                    "x": 1,
+                    "y": -0.5
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Stay in posture. Turn don't thrust.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Average Output",
+            "summary": "Every metric is within 10% of the statistical average. This swing IS the bell curve.",
+            "phases": [
+              1,
+              4,
+              7
+            ]
+          },
+          {
+            "title": "Moderate Sway",
+            "summary": "0.048m hip sway causes the biggest inconsistency. Fixable with hip turn drills.",
+            "phases": [
+              3,
+              4
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Headcover Hip Drill",
+            "front_action": "Place headcover outside trail foot at address. Swing back without touching it. Cures lateral sway.",
+            "back_roast_title": "The Vanilla Bean",
+            "back_roast_text": "Your 7-Iron produces the most boring ball flight in golf. Spectators don't even watch. The ball itself yawns mid-flight."
+          },
+          {
+            "front_title": "Impact Bag Focus",
+            "front_action": "Hit 20 impact bag shots at 70%. Feel chest turn, maintain posture. Build body connection.",
+            "back_roast_title": "The Participation Trophy",
+            "back_roast_text": "You get the same score whether you play well or poorly. The universe has balanced you to exactly par. Forever."
+          },
+          {
+            "front_title": "One Club Distance Test",
+            "front_action": "Hit 20 7-Irons. Measure carry distances. Tighten the spread by improving consistency.",
+            "back_roast_title": "The RNG",
+            "back_roast_text": "Your 7-Iron distance varies by 15 yards. It's like a random number generator with a golf club attached."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 43.0 deg spine; 25.0 deg knee flex. Serviceable iron posture."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — acceptable. Club on a reasonable plane."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — 3 deg spine lost. Slight sway beginning."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 37.5 deg spine (5.5 deg lost). 54 deg turn. 0.048m sway. Average."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — moderate initiation. Not snappy, not lazy."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — mild posture loss. Club on an okay path."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 34.8 deg — 8.2 deg total loss. Decent contact."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — standard. Ball flies to the green area."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — reasonably balanced."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — adequate. Ball near green. Par or bogey. Same as always."
+          }
+        ]
+      }
+    }
+  }
+}

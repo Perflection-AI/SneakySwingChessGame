@@ -1,0 +1,328 @@
+{
+  "reportId": "report_ae_1019",
+  "videoId": "video_ae_1019",
+  "userId": "user_alex_elite",
+  "title": "Face-on | Right-handed | Hybrid",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775001900000,
+  "updatedAt": 1775001900000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "ae_1019/frame_0.jpg",
+    "P2": "ae_1019/frame_1.jpg",
+    "P3": "ae_1019/frame_2.jpg",
+    "P4": "ae_1019/frame_3.jpg",
+    "P5": "ae_1019/frame_4.jpg",
+    "P6": "ae_1019/frame_5.jpg",
+    "P7": "ae_1019/frame_6.jpg",
+    "P8": "ae_1019/frame_7.jpg",
+    "P9": "ae_1019/frame_8.jpg",
+    "P10": "ae_1019/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 33,
+        "P2_takeaway": 82,
+        "P3_halfway_back": 104,
+        "P4_top": 124,
+        "P5_early_downswing": 133,
+        "P6_pre_impact": 141,
+        "P7_impact": 148,
+        "P8_release": 152,
+        "P9_follow_through": 158,
+        "P10_end": 173
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 141,
+        "max_lead_shoulder_linear_speed_idx": 146,
+        "max_mid_hands_linear_speed_idx": 148,
+        "max_chest_rotational_speed_idx": 143,
+        "max_arm_rotational_speed_idx": 132,
+        "max_pelvis_rotational_speed_idx": 142
+      },
+      "processingDuration": 0.13,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.31,
+        "backswingDuration": 0.74,
+        "downswingDuration": 0.22,
+        "xFactorDegrees": -12.2,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.47,
+          "atTakeaway": 0.82,
+          "atEarlyDownswing": 2.15,
+          "atTop": 2.82,
+          "atImpact": -5.15
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.35,
+          "atTop": 51,
+          "atEarlyDownswing": 34.5,
+          "atImpact": 6.3,
+          "atFollowThrough": 23.5
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 4.1,
+          "atTop": 61,
+          "atEarlyDownswing": 43.5,
+          "atImpact": 3.3
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 88.6,
+          "leftShoulderHorizontalAbductionAtAddress": 93.6,
+          "rightShoulderHorizontalAbductionAtTop": 70.6,
+          "leftShoulderHorizontalAbductionAtTop": 77.6,
+          "rightShoulderHorizontalAbductionAtImpact": 80.3,
+          "leftShoulderHorizontalAbductionAtImpact": 103.3,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 36.8,
+          "leftElbowAtAddress": 23.8,
+          "rightElbowAtTop": 47.8,
+          "leftElbowAtTop": 40.8,
+          "rightElbowAtImpact": 53.8,
+          "leftElbowAtImpact": 47.8
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 25.1,
+          "rightKneeAtAddress": 28.6,
+          "leftKneeAtTop": 18.4,
+          "rightKneeAtTop": 25.4,
+          "leftKneeAtImpact": 21.8,
+          "rightKneeAtImpact": 25.1
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 50.8,
+          "leftHipFlexAtAddress": 50.3,
+          "rightHipFlexAtTop": 36.0,
+          "leftHipFlexAtTop": 33.0,
+          "rightHipFlexAtImpact": 44.5,
+          "leftHipFlexAtImpact": 41.5
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -46.8,
+          "leftWristFlexionAtAddress": -57.8,
+          "rightWristFlexionAtTop": 36.8,
+          "leftWristFlexionAtTop": 33.8,
+          "rightWristFlexionAtImpact": -24.8,
+          "leftWristFlexionAtImpact": -36.8,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 41.0,
+          "atTop": 39.5,
+          "atImpact": 38.9,
+          "maxDeviation": 2.1
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.019,
+          "atEarlyDownswing": -0.009,
+          "atTop": -0.034,
+          "atImpact": 0.009
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.005,
+          "atEarlyDownswing": -0.061,
+          "atTop": -0.086,
+          "atImpact": 0.008
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 605,
+          "pelvisMaxSpeedFrame": 142,
+          "torsoMaxSpeed": 695,
+          "torsoMaxSpeedFrame": 143,
+          "armMaxSpeed": 23,
+          "armMaxSpeedFrame": 132,
+          "leadHipMaxSpeed": 0.60,
+          "leadHipMaxSpeedFrame": 141,
+          "leadShoulderMaxSpeed": 2.05,
+          "leadShoulderMaxSpeedFrame": 146,
+          "midHandsMaxSpeed": 4.4,
+          "midHandsMaxSpeedFrame": 148,
+          "wristMaxSpeed": 4.7,
+          "wristMaxSpeedFrame": 149,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 40,
+      "tokenUsage": {
+        "input": 9190,
+        "output": 1620,
+        "total": 10810
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Machine",
+          "score": 95,
+          "potential": 5,
+          "stability": 5,
+          "comment": "Hybrid swing is elite. Spine deviates only 2.1 deg. Knee flex preserved within 3.3 deg. Kinematic chain fires pelvis-to-torso-to-arms flawlessly. Ball flight is a tight draw. The hybrid is supposed to be the hardest club — not for this swing.",
+          "vibe": {
+            "name": "Hybrid Harmony",
+            "value": 9.1
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 8.6
+            },
+            {
+              "name": "Sequencing",
+              "value": 8.8
+            },
+            {
+              "name": "Balance",
+              "value": 9.5
+            },
+            {
+              "name": "Plane Control",
+              "value": 8.7
+            },
+            {
+              "name": "Impact Control",
+              "value": 9.0
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 2,
+            "summary": "Takeaway marginally steep — clubhead works slightly outside the hands early.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "left wrist",
+                  "type": "line",
+                  "description": "Cocking slightly early, creating a steeper shaft plane",
+                  "direction": {
+                    "x": 0,
+                    "y": 1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "left wrist",
+                  "type": "line",
+                  "description": "Keep wrists passive through first foot of takeaway",
+                  "direction": {
+                    "x": -1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Sweep and Compress",
+            "summary": "Hybrid contact is a perfect blend of sweep and compression. Ball-first with shallow angle of attack.",
+            "phases": [
+              6,
+              7,
+              8
+            ]
+          },
+          {
+            "title": "Railroad Track Swing Path",
+            "summary": "Club travels on a consistent in-to-in path. Path deviation under 1 degree throughout.",
+            "phases": [
+              3,
+              5,
+              7,
+              9
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Tee Peg Drill",
+            "front_action": "Place a tee peg 2 inches in front of ball. Hit hybrid clipping the tee — tests shallow angle.",
+            "back_roast_title": "The Iron Chef",
+            "back_roast_text": "You hit hybrids like a Michelin chef prepares souffle — with impossible precision. Can you save some skill for the rest of us?"
+          },
+          {
+            "front_title": "Ball Back Stance",
+            "front_action": "Play hybrid off the back foot for punch shots. Tests versatility and ball control.",
+            "back_roast_title": "The Swiss Army Club",
+            "back_roast_text": "Your hybrid replaces Driver, 3-wood, long iron, AND walking stick. What CAN'T this swing do with it?"
+          },
+          {
+            "front_title": "Slow Motion Rehearsal",
+            "front_action": "Rehearse hybrid swing at 25% speed. Feel each position — you're already there.",
+            "back_roast_title": "The Glitch",
+            "back_roast_text": "We keep looking for flaws in your hybrid swing and it feels like a bug in the system. Nobody should be this consistent."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 41.0 deg spine; 25.1 deg knee flex. Ball position slightly forward — perfect for hybrid."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway slightly steep but immediately recovers. One-hand takeaway clean."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — shaft on-plane, wrists hinging naturally."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 39.5 deg spine (1.5 deg lost). Full shoulder turn at 61 deg."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition smooth and athletic. Shallowing begins naturally."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — club approaching from shallow inside path."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 38.9 deg — 2.1 deg total deviation. Compressed contact, slight draw."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release full and extended. Ball launching on high draw."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through balanced and full. Weight 95% on lead side."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish posed and stable. This hybrid swing is a work of art."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,359 @@
+{
+  "reportId": "report_tc_1037",
+  "videoId": "video_tc_1037",
+  "userId": "user_tom_closer",
+  "title": "Face-on | Right-handed | 7-Iron",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775003700000,
+  "updatedAt": 1775003700000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "tc_1037/frame_0.jpg",
+    "P2": "tc_1037/frame_1.jpg",
+    "P3": "tc_1037/frame_2.jpg",
+    "P4": "tc_1037/frame_3.jpg",
+    "P5": "tc_1037/frame_4.jpg",
+    "P6": "tc_1037/frame_5.jpg",
+    "P7": "tc_1037/frame_6.jpg",
+    "P8": "tc_1037/frame_7.jpg",
+    "P9": "tc_1037/frame_8.jpg",
+    "P10": "tc_1037/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 38,
+        "P2_takeaway": 88,
+        "P3_halfway_back": 108,
+        "P4_top": 130,
+        "P5_early_downswing": 141,
+        "P6_pre_impact": 150,
+        "P7_impact": 158,
+        "P8_release": 162,
+        "P9_follow_through": 168,
+        "P10_end": 183
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 150,
+        "max_lead_shoulder_linear_speed_idx": 155,
+        "max_mid_hands_linear_speed_idx": 157,
+        "max_chest_rotational_speed_idx": 152,
+        "max_arm_rotational_speed_idx": 140,
+        "max_pelvis_rotational_speed_idx": 151
+      },
+      "processingDuration": 0.17,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.26,
+        "backswingDuration": 0.73,
+        "downswingDuration": 0.22,
+        "xFactorDegrees": -9.2,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.4,
+          "atTakeaway": 0.88,
+          "atEarlyDownswing": 2.35,
+          "atTop": 2.95,
+          "atImpact": -4.9
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.1,
+          "atTop": 43,
+          "atEarlyDownswing": 29.0,
+          "atImpact": 6.0,
+          "atFollowThrough": 21
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.6,
+          "atTop": 50,
+          "atEarlyDownswing": 36,
+          "atImpact": 3.4
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 89.2,
+          "leftShoulderHorizontalAbductionAtAddress": 94.2,
+          "rightShoulderHorizontalAbductionAtTop": 73.2,
+          "leftShoulderHorizontalAbductionAtTop": 80.2,
+          "rightShoulderHorizontalAbductionAtImpact": 80.2,
+          "leftShoulderHorizontalAbductionAtImpact": 103.2,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 38.2,
+          "leftElbowAtAddress": 25.2,
+          "rightElbowAtTop": 49.2,
+          "leftElbowAtTop": 42.2,
+          "rightElbowAtImpact": 56.2,
+          "leftElbowAtImpact": 50.2
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 25.0,
+          "rightKneeAtAddress": 28.5,
+          "leftKneeAtTop": 19.5,
+          "rightKneeAtTop": 26.5,
+          "leftKneeAtImpact": 23.2,
+          "rightKneeAtImpact": 26.5
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 51.0,
+          "leftHipFlexAtAddress": 50.5,
+          "rightHipFlexAtTop": 36.5,
+          "leftHipFlexAtTop": 33.5,
+          "rightHipFlexAtImpact": 46.5,
+          "leftHipFlexAtImpact": 43.5
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -46.2,
+          "leftWristFlexionAtAddress": -57.2,
+          "rightWristFlexionAtTop": 36.2,
+          "leftWristFlexionAtTop": 33.2,
+          "rightWristFlexionAtImpact": -25.2,
+          "leftWristFlexionAtImpact": -37.2,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 42.5,
+          "atTop": 41.0,
+          "atImpact": 40.5,
+          "maxDeviation": 2.0
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.019,
+          "atEarlyDownswing": -0.009,
+          "atTop": -0.034,
+          "atImpact": 0.008
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.005,
+          "atEarlyDownswing": -0.06,
+          "atTop": -0.082,
+          "atImpact": 0.008
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 430,
+          "pelvisMaxSpeedFrame": 151,
+          "torsoMaxSpeed": 500,
+          "torsoMaxSpeedFrame": 152,
+          "armMaxSpeed": 15,
+          "armMaxSpeedFrame": 140,
+          "leadHipMaxSpeed": 0.46,
+          "leadHipMaxSpeedFrame": 150,
+          "leadShoulderMaxSpeed": 1.55,
+          "leadShoulderMaxSpeedFrame": 155,
+          "midHandsMaxSpeed": 3.2,
+          "midHandsMaxSpeedFrame": 157,
+          "wristMaxSpeed": 3.5,
+          "wristMaxSpeedFrame": 158,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 42,
+      "tokenUsage": {
+        "input": 9120,
+        "output": 1640,
+        "total": 10760
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Closer",
+          "score": 87,
+          "potential": 3,
+          "stability": 5,
+          "comment": "7-Iron swing is balanced and steady — spine deviates 2.0 deg, knee flex within 1.8 deg. The stability is unmatched. But tempo issues persist: backswing at 0.73s is sluggish, then downswing at 0.22s rushes. Shoulder turn 50 deg is below average. The 7-Iron is consistent but lacks the dynamic element of a true ball-striker. Think reliable Honda, not Ferrari.",
+          "vibe": {
+            "name": "Steady Eddie",
+            "value": 7.8
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 5.6
+            },
+            {
+              "name": "Sequencing",
+              "value": 5.5
+            },
+            {
+              "name": "Balance",
+              "value": 9.7
+            },
+            {
+              "name": "Plane Control",
+              "value": 5.8
+            },
+            {
+              "name": "Impact Control",
+              "value": 5.5
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 4,
+            "summary": "Top of backswing at 0.73s — too deliberate. 50 deg shoulder turn with slow loading. No spring in the coil.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Turning too slowly and too little. No elasticity in the coil.",
+                  "direction": {
+                    "x": 0.5,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Faster, bigger turn. Reach 80+ deg in 0.6s. Create elasticity.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 5,
+            "summary": "Transition tempo break — slow backswing into fast downswing creates jerk. Rhythm is disrupted.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Hips accelerate too abruptly from the slow top position",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Gradual acceleration from top. Even rhythm from backswing to downswing.",
+                  "direction": {
+                    "x": 0.5,
+                    "y": 0.5
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Tempo Trouble",
+            "summary": "3.3:1 backswing-to-downswing ratio. Smooth backswing followed by rushed downswing.",
+            "phases": [
+              2,
+              3,
+              4,
+              5,
+              6
+            ]
+          },
+          {
+            "title": "Unbreakable Balance",
+            "summary": "2.0 deg spine deviation, 1.8 deg knee variation. Stability is the calling card.",
+            "phases": [
+              1,
+              7,
+              10
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "Sing While You Swing",
+            "front_action": "Hum a song with consistent tempo while hitting 7-Irons. Feel the rhythm carry through.",
+            "back_roast_title": "The Deaf DJ",
+            "back_roast_text": "Your swing tempo sounds like a DJ transitioning from lullabies to EDM. Pick a lane."
+          },
+          {
+            "front_title": "3:1 Ratio Drill",
+            "front_action": "Count 'one-two-three' going back, 'one' coming down. Match the rhythm to the words.",
+            "back_roast_title": "The Reliable Appliance",
+            "back_roast_text": "Your 7-Iron is like a washing machine — always runs, always balanced, always takes the same amount of time. Dependable but not exciting."
+          },
+          {
+            "front_title": "Accelerate Gradually",
+            "front_action": "Practice swinging from 50% to 80% to 100% in one smooth motion. No sudden speed changes.",
+            "back_roast_title": "The Cruise Control",
+            "back_roast_text": "You have cruise control for the backswing but launch control for the downswing. Try driving in the same gear the whole way."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 42.5 deg spine; 25.0 deg knee flex. Solid iron posture."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — slow and smooth. Too slow for a dynamic swing."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — 0.5s elapsed. Building at a leisurely pace."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 41.0 deg spine (1.5 deg lost). 50 deg shoulder turn. Slow but stable."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — tempo breaks. Sudden acceleration from slow top."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — rushing. Body playing catch-up."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 40.5 deg — 2.0 deg total. Good contact but rushed timing."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — ball compressed but slightly out of sync."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — balanced (as always). The body's default state."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — perfect equilibrium. Could stand here all day. Fix the tempo and this swing is elite."
+          }
+        ]
+      }
+    }
+  }
+}

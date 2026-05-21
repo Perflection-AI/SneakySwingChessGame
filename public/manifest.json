@@ -1,0 +1,15 @@
+{
+  "name": "Sneaky Swing",
+  "short_name": "SneakySwing",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBF8EE",
+  "theme_color": "#719342",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

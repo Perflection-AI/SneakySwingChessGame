@@ -1,0 +1,393 @@
+{
+  "reportId": "report_mb_1026",
+  "videoId": "video_mb_1026",
+  "userId": "user_mike_bomber",
+  "title": "Face-on | Right-handed | Driver",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775002600000,
+  "updatedAt": 1775002600000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "mb_1026/frame_0.jpg",
+    "P2": "mb_1026/frame_1.jpg",
+    "P3": "mb_1026/frame_2.jpg",
+    "P4": "mb_1026/frame_3.jpg",
+    "P5": "mb_1026/frame_4.jpg",
+    "P6": "mb_1026/frame_5.jpg",
+    "P7": "mb_1026/frame_6.jpg",
+    "P8": "mb_1026/frame_7.jpg",
+    "P9": "mb_1026/frame_8.jpg",
+    "P10": "mb_1026/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 28,
+        "P2_takeaway": 72,
+        "P3_halfway_back": 92,
+        "P4_top": 110,
+        "P5_early_downswing": 118,
+        "P6_pre_impact": 126,
+        "P7_impact": 133,
+        "P8_release": 136,
+        "P9_follow_through": 141,
+        "P10_end": 155
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 126,
+        "max_lead_shoulder_linear_speed_idx": 130,
+        "max_mid_hands_linear_speed_idx": 132,
+        "max_chest_rotational_speed_idx": 128,
+        "max_arm_rotational_speed_idx": 118,
+        "max_pelvis_rotational_speed_idx": 127
+      },
+      "processingDuration": 0.11,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.27,
+        "backswingDuration": 0.66,
+        "downswingDuration": 0.20,
+        "xFactorDegrees": -15.5,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.6,
+          "atTakeaway": 1.2,
+          "atEarlyDownswing": 3.5,
+          "atTop": 4.2,
+          "atImpact": -6.8
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.2,
+          "atTop": 58,
+          "atEarlyDownswing": 40.0,
+          "atImpact": 8.5,
+          "atFollowThrough": 28
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 5.5,
+          "atTop": 72,
+          "atEarlyDownswing": 52,
+          "atImpact": 5.8
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 86.0,
+          "leftShoulderHorizontalAbductionAtAddress": 91.0,
+          "rightShoulderHorizontalAbductionAtTop": 64.0,
+          "leftShoulderHorizontalAbductionAtTop": 71.0,
+          "rightShoulderHorizontalAbductionAtImpact": 76.0,
+          "leftShoulderHorizontalAbductionAtImpact": 99.0,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 34.0,
+          "leftElbowAtAddress": 21.0,
+          "rightElbowAtTop": 44.0,
+          "leftElbowAtTop": 37.0,
+          "rightElbowAtImpact": 52.0,
+          "leftElbowAtImpact": 46.0
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 26.5,
+          "rightKneeAtAddress": 30.0,
+          "leftKneeAtTop": 12.5,
+          "rightKneeAtTop": 19.5,
+          "leftKneeAtImpact": 3.2,
+          "rightKneeAtImpact": 6.8
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 52.0,
+          "leftHipFlexAtAddress": 51.5,
+          "rightHipFlexAtTop": 28.0,
+          "leftHipFlexAtTop": 25.0,
+          "rightHipFlexAtImpact": 10.5,
+          "leftHipFlexAtImpact": 7.5
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -52.0,
+          "leftWristFlexionAtAddress": -63.0,
+          "rightWristFlexionAtTop": 42.0,
+          "leftWristFlexionAtTop": 39.0,
+          "rightWristFlexionAtImpact": -22.0,
+          "leftWristFlexionAtImpact": -34.0,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 42.0,
+          "atTop": 22.5,
+          "atImpact": 12.0,
+          "maxDeviation": 30.0
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.003,
+          "atTakeaway": 0.025,
+          "atEarlyDownswing": -0.015,
+          "atTop": -0.06,
+          "atImpact": 0.02
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.002,
+          "atTakeaway": -0.008,
+          "atEarlyDownswing": -0.08,
+          "atTop": -0.12,
+          "atImpact": 0.015
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 780,
+          "pelvisMaxSpeedFrame": 127,
+          "torsoMaxSpeed": 890,
+          "torsoMaxSpeedFrame": 128,
+          "armMaxSpeed": 32,
+          "armMaxSpeedFrame": 118,
+          "leadHipMaxSpeed": 0.75,
+          "leadHipMaxSpeedFrame": 126,
+          "leadShoulderMaxSpeed": 2.5,
+          "leadShoulderMaxSpeedFrame": 130,
+          "midHandsMaxSpeed": 5.2,
+          "midHandsMaxSpeedFrame": 132,
+          "wristMaxSpeed": 5.8,
+          "wristMaxSpeedFrame": 133,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 45,
+      "tokenUsage": {
+        "input": 9350,
+        "output": 1800,
+        "total": 11150
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Howitzer",
+          "score": 32,
+          "potential": 5,
+          "stability": 1,
+          "comment": "ABSOLUTE POWER on Driver: shoulder turn 72 deg, hip turn 58 deg, pelvis speed 780 deg/s, torso 890 deg/s. The kinematic sequence fires perfectly pelvis-torso-arms. But spine drops from 42.0 to 12.0 deg (30.0 deg lost). Knee goes from 26.5 to 3.2 deg. Hip flex from 52.0 to 10.5 deg. This swing generates enough power to open a dimensional rift but loses all of it standing up through impact. Fairway finder rate: approximately zero.",
+          "vibe": {
+            "name": "Unleashed Kraken",
+            "value": 8.5
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 9.5
+            },
+            {
+              "name": "Sequencing",
+              "value": 9.2
+            },
+            {
+              "name": "Balance",
+              "value": 2.2
+            },
+            {
+              "name": "Plane Control",
+              "value": 2.5
+            },
+            {
+              "name": "Impact Control",
+              "value": 2.0
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 4,
+            "summary": "Massive X-factor at top (-15.5 deg) stores enormous energy, but spine already at 22.5 deg (19.5 deg lost).",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Hips already thrusting up during backswing from sheer force",
+                  "direction": {
+                    "x": 1,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Contain the rotation. Turn inside a barrel, don't let force push you up.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "phase": 5,
+            "summary": "Lead knee snaps from 26.5 to 12.5 deg at top, then to 3.2 deg at impact — catastrophic early extension.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "left knee",
+                  "type": "line",
+                  "description": "Knee straightens violently from stored rotational force",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "left knee",
+                  "type": "circle",
+                  "description": "Brace lead leg. Maintain knee flex against massive rotational force.",
+                  "radius": 20
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "Impact at 12.0 deg spine — 30 deg lost. Power dissipated upward. Aim is a suggestion.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "spine",
+                  "type": "line",
+                  "description": "Spine extends vertically as body cannot contain the rotational energy",
+                  "direction": {
+                    "x": 0,
+                    "y": -1
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "spine",
+                  "type": "line",
+                  "description": "Anchor spine angle. Let rotation happen around spine, not up from it.",
+                  "direction": {
+                    "x": 0,
+                    "y": 1
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Nuclear Power Generation",
+            "summary": "Pelvis at 780 deg/s, torso 890 deg/s. This is tour-level-plus power generation. Problem: all of it leaks upward.",
+            "phases": [
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "title": "Early Extension Catastrophe",
+            "summary": "Spine loses 30 deg from address to impact. Knee nearly straightens completely. Power goes skyward, not into the ball.",
+            "phases": [
+              4,
+              5,
+              6,
+              7
+            ]
+          },
+          {
+            "title": "X-Factor Overload",
+            "summary": "X-factor of -15.5 deg is massive. Creates huge torque but body can't sustain posture under that load.",
+            "phases": [
+              3,
+              4
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The 70% Power Driver",
+            "front_action": "Hit 10 drivers at 70% effort. Feel balance, then add power incrementally until you find the edge.",
+            "back_roast_title": "The Earthquake Machine",
+            "back_roast_text": "Your swing generates so much rotational force that nearby seismographs register it. The ball goes far, but the fairway has a restraining order against you."
+          },
+          {
+            "front_title": "Slow Motion Power Swings",
+            "front_action": "Swing at 25% speed but FULL rotation. Feel every position. Posture is the foundation, not the sacrifice.",
+            "back_roast_title": "The Tsunami",
+            "back_roast_text": "You hit Driver like you're trying to break the sound barrier. You probably could, if the ball stayed on the clubface."
+          },
+          {
+            "front_title": "Lead Leg Brace Drill",
+            "front_action": "Place a foam roller outside lead knee at address. Push into it during downswing. Braces the lead side.",
+            "back_roast_title": "The Rocket Launch",
+            "back_roast_text": "Your lead leg straightens so fast during the downswing it could launch a SpaceX rocket. Save some stability for impact, Elon."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 42.0 deg spine; 26.5 deg knee flex. Athletic and powerful."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — massive shoulder rotation already beginning. Fast hands."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — 8.5 deg spine lost. Power building but posture starting to crack."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — spine at 22.5 deg (19.5 deg lost). 72 deg shoulder turn! HUGE power stored."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — explosive ground-up initiation. Knee beginning to snap straight."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — body rising violently. Speed is insane but direction is chaos."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 12.0 deg — 30 deg lost. Nuclear power, zero accuracy. Somewhere, a fairway weeps."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — full speed but from wrong posture. Ball flies far in unpredictable directions."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — reverse C position exaggerated. Back paying the price."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — impressive distance, questionable zip code. The ball's GPS gave up."
+          }
+        ]
+      }
+    }
+  }
+}

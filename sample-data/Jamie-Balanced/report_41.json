@@ -1,0 +1,355 @@
+{
+  "reportId": "report_jb_1041",
+  "videoId": "video_jb_1041",
+  "userId": "user_jamie_balanced",
+  "title": "Face-on | Right-handed | Driver",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775004100000,
+  "updatedAt": 1775004100000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "jb_1041/frame_0.jpg",
+    "P2": "jb_1041/frame_1.jpg",
+    "P3": "jb_1041/frame_2.jpg",
+    "P4": "jb_1041/frame_3.jpg",
+    "P5": "jb_1041/frame_4.jpg",
+    "P6": "jb_1041/frame_5.jpg",
+    "P7": "jb_1041/frame_6.jpg",
+    "P8": "jb_1041/frame_7.jpg",
+    "P9": "jb_1041/frame_8.jpg",
+    "P10": "jb_1041/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 34,
+        "P2_takeaway": 82,
+        "P3_halfway_back": 103,
+        "P4_top": 123,
+        "P5_early_downswing": 132,
+        "P6_pre_impact": 141,
+        "P7_impact": 148,
+        "P8_release": 152,
+        "P9_follow_through": 158,
+        "P10_end": 173
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 141,
+        "max_lead_shoulder_linear_speed_idx": 146,
+        "max_mid_hands_linear_speed_idx": 148,
+        "max_chest_rotational_speed_idx": 143,
+        "max_arm_rotational_speed_idx": 131,
+        "max_pelvis_rotational_speed_idx": 142
+      },
+      "processingDuration": 0.15,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 1.39,
+        "backswingDuration": 0.75,
+        "downswingDuration": 0.24,
+        "xFactorDegrees": -10.2,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.45,
+          "atTakeaway": 0.85,
+          "atEarlyDownswing": 2.25,
+          "atTop": 2.85,
+          "atImpact": -5.0
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 2.2,
+          "atTop": 44,
+          "atEarlyDownswing": 30.0,
+          "atImpact": 6.0,
+          "atFollowThrough": 21
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.8,
+          "atTop": 52,
+          "atEarlyDownswing": 37,
+          "atImpact": 3.3
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 88.8,
+          "leftShoulderHorizontalAbductionAtAddress": 93.8,
+          "rightShoulderHorizontalAbductionAtTop": 72.8,
+          "leftShoulderHorizontalAbductionAtTop": 79.8,
+          "rightShoulderHorizontalAbductionAtImpact": 79.8,
+          "leftShoulderHorizontalAbductionAtImpact": 102.8,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 38.5,
+          "leftElbowAtAddress": 25.5,
+          "rightElbowAtTop": 49.5,
+          "leftElbowAtTop": 42.5,
+          "rightElbowAtImpact": 56.5,
+          "leftElbowAtImpact": 50.5
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 23.5,
+          "rightKneeAtAddress": 27.0,
+          "leftKneeAtTop": 17.0,
+          "rightKneeAtTop": 24.0,
+          "leftKneeAtImpact": 18.5,
+          "rightKneeAtImpact": 21.8
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 48.0,
+          "leftHipFlexAtAddress": 47.5,
+          "rightHipFlexAtTop": 33.5,
+          "leftHipFlexAtTop": 30.5,
+          "rightHipFlexAtImpact": 38.0,
+          "leftHipFlexAtImpact": 35.0
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -46.5,
+          "leftWristFlexionAtAddress": -57.5,
+          "rightWristFlexionAtTop": 36.5,
+          "leftWristFlexionAtTop": 33.5,
+          "rightWristFlexionAtImpact": -25.5,
+          "leftWristFlexionAtImpact": -37.5,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 38.8,
+          "atTop": 33.5,
+          "atImpact": 30.2,
+          "maxDeviation": 8.6
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.022,
+          "atEarlyDownswing": -0.01,
+          "atTop": -0.045,
+          "atImpact": 0.015
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.006,
+          "atEarlyDownswing": -0.065,
+          "atTop": -0.095,
+          "atImpact": 0.012
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 480,
+          "pelvisMaxSpeedFrame": 142,
+          "torsoMaxSpeed": 560,
+          "torsoMaxSpeedFrame": 143,
+          "armMaxSpeed": 18,
+          "armMaxSpeedFrame": 131,
+          "leadHipMaxSpeed": 0.50,
+          "leadHipMaxSpeedFrame": 141,
+          "leadShoulderMaxSpeed": 1.7,
+          "leadShoulderMaxSpeedFrame": 146,
+          "midHandsMaxSpeed": 3.6,
+          "midHandsMaxSpeedFrame": 148,
+          "wristMaxSpeed": 3.9,
+          "wristMaxSpeedFrame": 149,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 43,
+      "tokenUsage": {
+        "input": 9200,
+        "output": 1680,
+        "total": 10880
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Par Machine",
+          "score": 52,
+          "potential": 3,
+          "stability": 3,
+          "comment": "The most average swing in golf. Every metric is exactly in the middle. Spine deviates 8.6 deg, shoulder turn 52 deg, knee flex lost 5 deg, hip sway 0.045m. The kinematic sequence fires correctly but at moderate speeds. This swing produces one thing with absolute reliability: par. It's not bad, it's not good — it's perfectly, aggressively, unremarkably average. The Swiss Army knife of mediocrity.",
+          "vibe": {
+            "name": "Vanilla With Sprinkles",
+            "value": 5.0
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 5.2
+            },
+            {
+              "name": "Sequencing",
+              "value": 5.5
+            },
+            {
+              "name": "Balance",
+              "value": 5.8
+            },
+            {
+              "name": "Plane Control",
+              "value": 5.3
+            },
+            {
+              "name": "Impact Control",
+              "value": 5.0
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 4,
+            "summary": "Slight lateral sway at top — 0.045m hip sway is borderline. Causes occasional inconsistency.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Hips slide laterally instead of turning in place. Creates sway.",
+                  "direction": {
+                    "x": -1,
+                    "y": 0
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "circle",
+                  "description": "Turn hips inside a barrel. Minimize lateral slide. Stay centered.",
+                  "radius": 12
+                }
+              ]
+            }
+          },
+          {
+            "phase": 7,
+            "summary": "Spine at 30.2 deg — 8.6 deg lost from address. Moderate posture loss, not severe but not ideal.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Slight hip thrust toward ball at impact. Mild early extension.",
+                  "direction": {
+                    "x": 1,
+                    "y": -0.5
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "hips",
+                  "type": "line",
+                  "description": "Stay in posture through impact. Turn, don't thrust.",
+                  "direction": {
+                    "x": 1,
+                    "y": 0
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Moderate Everything",
+            "summary": "Rotation moderate, speed moderate, posture loss moderate. Every parameter is middle-of-the-road.",
+            "phases": [
+              1,
+              4,
+              7,
+              10
+            ]
+          },
+          {
+            "title": "Sway Pattern",
+            "summary": "0.045m hip sway at top is slightly above ideal. Causes occasional inconsistency in contact.",
+            "phases": [
+              3,
+              4,
+              5
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Speed Bump Drill",
+            "front_action": "Place a headcover just outside your trail foot. Don't touch it going back. Keeps hips centered.",
+            "back_roast_title": "The Happy Medium",
+            "back_roast_text": "Your swing is so balanced between good and bad that it cancels itself out. You're the centrist of golf — nobody's angry, nobody's excited."
+          },
+          {
+            "front_title": "Step Toward Target",
+            "front_action": "Start with feet together. Step toward target on downswing. Forces weight shift over sway.",
+            "back_roast_title": "The Median",
+            "back_roast_text": "Your stats are so perfectly average that if everyone swung like you, the PGA Tour would need a single leaderboard position: 'Everyone.'"
+          },
+          {
+            "front_title": "Posture Stick",
+            "front_action": "Place a club along your spine at address. Swing keeping contact with both points. Cures posture loss.",
+            "back_roast_title": "The Comfortable Couch",
+            "back_roast_text": "Your swing is like a comfortable couch — nothing special to look at, but you could sit in it all day. And in golf, that's... fine. Just fine."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 38.8 deg spine; 23.5 deg knee flex. Average posture for average golfer."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — fine. Not great, not bad. Average."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — slight sway developing. 3 deg spine lost."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 33.5 deg spine (5.3 deg lost). 52 deg shoulder turn. 0.045m hip sway. Adequate."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — moderate. Not explosive, not sluggish. Just... there."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — slight posture loss continuing. Mild sway."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 30.2 deg — 8.6 deg total loss. Decent contact, moderate distance."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — acceptable. Not crisp, not sloppy."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — reasonably balanced. Nothing remarkable."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — somewhat stable. Ball in the fairway-ish area. Par awaits."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "reportId": "report_tc_1040",
+  "videoId": "video_tc_1040",
+  "userId": "user_tom_closer",
+  "title": "Face-on | Right-handed | Wedge",
+  "status": 1,
+  "type": 0,
+  "dataSource": "cloud",
+  "createdAt": 1775004000000,
+  "updatedAt": 1775004000000,
+  "read_status": false,
+  "coverNode": 3,
+  "coachAnnotation": {},
+  "coachIssues": [],
+  "frames": {
+    "P1": "tc_1040/frame_0.jpg",
+    "P2": "tc_1040/frame_1.jpg",
+    "P3": "tc_1040/frame_2.jpg",
+    "P4": "tc_1040/frame_3.jpg",
+    "P5": "tc_1040/frame_4.jpg",
+    "P6": "tc_1040/frame_5.jpg",
+    "P7": "tc_1040/frame_6.jpg",
+    "P8": "tc_1040/frame_7.jpg",
+    "P9": "tc_1040/frame_8.jpg",
+    "P10": "tc_1040/frame_9.jpg"
+  },
+  "analyzes": {
+    "frameAnalysis": {
+      "swingPhaseIndices": {
+        "P1_address": 43,
+        "P2_takeaway": 95,
+        "P3_halfway_back": 115,
+        "P4_top": 137,
+        "P5_early_downswing": 148,
+        "P6_pre_impact": 157,
+        "P7_impact": 166,
+        "P8_release": 170,
+        "P9_follow_through": 176,
+        "P10_end": 191
+      },
+      "kinematicsIndices": {
+        "max_lead_hip_linear_speed_idx": 157,
+        "max_lead_shoulder_linear_speed_idx": 162,
+        "max_mid_hands_linear_speed_idx": 164,
+        "max_chest_rotational_speed_idx": 159,
+        "max_arm_rotational_speed_idx": 149,
+        "max_pelvis_rotational_speed_idx": 158
+      },
+      "processingDuration": 0.16,
+      "displayStats": {
+        "isRightHanded": true,
+        "viewingAngle": "faceOn",
+        "totalSwingDuration": 0.96,
+        "backswingDuration": 0.55,
+        "downswingDuration": 0.16,
+        "xFactorDegrees": -8.8,
+        "shoulderTiltDegrees": {
+          "atAddress": -0.38,
+          "atTakeaway": 0.82,
+          "atEarlyDownswing": 2.25,
+          "atTop": 2.85,
+          "atImpact": -4.75
+        },
+        "hipTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 1.9,
+          "atTop": 38,
+          "atEarlyDownswing": 25.0,
+          "atImpact": 5.5,
+          "atFollowThrough": 18
+        },
+        "shoulderTurnDegrees": {
+          "atAddress": 0,
+          "atTakeaway": 3.2,
+          "atTop": 45,
+          "atEarlyDownswing": 32,
+          "atImpact": 3.0
+        },
+        "shoulderAngles": {
+          "rightShoulderHorizontalAbductionAtAddress": 89.0,
+          "leftShoulderHorizontalAbductionAtAddress": 94.0,
+          "rightShoulderHorizontalAbductionAtTop": 73.0,
+          "leftShoulderHorizontalAbductionAtTop": 80.0,
+          "rightShoulderHorizontalAbductionAtImpact": 80.0,
+          "leftShoulderHorizontalAbductionAtImpact": 103.0,
+          "rightShoulderVerticalElevationAtAddress": 0,
+          "leftShoulderVerticalElevationAtAddress": 0,
+          "rightShoulderVerticalElevationAtTop": 0,
+          "leftShoulderVerticalElevationAtTop": 0,
+          "rightShoulderVerticalElevationAtImpact": 0,
+          "leftShoulderVerticalElevationAtImpact": 0
+        },
+        "elbowAngles": {
+          "rightElbowAtAddress": 38.8,
+          "leftElbowAtAddress": 25.8,
+          "rightElbowAtTop": 49.8,
+          "leftElbowAtTop": 42.8,
+          "rightElbowAtImpact": 56.8,
+          "leftElbowAtImpact": 50.8
+        },
+        "kneeAngles": {
+          "leftKneeAtAddress": 26.5,
+          "rightKneeAtAddress": 30.0,
+          "leftKneeAtTop": 21.0,
+          "rightKneeAtTop": 28.0,
+          "leftKneeAtImpact": 24.2,
+          "rightKneeAtImpact": 27.5
+        },
+        "hipFlexAngles": {
+          "rightHipFlexAtAddress": 53.5,
+          "leftHipFlexAtAddress": 53.0,
+          "rightHipFlexAtTop": 39.5,
+          "leftHipFlexAtTop": 36.5,
+          "rightHipFlexAtImpact": 48.5,
+          "leftHipFlexAtImpact": 45.5
+        },
+        "wristAngles": {
+          "rightWristFlexionAtAddress": -45.5,
+          "leftWristFlexionAtAddress": -56.5,
+          "rightWristFlexionAtTop": 35.5,
+          "leftWristFlexionAtTop": 32.5,
+          "rightWristFlexionAtImpact": -24.5,
+          "leftWristFlexionAtImpact": -36.5,
+          "rightWristRadialDeviationAtTop": 0,
+          "leftWristRadialDeviationAtTop": 0
+        },
+        "spineAngle": {
+          "atAddress": 47.0,
+          "atTop": 45.5,
+          "atImpact": 45.2,
+          "maxDeviation": 1.8
+        },
+        "hipSwayMeters": {
+          "atAddress": -0.002,
+          "atTakeaway": 0.014,
+          "atEarlyDownswing": -0.007,
+          "atTop": -0.028,
+          "atImpact": 0.006
+        },
+        "shoulderSwayMeters": {
+          "atAddress": 0.001,
+          "atTakeaway": -0.004,
+          "atEarlyDownswing": -0.048,
+          "atTop": -0.068,
+          "atImpact": 0.006
+        },
+        "kinematicSequence": {
+          "pelvisMaxSpeed": 400,
+          "pelvisMaxSpeedFrame": 158,
+          "torsoMaxSpeed": 470,
+          "torsoMaxSpeedFrame": 159,
+          "armMaxSpeed": 14,
+          "armMaxSpeedFrame": 149,
+          "leadHipMaxSpeed": 0.42,
+          "leadHipMaxSpeedFrame": 157,
+          "leadShoulderMaxSpeed": 1.5,
+          "leadShoulderMaxSpeedFrame": 162,
+          "midHandsMaxSpeed": 3.0,
+          "midHandsMaxSpeedFrame": 164,
+          "wristMaxSpeed": 3.3,
+          "wristMaxSpeedFrame": 165,
+          "hip2shoulderKinematicSequence": true
+        }
+      }
+    },
+    "aiAdvice": {
+      "status": "done",
+      "textOnly": false,
+      "model": "gemini-3-pro-preview",
+      "processingDuration": 43,
+      "tokenUsage": {
+        "input": 9140,
+        "output": 1650,
+        "total": 10790
+      },
+      "advice": {
+        "nutshell": {
+          "name": "The Closer",
+          "score": 89,
+          "potential": 3,
+          "stability": 5,
+          "comment": "Wedge game is excellent — spine deviates 1.8 deg, knee flex within 2.3 deg. Combined with the elite putting, this player is lethal from 100 yards in. The tempo issue actually works better for wedges since the slower backswing allows more feel. Ball lands near the pin with regularity. Short game is the closer's weapon of choice.",
+          "vibe": {
+            "name": "Fourth Quarter Comeback",
+            "value": 8.8
+          },
+          "technical_radar": [
+            {
+              "name": "Rotation",
+              "value": 5.5
+            },
+            {
+              "name": "Sequencing",
+              "value": 5.7
+            },
+            {
+              "name": "Balance",
+              "value": 9.8
+            },
+            {
+              "name": "Plane Control",
+              "value": 9.2
+            },
+            {
+              "name": "Impact Control",
+              "value": 9.0
+            }
+          ]
+        },
+        "root_causes": [
+          {
+            "phase": 4,
+            "summary": "Shoulder turn 45 deg is adequate for wedges but could be smoother. Tempo actually helps here.",
+            "cause": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Turn is smooth and controlled. Minor improvement: more wrist hinge earlier.",
+                  "direction": {
+                    "x": 0,
+                    "y": 0.5
+                  }
+                }
+              ]
+            },
+            "optim": {
+              "joints": [
+                {
+                  "name": "shoulders",
+                  "type": "line",
+                  "description": "Set wrists earlier in backswing for more wedge control and spin.",
+                  "direction": {
+                    "x": 0.5,
+                    "y": 1
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "swing_dynamics": [
+          {
+            "title": "Wedge Tempo Advantage",
+            "summary": "The slow backswing actually BENEFITS wedge play — more time to feel the shot. Tempo flaw becomes feature.",
+            "phases": [
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "title": "Pin Seeker",
+            "summary": "Wedge accuracy combined with elite putting makes this player deadly inside 100 yards.",
+            "phases": [
+              7,
+              8
+            ]
+          }
+        ],
+        "flipcards": [
+          {
+            "front_title": "The Proximity Challenge",
+            "front_action": "Hit 10 wedge shots to 30, 50, 70, 90 yards. Track average proximity to pin. Target: under 15 feet.",
+            "back_roast_title": "The Wedge Assassin",
+            "back_roast_text": "Your wedge game is so dialed that the pin should file a restraining order. You keep showing up uninvited."
+          },
+          {
+            "front_title": "Clock System Refinement",
+            "front_action": "Practice wedge from 8, 9, 10 o'clock positions. Map exact distances. Repeat until consistent.",
+            "back_roast_title": "The Human GPS",
+            "back_roast_text": "Your wedge distances are so precise that satellites are jealous. The ball lands in a tighter grouping than your clothes."
+          },
+          {
+            "front_title": "One Hop Check",
+            "front_action": "Hit wedges that land, bounce once, and stop. Requires perfect spin and trajectory control.",
+            "back_roast_title": "The Brake Test",
+            "back_roast_text": "Your wedge shots stop faster than a car at a red light. One hop and done. The ball respects your authority."
+          }
+        ],
+        "phase_analysis": [
+          {
+            "phase_number": 1,
+            "observation": "Setup at 47.0 deg spine; 26.5 deg knee flex. Ideal wedge posture."
+          },
+          {
+            "phase_number": 2,
+            "observation": "Takeaway — slow and controlled. Tempo works FOR wedges."
+          },
+          {
+            "phase_number": 3,
+            "observation": "Halfway — smooth loading. Shaft on plane."
+          },
+          {
+            "phase_number": 4,
+            "observation": "Top — 45.5 deg spine (1.5 deg lost). 45 deg shoulder turn. Good wedge turn."
+          },
+          {
+            "phase_number": 5,
+            "observation": "Transition — tempo break less severe on wedge. Acceptable rhythm."
+          },
+          {
+            "phase_number": 6,
+            "observation": "Pre-impact — descending blow loading. Good shaft lean."
+          },
+          {
+            "phase_number": 7,
+            "observation": "Impact at 45.2 deg — 1.8 deg total. Ball-turf contact, spin city."
+          },
+          {
+            "phase_number": 8,
+            "observation": "Release — divot after ball. Compressed and spinning."
+          },
+          {
+            "phase_number": 9,
+            "observation": "Follow-through — controlled, balanced. Ball checking near pin."
+          },
+          {
+            "phase_number": 10,
+            "observation": "Finish — stable and posed. Wedge to 10 feet. Then putt for par. This is how tournaments are won."
+          }
+        ]
+      }
+    }
+  }
+}
