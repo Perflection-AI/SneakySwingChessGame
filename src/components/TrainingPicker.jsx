@@ -6,6 +6,19 @@ import Board from './Board'
 import Palette from '../Palette'
 import './TrainingPicker.css'
 
+const SARCASTIC_SUBTITLES = [
+  "Pick a day. Any day. We both know you need the practice.",
+  "Let's see if you actually learned anything. Spoiler: probably not.",
+  "Your swing is the problem. These numbers just prove it.",
+  "Pick a day to relive your failures. Fun, right?",
+  "Somewhere in here is a decent round. Good luck finding it.",
+  "Golf is humbling. These records? Humiliating.",
+  "Every day you didn't practice, someone else got better. Enjoy.",
+  "These are your results. We'll wait while you cope.",
+  "Rumor has it you're getting better. These numbers disagree.",
+  "Pick a day. Or don't. It's not like the scores change.",
+]
+
 function tierOf(score) {
   if (score >= 80) return 'S'
   if (score >= 60) return 'A'
@@ -50,6 +63,17 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
   const [sessionThumbs, setSessionThumbs] = useState([])
   const lastShotTime = useRef(0)
   const labelTimeout = useRef(null)
+  const listRef = useRef(null)
+
+  // Scroll selected card into view when test board appears
+  useEffect(() => {
+    if (selectedIdx !== null && listRef.current) {
+      const cards = listRef.current.querySelectorAll('.tp-day-card')
+      cards[selectedIdx]?.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+    }
+  }, [selectedIdx])
+
+  const subtitle = useMemo(() => SARCASTIC_SUBTITLES[Math.floor(Math.random() * SARCASTIC_SUBTITLES.length)], [])
 
   useEffect(() => {
     discoverPhotos('/mock-record/day-1').then(images => {
@@ -137,10 +161,10 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
       </div>
       <div className="tp-header">
         <h2 className="tp-title">Training Records</h2>
-        <span className="tp-subtitle">Pick a day to build your stats</span>
+        <span className="tp-subtitle">{subtitle}</span>
       </div>
 
-      <div className="tp-day-list">
+      <div className="tp-day-list" ref={listRef}>
         {trainingRecords.map((day, i) => {
           const stats = computeStatsFromTraining(day)
           const tier = tierOf(day.avgScore)
@@ -194,6 +218,7 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
       </div>
 
       <div className="tp-bottom">
+        {selectedIdx !== null && (
         <div className="tp-board-area">
           <Board
             players={practicePlayers}
@@ -210,6 +235,7 @@ export default function TrainingPicker({ trainingRecords, onSelectTraining, onPr
             </div>
           )}
         </div>
+        )}
 
         <div className="tp-hud">
         <button

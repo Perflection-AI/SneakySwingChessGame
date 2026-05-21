@@ -346,7 +346,7 @@ export default function IslandContainer() {
 
   return (
     <div className={`app-layout${isMobile ? ' app-layout-mobile' : ''}`} style={isMobile ? { height: viewportHeight + 'px' } : undefined}>
-      {!isMobile && <aside className="debug-panel">
+      {!isMobile && appConfig.debug && <aside className="debug-panel">
         <div className="debug-title">Debug</div>
         <div className="debug-label">Mode</div>
         <div className="debug-buttons">
@@ -534,6 +534,7 @@ export default function IslandContainer() {
                     const m = discoveredMaps.find(m => m.id === selectedMapIds[0])
                     return m?.imageUrl || (selectedMapIds.length > 0 ? `/map/${selectedMapIds[0]}/map.png` : null)
                   })()}
+                  onExit={gamePhase === 'playing' ? handleNewGame : undefined}
                 />
               </>
             )}

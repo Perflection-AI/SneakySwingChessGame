@@ -145,6 +145,10 @@ function createInitialState(players) {
     stageIndex: 0,
     swingsThisStage: 0,
     stageActivePlayerCount: players.length,
+
+    teleportPhase: 'idle',
+    teleportTargets: [],
+    nuclearPhase: 'idle',
   }
 }
 
@@ -189,6 +193,9 @@ function gameReducer(state, action) {
         stageIndex: 0,
         swingsThisStage: 0,
         stageActivePlayerCount: players.length,
+        teleportPhase: 'idle',
+        teleportTargets: [],
+        nuclearPhase: 'idle',
       }
     }
 
@@ -228,6 +235,9 @@ function gameReducer(state, action) {
         stageIndex: 0,
         swingsThisStage: 0,
         stageActivePlayerCount: state.playerIds.length,
+        teleportPhase: 'idle',
+        teleportTargets: [],
+        nuclearPhase: 'idle',
       }
 
     case 'FIRE_SHOT': {
@@ -275,28 +285,75 @@ function gameReducer(state, action) {
         i === playerIdx ? { x: endX, y: endY } : p
       )
 
-      // Apply animal event position updates (displace opponents)
+      // Brainrot: resetHole (Nuclear Option) — start flash animation instead of immediate reset
+      if (state.activeCard?.effect?.resetHole) {
+        return {
+          ...state,
+          playerPos: newPlayerPos,
+          activeCard: null,
+          nuclearPhase: 'flash',
+        }
+      }
+
+      // Check if we need teleport animation for displacement/swap cards
+      const hasDisplacement = animalUpdates?.length > 0
+      const hasSwap = swapPositions && state.playerIds.length >= 2
+
+      if (hasDisplacement || hasSwap) {
+        // Compute final positions but store as teleport targets instead of applying
+        let finalPlayerPos = newPlayerPos
+        const teleportTargets = []
+
+        if (hasDisplacement) {
+          for (const upd of animalUpdates) {
+            teleportTargets.push({
+              playerIdx: upd.idx,
+              fromPos: { ...newPlayerPos[upd.idx] },
+              toPos: { x: upd.x, y: upd.y },
+            })
+          }
+          finalPlayerPos = newPlayerPos.map((p, i) => {
+            const upd = animalUpdates.find(u => u.idx === i)
+            return upd ? { x: upd.x, y: upd.y } : p
+          })
+        }
+
+        if (hasSwap) {
+          const oppIdx = playerIdx === 0 ? 1 : 0
+          const selfPos = { ...finalPlayerPos[playerIdx] }
+          const oppPos = { ...finalPlayerPos[oppIdx] }
+          teleportTargets.push(
+            { playerIdx, fromPos: { ...finalPlayerPos[playerIdx] }, toPos: oppPos },
+            { playerIdx: oppIdx, fromPos: { ...finalPlayerPos[oppIdx] }, toPos: selfPos }
+          )
+          finalPlayerPos = [...finalPlayerPos]
+          finalPlayerPos[playerIdx] = oppPos
+          finalPlayerPos[oppIdx] = selfPos
+        }
+
+        // Store targets and start fade-out; position will be applied after animation
+        const holed = state.holedSet
+        const n = state.playerIds.length
+        let nextTi = (playerIdx + 1) % n
+        for (let i = 0; i < n && holed.includes(nextTi); i++) {
+          nextTi = (nextTi + 1) % n
+        }
+
+        return {
+          ...state,
+          turnIdx: nextTi,
+          activeCard: null,
+          activeWeather: state.activeWeather,
+          swingsThisStage: state.swingsThisStage + 1,
+          teleportPhase: 'fade_out',
+          teleportTargets,
+        }
+      }
+
+      // No special card effects — apply positions directly
       let finalPlayerPos = newPlayerPos
-      if (animalUpdates?.length) {
-        finalPlayerPos = newPlayerPos.map((p, i) => {
-          const upd = animalUpdates.find(u => u.idx === i)
-          return upd ? { x: upd.x, y: upd.y } : p
-        })
-      }
 
-      // Brainrot: swapPositions (Ball Swap) — swap self with opponent
-      if (swapPositions && state.playerIds.length >= 2) {
-        const oppIdx = playerIdx === 0 ? 1 : 0
-        const selfPos = { ...finalPlayerPos[playerIdx] }
-        const oppPos = { ...finalPlayerPos[oppIdx] }
-        finalPlayerPos = [...finalPlayerPos]
-        finalPlayerPos[playerIdx] = oppPos
-        finalPlayerPos[oppIdx] = selfPos
-      }
-
-      // Field card acquisition: check if ball landed near any unacquired card
-      // NPC balls "consume" the card (remove from field) but don't add to hand.
-      // Only the human player (playerIdx 0) picks cards into hand.
+      // Field card acquisition
       let acquiredHand = state.hand
       let acquiredFieldCards = state.fieldCards
       if (isCardsEnabled() && state.fieldCards.length > 0) {
@@ -316,30 +373,6 @@ function gameReducer(state, action) {
         if (updatedField !== state.fieldCards) {
           acquiredFieldCards = updatedField
           if (newCards.length > 0) acquiredHand = [...state.hand, ...newCards]
-        }
-      }
-
-      // Brainrot: resetHole (Nuclear Option) — reset entire hole
-      if (state.activeCard?.effect?.resetHole) {
-        const nextHoleNum = state.holeNumber
-        const nextPar = PAR_LAYOUT[nextHoleNum - 1]
-        const newHole = makeHole(nextHoleNum - 1, state.playerIds.length)
-        const resetFieldCards = isCardsEnabled()
-          ? spawnFieldCards(newHole.positions, newHole.hole)
-          : []
-        return {
-          ...state,
-          holePos: newHole.hole,
-          playerPos: newHole.positions,
-          totalStrokes: state.totalStrokes,
-          ...resetHolePlayState(state, []),
-          fieldCards: resetFieldCards,
-          commentary: [...state.commentary.slice(-49), {
-            id: Date.now(),
-            text: 'Nuclear Option! Hole reset. Back to square one.',
-            stroke: 0,
-            playerName: '',
-          }],
         }
       }
 
@@ -574,6 +607,59 @@ function gameReducer(state, action) {
       if (state.primaryStatus !== 'off') return state
       appConfig.cards.deckType = deckType
       return { ...state, hand: [], activeCard: null, activeWeather: null, cardPending: false, cardPenalties: [] }
+    }
+
+    case 'TELEPORT_FADE_OUT_COMPLETE': {
+      // Apply position updates from teleport targets
+      const newPlayerPos = state.playerPos.map((p, i) => {
+        const target = state.teleportTargets.find(t => t.playerIdx === i)
+        return target ? { ...target.toPos } : p
+      })
+      return {
+        ...state,
+        playerPos: newPlayerPos,
+        teleportPhase: 'fade_in',
+      }
+    }
+
+    case 'TELEPORT_FADE_IN_COMPLETE': {
+      return {
+        ...state,
+        teleportPhase: 'idle',
+        teleportTargets: [],
+        secondaryStatus: 'camera_followup',
+      }
+    }
+
+    case 'NUCLEAR_FLASH_COMPLETE': {
+      const nextHoleNum = state.holeNumber
+      const newHole = makeHole(nextHoleNum - 1, state.playerIds.length)
+      const resetFieldCards = isCardsEnabled()
+        ? spawnFieldCards(newHole.positions, newHole.hole)
+        : []
+      return {
+        ...state,
+        holePos: newHole.hole,
+        playerPos: newHole.positions,
+        totalStrokes: state.totalStrokes,
+        ...resetHolePlayState(state, []),
+        fieldCards: resetFieldCards,
+        nuclearPhase: 'reset',
+        commentary: [...state.commentary.slice(-49), {
+          id: Date.now(),
+          text: 'Nuclear Option! Hole reset. Back to square one.',
+          stroke: 0,
+          playerName: '',
+        }],
+      }
+    }
+
+    case 'NUCLEAR_RESET_COMPLETE': {
+      return {
+        ...state,
+        nuclearPhase: 'idle',
+        secondaryStatus: 'camera_followup',
+      }
     }
 
     default:

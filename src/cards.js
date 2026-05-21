@@ -203,9 +203,9 @@ const BRAINROT_DEFS = {
     system: 'player_stat',
     deck: 'brainrot',
     target: 'self',
-    description: 'Power +5 (can exceed 10, max 15)',
-    flavorText: 'Gives you wings. Direction not included.',
-    effect: { powerMod: 5, allowOverflow: true, overflowCap: 15 },
+    description: 'Power +6 (can exceed 10, max 15)',
+    flavorText: 'Gives you wings. Direction not included. FDA not consulted.',
+    effect: { powerMod: 6, allowOverflow: true, overflowCap: 15 },
   },
   br_mystery_flask: {
     id: 'br_mystery_flask',
@@ -214,9 +214,9 @@ const BRAINROT_DEFS = {
     system: 'player_stat',
     deck: 'brainrot',
     target: 'self',
-    description: 'Power/Aim/Touch each random 1-15',
-    flavorText: 'Mystery potion. Bottoms up.',
-    effect: { randomizeAll: true, randomRange: [1, 15] },
+    description: 'Power/Aim/Touch each random 1-12',
+    flavorText: 'Could be steroids. Could be tap water. Roll the dice.',
+    effect: { randomizeAll: true, randomRange: [1, 12] },
   },
   br_scope_creep: {
     id: 'br_scope_creep',
@@ -225,9 +225,9 @@ const BRAINROT_DEFS = {
     system: 'player_stat',
     deck: 'brainrot',
     target: 'self',
-    description: 'Aim = 15 (perfect), Power = 1 (30yd)',
-    flavorText: 'We want everything. We get 30 yards.',
-    effect: { aimOverride: 15, powerOverride: 1 },
+    description: 'Aim = 12 (laser), Power = 2 (short)',
+    flavorText: 'We want everything. We get 40 yards.',
+    effect: { aimOverride: 12, powerOverride: 2 },
   },
 
   // ─── Creatures (2) ───
@@ -238,9 +238,9 @@ const BRAINROT_DEFS = {
     system: 'animal_event',
     deck: 'brainrot',
     target: 'opponent',
-    description: "Opponent ball stolen 30-60yd",
-    flavorText: "The dragon has opinions about your ball.",
-    effect: { displacementRange: [30, 60], displacementAxis: 'both' },
+    description: "Opponent ball stolen 30-70yd",
+    flavorText: "The dragon doesn't have opinions. It has a catapult.",
+    effect: { displacementRange: [30, 70], displacementAxis: 'both' },
   },
   br_void_fish: {
     id: 'br_void_fish',
@@ -249,9 +249,9 @@ const BRAINROT_DEFS = {
     system: 'animal_event',
     deck: 'brainrot',
     target: 'opponent',
-    description: 'Opponent ball teleported 3-15yd from hole',
-    flavorText: 'The void fish is beyond reason.',
-    effect: { teleportNearHole: true, teleportRange: [3, 15] },
+    description: 'Opponent ball teleported 3-25yd from hole',
+    flavorText: 'The void fish operates on vibes and chaos.',
+    effect: { teleportNearHole: true, teleportRange: [3, 25] },
   },
 
   // ─── Weather (2) ───
@@ -263,7 +263,7 @@ const BRAINROT_DEFS = {
     deck: 'brainrot',
     target: 'all',
     description: 'Distance x1.8',
-    flavorText: 'Gravity is now optional.',
+    flavorText: "Gravity called in sick today. No one's driving.",
     effect: { pushMultiplier: 1.8 },
   },
   br_wildfire: {
@@ -274,7 +274,7 @@ const BRAINROT_DEFS = {
     deck: 'brainrot',
     target: 'all',
     description: 'All balls random offset 15-30yd',
-    flavorText: 'The course is on fire.',
+    flavorText: 'The course is on fire. The balls are fleeing.',
     effect: { offsetXRange: [-30, 30] },
   },
 
@@ -287,7 +287,7 @@ const BRAINROT_DEFS = {
     deck: 'brainrot',
     target: 'both',
     description: 'Swap your ball position with opponent',
-    flavorText: 'Yours is mine.',
+    flavorText: 'Yours is mine. No takebacks.',
     effect: { swapPositions: true },
   },
   br_identity_theft: {
@@ -298,7 +298,7 @@ const BRAINROT_DEFS = {
     deck: 'brainrot',
     target: 'self',
     description: 'Use opponent Power/Aim/Touch this shot',
-    flavorText: "I am you. You are me. Let's golf.",
+    flavorText: "I'm you but better. Deal with it.",
     effect: { copyOpponentStats: true },
   },
   br_nuclear_option: {
@@ -309,7 +309,7 @@ const BRAINROT_DEFS = {
     deck: 'brainrot',
     target: 'all',
     description: 'Reset hole: all balls to tee, strokes to 0',
-    flavorText: 'Back to square one.',
+    flavorText: "Mutually assured destruction. But make it golf.",
     effect: { resetHole: true },
   },
 }

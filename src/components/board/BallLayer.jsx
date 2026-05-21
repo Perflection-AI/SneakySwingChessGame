@@ -1,4 +1,6 @@
-export default function BallLayer({ balls, ydToPct }) {
+export default function BallLayer({ balls, ydToPct, ballEffect, weatherActive, penaltyPlayerIdxs }) {
+  const penaltySet = penaltyPlayerIdxs?.length ? new Set(penaltyPlayerIdxs) : null
+
   return (
     <svg className="ball-layer" viewBox="0 0 100 100" preserveAspectRatio="none">
       {balls.map(b => {
@@ -9,9 +11,23 @@ export default function BallLayer({ balls, ydToPct }) {
         const traveledYd = Math.round(Math.sqrt((cx - b.sx) ** 2 + (cy - b.sy) ** 2) / ydToPct)
         const midX = (b.sx + cx) / 2
         const midY = (b.sy + cy) / 2
+
+        const isPenalty = penaltySet?.has(b.playerIdx)
+        const isGolden = ballEffect === 'golden' && !isPenalty
+        const trailClass = isGolden ? 'ball-trail ball-trail-golden'
+          : isPenalty ? 'ball-trail ball-trail-penalty'
+          : weatherActive ? 'ball-trail ball-trail-weather'
+          : 'ball-trail'
+        const dotClass = isGolden ? 'ball-dot ball-dot-golden'
+          : isPenalty ? 'ball-dot ball-dot-penalty'
+          : 'ball-dot'
+        const glowClass = isGolden ? 'ball-glow ball-glow-golden'
+          : isPenalty ? 'ball-glow ball-glow-penalty'
+          : 'ball-glow'
+
         return (
           <g key={b.id} opacity={opacity}>
-            <line className="ball-trail" x1={b.sx} y1={b.sy} x2={cx} y2={cy} />
+            <line className={trailClass} x1={b.sx} y1={b.sy} x2={cx} y2={cy} />
             {b.progress > 0.05 && (
               <text x={midX} y={midY} className="ball-dist-text" textAnchor="middle" dominantBaseline="central">
                 {traveledYd} yd
@@ -19,8 +35,8 @@ export default function BallLayer({ balls, ydToPct }) {
             )}
             {b.phase === 'flying' && (
               <>
-                <circle className="ball-dot" cx={cx} cy={cy} r={r} />
-                <circle className="ball-glow" cx={cx} cy={cy} r={r + 0.5} />
+                <circle className={dotClass} cx={cx} cy={cy} r={r} />
+                <circle className={glowClass} cx={cx} cy={cy} r={r + 0.5} />
               </>
             )}
             {b.phase === 'fading' && b.outcome !== 'holed' && (

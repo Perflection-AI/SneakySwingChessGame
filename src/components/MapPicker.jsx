@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import './MapPicker.css'
 
-const MAP_NAMES = { map_1: "CMU Campus", map_2: "The White House", map_3: "World", map_4: "Strait of Hormuz" }
+const MAP_NAMES = { map_1: "Ohio State But It's Golf", map_2: "The White House (No Clearance Required)", map_3: "Earth is a Sandbox", map_4: "Strait of Hormuz or Whatever" }
 
 function MapCard({ map, isSelected, isDimmed, onToggle }) {
   const holes = map.pointCount - 1
@@ -36,15 +36,23 @@ function MapCard({ map, isSelected, isDimmed, onToggle }) {
   )
 }
 
-export default function MapPicker({ discoveredMaps, selectedMapIds, onToggleMap, onConfirm, onSkip, loading }) {
+export default function MapPicker({ discoveredMaps, selectedMapIds, onToggleMap, onConfirm, onSkip, onBack, loading }) {
   const hasMaps = discoveredMaps.length > 0
   const hasSelection = selectedMapIds.length > 0
 
   return (
     <div className="mp-container">
       <div className="mp-header">
+        {onBack && (
+          <button className="mp-back-btn" onClick={onBack}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8">
+              <path d="M12.5 15L7.5 10L12.5 5" />
+            </svg>
+            <span>Opponents</span>
+          </button>
+        )}
         <h2 className="mp-title">Select Course</h2>
-        <span className="mp-subtitle">Choose a course map, or skip for random holes</span>
+        <span className="mp-subtitle">Choose a course map to play</span>
       </div>
 
       <div className="mp-grid">
@@ -71,9 +79,6 @@ export default function MapPicker({ discoveredMaps, selectedMapIds, onToggleMap,
       </div>
 
       <div className="mp-footer">
-        <button className="mp-skip-btn" onClick={onSkip}>
-          Skip
-        </button>
         <button
           className="mp-start-btn"
           disabled={!hasSelection}

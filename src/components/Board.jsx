@@ -20,6 +20,7 @@ import {
   SWING_ISSUES,
 } from '../utils/shotPhysics'
 import { getCardDef } from '../cards'
+import { discoverThumbnails } from '../imageCache'
 import { checkOverflow } from '../utils/overflowCheck'
 import { selectCommentary, selectHoleOpenCommentary } from '../commentaryEngine'
 import { useGameReducer, computeEffectiveStats } from '../hooks/useGameReducer'
@@ -42,6 +43,8 @@ import BroadcastTicker from './board/BroadcastTicker'
 import ShotBanner from './board/ShotBanner'
 import GameFinished from './board/GameFinished'
 import FireAnimation, { precachePlayers } from './board/FireAnimation'
+import TeleportOverlay from './board/TeleportOverlay'
+import NuclearFlash from './board/NuclearFlash'
 import IllustrateGrid from './board/IllustrateGrid'
 import { useIllustrateState } from '../hooks/useIllustrateState'
 import { useIllustrateAnimation } from '../hooks/useIllustrateAnimation'
@@ -107,7 +110,7 @@ function ActiveEffects({ activeCard, activeWeather, cardPenalties, players, turn
   )
 }
 
-export default function Board({ players, activePlayerId, mode, onControls, illustrateConfig, testConfig, mapImageUrl, onShotResult }) {
+export default function Board({ players, activePlayerId, mode, onControls, illustrateConfig, testConfig, mapImageUrl, onShotResult, onExit }) {
   const { board } = useAppConfig()
   const boardRef = useRef(null)
   const [state, dispatch, gameRef] = useGameReducer(players)
@@ -115,6 +118,26 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
   const { pan, panRef, setPan } = useBoardPan(boardRef)
   const isFullscreen = mode === 'game'
   const [introPlayer, setIntroPlayer] = useState(null)
+  const [thumbnailMap, setThumbnailMap] = useState({})
+
+  const handleExitGame = useCallback(() => {
+    dispatch({ type: 'RESET_GAME' })
+    if (onExit) onExit()
+  }, [dispatch, onExit])
+
+  // Preload player thumbnails
+  useEffect(() => {
+    let cancelled = false
+    async function load() {
+      const map = {}
+      await Promise.all(players.map(async p => {
+        if (p.photoDir) map[p.id] = await discoverThumbnails(p.photoDir)
+      }))
+      if (!cancelled) setThumbnailMap(map)
+    }
+    load()
+    return () => { cancelled = true }
+  }, [players])
 
   // Reactive map state — synced from appConfig.map whenever holeNumber changes
   const [mapTransform, setMapTransform] = useState(null)
@@ -180,15 +203,10 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
     dispatch({ type: 'START_GAME', payload: { players } })
     setTimeout(() => {
       const gs = gameRef.current
-      applyAutoZoom(gs.playerPos, gs.holePos)
-      // After auto-zoom settles, focus on the first player before their shot
-      setTimeout(() => {
-        const gs2 = gameRef.current
-        applyFollowUpZoom(gs2.playerPos[gs2.turnIdx], gs2.holePos)
-      }, 1100)
+      applyFollowUpZoom(gs.playerPos[gs.turnIdx], gs.holePos)
       dispatch({ type: 'SPAWN_FIELD_CARDS' })
     }, 0)
-  }, [players, dispatch, gameRef, applyAutoZoom, applyFollowUpZoom])
+  }, [players, dispatch, gameRef, applyFollowUpZoom])
 
   // --- Auto-start: 0.5s after entering game mode ---
 
@@ -223,24 +241,35 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
   const handleExchangeCards = useCallback((cardIds) => dispatch({ type: 'EXCHANGE_CARDS', payload: { cardIds } }), [dispatch])
   const handleSelectDeck = useCallback((deckType) => dispatch({ type: 'SELECT_DECK', payload: { deckType } }), [dispatch])
 
-  // --- Mode switch: reset zoom & apply auto-zoom ---
+  // --- Mode switch: apply auto-zoom for test mode ---
 
   const prevModeRef = useRef(mode)
   useEffect(() => {
     if (mode === prevModeRef.current) return
     prevModeRef.current = mode
-    setZoom(1.0)
     setPan({ x: 0, y: 0 })
     panRef.current = { x: 0, y: 0 }
     // Reset to initial positions when entering test mode
     if (mode === 'test') {
-      const initPos = Array.from({ length: players.length }, () => ({ x: 50, y: 50 }))
-      dispatch({ type: 'TRANSITION_HOLE', payload: { nextHoleNum: 1, hole: { x: 50, y: 12 }, positions: initPos } })
+      const initPos = Array.from({ length: players.length }, () => ({ x: 15, y: 50 }))
+      dispatch({ type: 'TRANSITION_HOLE', payload: { nextHoleNum: 1, hole: { x: 85, y: 50 }, positions: initPos } })
       setTimeout(() => {
-        applyAutoZoom(initPos, { x: 50, y: 12 })
+        applyAutoZoom(initPos, { x: 85, y: 50 })
       }, 0)
     }
   }, [mode, players, dispatch, setZoom, setPan, panRef, applyAutoZoom])
+
+  // --- Card pick hint flash ---
+
+  const prevCardPicking = useRef(false)
+  const [cardPickFlash, setCardPickFlash] = useState(0)
+  useEffect(() => {
+    const isPicking = state.secondaryStatus === 'card_picking' && state.cardPending && state.hand.length > 0 && state.turnIdx === 0
+    if (isPicking && !prevCardPicking.current) {
+      setCardPickFlash(f => f + 1)
+    }
+    prevCardPicking.current = isPicking
+  }, [state.secondaryStatus, state.cardPending, state.hand.length, state.turnIdx])
 
   // --- Computed values ---
 
@@ -248,6 +277,16 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
   const distYd = Math.round(distPct(activePos, state.holePos) / YD_TO_PCT)
   const isClutch = distYd <= CLUTCH_THRESHOLD_YD
   const currentPar = PAR_LAYOUT[state.holeNumber - 1]
+
+  // --- Card visual effect derived props ---
+  const activeCardIsBuff = state.activeCard?.system === 'player_stat'
+  const weatherActive = !!state.activeWeather
+  const penaltyPlayerIdxs = state.cardPenalties
+    ?.filter(p => p.remainingSwings > 0)
+    .map(p => p.targetPlayerIdx) || []
+  const ballEffect = activeCardIsBuff ? 'golden' : 'normal'
+  const teleportTargetIdxs = new Set(state.teleportTargets?.map(t => t.playerIdx) || [])
+  const isSwinging = state.secondaryStatus === 'during_swing' || state.secondaryStatus === 'camera_followup'
 
   // --- Test mode click handler ---
 
@@ -561,6 +600,14 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
             {mode === 'game' && state.lastOutcome && state.primaryStatus === 'run' && (
               <ShotBanner outcome={state.lastOutcome} shotCount={state.shotCount} />
             )}
+            {mode === 'game' && cardPickFlash > 0 && state.secondaryStatus === 'card_picking' && state.cardPending && state.hand.length > 0 && state.turnIdx === 0 && (
+              <div key={cardPickFlash} className="card-pick-banner">PICK A CARD</div>
+            )}
+            {mode === 'game' && !state.gameFinished && state.commentary?.length > 0 && (
+              <div className="floating-commentary">
+                <CommentaryFeed commentary={state.commentary} maxLines={1} />
+              </div>
+            )}
             <ActiveEffects
               activeCard={state.activeCard}
               activeWeather={state.activeWeather}
@@ -569,6 +616,14 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
               turnIdx={state.turnIdx}
               stageIndex={state.stageIndex}
             />
+            {mode === 'game' && !state.gameFinished && state.primaryStatus !== 'off' && onExit && (
+              <button className="game-exit-btn" onClick={handleExitGame}>
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.6">
+                  <path d="M11 14L6 9L11 4" />
+                </svg>
+                <span>End Game</span>
+              </button>
+            )}
             <BoardArea
               ref={boardRef}
               zoom={zoom}
@@ -579,7 +634,13 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
               mapImageUrl={activeMapImageUrl}
               mapTransform={mapTransform}
               darkBg={mode === 'test' && !activeMapImageUrl}
+              weatherActive={weatherActive}
             >
+              {weatherActive && state.activeWeather && (
+                <div className="weather-badge">
+                  {state.activeWeather.emoji} {state.activeWeather.name}
+                </div>
+              )}
               <HoleMarker x={state.holePos.x} y={state.holePos.y} />
               {(mode === 'game' || mode === 'test') && (
                 <DistanceGuide
@@ -589,7 +650,7 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
                   clutchRadius={CLUTCH_THRESHOLD_YD * YD_TO_PCT}
                 />
               )}
-              <BallLayer balls={state.balls} ydToPct={YD_TO_PCT} />
+              <BallLayer balls={state.balls} ydToPct={YD_TO_PCT} ballEffect={ballEffect} weatherActive={weatherActive} penaltyPlayerIdxs={penaltyPlayerIdxs} />
               {appConfig.cards?.enabled && state.fieldCards.length > 0 && state.fieldCards.map((fc, idx) => (
                 <FieldCardMarker
                   key={`fc-${idx}-${fc.cardId}`}
@@ -601,19 +662,36 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
               <HoledEffect x={state.holePos.x} y={state.holePos.y} visible={state.holedIn} />
               {players.map((player, i) => {
                 const pDistYd = Math.round(distPct(state.playerPos[i], state.holePos) / YD_TO_PCT)
+                const isTargeted = teleportTargetIdxs.has(i)
+                const isActivePlayer = mode === 'game' ? i === state.turnIdx : i === aIdx
                 return (
                   <PlayerSlot
                     key={player.id}
                     player={player}
                     pos={state.playerPos[i]}
-                    isActive={mode === 'game' ? i === state.turnIdx : i === aIdx}
+                    isActive={isActivePlayer}
                     isHoled={mode === 'game' && state.holedSet.includes(i)}
                     distYd={pDistYd}
                     showDist={mode === 'game'}
                     transition={mode === 'game'}
+                    cardEffect={activeCardIsBuff && isActivePlayer ? 'buff' : null}
+                    penaltyActive={penaltyPlayerIdxs.includes(i)}
+                    teleportPhase={isTargeted ? state.teleportPhase : null}
+                    thumbnails={thumbnailMap[player.id] || []}
+                    animSpeed={isActivePlayer && isSwinging ? 5 : 1}
+                    style={{ zIndex: isActivePlayer ? 10 : 4 }}
                   />
                 )
               })}
+              <TeleportOverlay
+                teleportPhase={state.teleportPhase}
+                teleportTargets={state.teleportTargets}
+                dispatch={dispatch}
+              />
+              <NuclearFlash
+                nuclearPhase={state.nuclearPhase}
+                dispatch={dispatch}
+              />
             </BoardArea>
           </>
         )}
@@ -622,7 +700,8 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
       {/* --- Floating overlays (game mode only) --- */}
       {isFullscreen && (
         <>
-          {/* Bottom group: hole label + HUD panel */}
+          {/* Bottom group: hole label + HUD panel — hidden when card picker is showing */}
+          {!(appConfig.cards?.enabled && state.cardPending && state.hand.length > 0 && state.turnIdx === 0 && introPlayer === null) && (
           <div className="floating-bottom-group">
             {/* Hole / Par label */}
             {!state.gameFinished && state.primaryStatus !== 'off' && (
@@ -674,6 +753,7 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
 
               {/* Right column: scores + commentary */}
               <div className="hud-info-col">
+                {!(appConfig.cards?.enabled && state.cardPending && state.hand.length > 0 && state.turnIdx === 0) && (
                 <Scorecard
                   players={players}
                   scorecard={state.scorecard}
@@ -681,13 +761,12 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
                   holeNumber={state.holeNumber}
                   gameFinished={state.gameFinished}
                 />
-                {state.commentary?.length > 0 && (
-                  <CommentaryFeed commentary={state.commentary} maxLines={4} />
                 )}
                 {state.gameFinished && <GameFinished />}
               </div>
             </div>
           </div>
+          )}
 
           {/* Floating CardPicker */}
           {introPlayer !== null && !state.gameFinished && (

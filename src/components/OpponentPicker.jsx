@@ -91,7 +91,7 @@ function OpponentCard({ player, images, isSelected, onToggle, meta }) {
 }
 
 const SECTIONS = [
-  { id: 'following', label: 'Following' },
+  { id: 'following', label: 'Friends' },
   { id: 'nearby', label: 'Nearby' },
 ]
 
@@ -142,7 +142,7 @@ export default function OpponentPicker({ aiPlayers, selected, onToggle, onConfir
       </div>
 
       <div className="opp-scroll">
-        {sections.map(sec => (
+        {sections.map((sec, si) => (
           <div key={sec.id} className="opp-section">
             <div className="opp-section-header">
               <span className="opp-section-label">{sec.label}</span>

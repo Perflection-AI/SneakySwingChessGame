@@ -2,7 +2,7 @@ import { forwardRef } from 'react'
 
 const mapImgTransition = 'left 1.5s cubic-bezier(0.25,0.1,0.25,1),top 1.5s cubic-bezier(0.25,0.1,0.25,1),width 1.5s cubic-bezier(0.25,0.1,0.25,1),height 1.5s cubic-bezier(0.25,0.1,0.25,1)'
 
-const BoardArea = forwardRef(function BoardArea({ zoom, pan, aspectRatio, fullscreen, onClick, mapImageUrl, mapTransform, darkBg, children }, boardRef) {
+const BoardArea = forwardRef(function BoardArea({ zoom, pan, aspectRatio, fullscreen, onClick, mapImageUrl, mapTransform, darkBg, weatherActive, children }, boardRef) {
   const ar = aspectRatio || 1
   const style = {
     '--zoom': zoom,
@@ -38,6 +38,7 @@ const BoardArea = forwardRef(function BoardArea({ zoom, pan, aspectRatio, fullsc
           style={mapImgStyle}
         />
       )}
+      {weatherActive && <div className="weather-overlay" />}
       {children}
     </div>
   )

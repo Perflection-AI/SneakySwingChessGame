@@ -70,7 +70,7 @@ export default function DeckPickerScreen({ selected, onSelect, onConfirm, onBack
           <span>Course</span>
         </button>
         <h2 className="dk-title">Pick Your Deck</h2>
-        <span className="dk-subtitle">Choose a card deck for the match</span>
+        <span className="dk-subtitle">Draw a card after each hole — pick one before your shot</span>
       </div>
 
       <div className="dk-grid">

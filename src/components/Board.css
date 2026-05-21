@@ -8,6 +8,44 @@
   padding: 8px 20px;
 }
 
+/* Floating commentary bar inside board-clip */
+.floating-commentary {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 11;
+  width: calc(100% - 24px);
+  max-width: 400px;
+  pointer-events: none;
+}
+
+.floating-commentary .commentary-feed {
+  height: auto;
+  max-height: 48px;
+  margin: 0;
+  padding: 6px 12px;
+  background: rgba(15, 15, 25, 0.82);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.floating-commentary .commentary-line {
+  border-bottom: none;
+  padding: 2px 0;
+}
+
+/* Move card picker to bottom position */
+.board.board-game-fullscreen {
+  position: relative;
+}
+
+.board .floating-card-picker {
+  top: auto;
+  bottom: 48px;
+}
+
 .board-clip {
   position: relative;
   width: 100%;
@@ -298,6 +336,61 @@
   100% { opacity: 0; transform: translate(-50%, -50%) translateY(-16px); }
 }
 
+/* Card pick hint flash */
+.card-pick-banner {
+  position: absolute;
+  top: 36%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  padding: 6px 22px;
+  border-radius: 8px;
+  z-index: 12;
+  pointer-events: none;
+  color: #fff;
+  background: #8B5CF6;
+  white-space: nowrap;
+  animation: card-pick-flash 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes card-pick-flash {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+  15%  { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+  25%  { transform: translate(-50%, -50%) scale(1); }
+  60%  { opacity: 1; }
+  100% { opacity: 0; transform: translate(-50%, -50%) translateY(-16px); }
+}
+
+/* Game exit button — top-left overlay */
+.game-exit-btn {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 25;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(8px);
+  border: 0.5px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  color: #ccc;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.game-exit-btn:hover {
+  background: rgba(239, 68, 68, 0.35);
+  color: #fff;
+}
+
 .shot-great, .shot-good, .shot-clean {
   color: #fff;
   background: #719342;
@@ -399,4 +492,173 @@
 .control-stop {
   color: #EF4444;
   background: #FEF2F2;
+}
+
+/* ===================================================
+   Card visual effects
+   =================================================== */
+
+/* --- Type 1: Player stat buff (golden glow) --- */
+
+@keyframes golden-pulse {
+  0%, 100% { box-shadow: 0 0 6px 2px rgba(255, 215, 0, 0.5); }
+  50% { box-shadow: 0 0 14px 5px rgba(255, 215, 0, 0.85); }
+}
+
+.card-buff-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #FFD700;
+  animation: golden-pulse 1s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ball-dot-golden { fill: #FFD700; }
+.ball-glow-golden { stroke: #FFD700; opacity: 0.5; }
+.ball-trail-golden { stroke: #FFD700; opacity: 0.7; }
+
+/* --- Type 2: Weather overlay --- */
+
+.weather-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  z-index: 1;
+  animation: weather-fade-in 0.8s ease;
+}
+
+.weather-badge {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 6;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+@keyframes weather-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ball-trail-weather { opacity: 0.4; }
+
+/* --- Type 3: Animal penalty (red glow) --- */
+
+@keyframes penalty-pulse {
+  0%, 100% { box-shadow: 0 0 5px 2px rgba(239, 68, 68, 0.4); }
+  50% { box-shadow: 0 0 12px 4px rgba(239, 68, 68, 0.75); }
+}
+
+.card-penalty-ring {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid #EF4444;
+  animation: penalty-pulse 0.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.ball-dot-penalty { fill: #EF4444; }
+.ball-glow-penalty { stroke: #EF4444; opacity: 0.5; }
+.ball-trail-penalty { stroke: #EF4444; opacity: 0.6; }
+
+/* --- Type 4: Teleport (displacement / Void Fish / Ball Swap) --- */
+
+.teleport-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.teleport-marker {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.9), rgba(120,120,255,0.4), transparent);
+  pointer-events: none;
+}
+
+.teleport-marker-out {
+  animation: teleport-out 0.4s ease-in forwards;
+}
+
+.teleport-marker-in {
+  animation: teleport-in 0.4s ease-out forwards;
+}
+
+.teleport-sparkle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff, rgba(120,120,255,0.5), transparent);
+  animation: sparkle-burst 0.6s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes teleport-out {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+}
+
+@keyframes teleport-in {
+  from { opacity: 0; transform: translate(-50%, -50%) scale(0.3); }
+  to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes sparkle-burst {
+  from { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+  to { opacity: 0; transform: translate(-50%, -50%) scale(2.5); }
+}
+
+.player-teleporting-out {
+  animation: teleport-out-slot 0.4s ease-in forwards;
+}
+
+.player-teleporting-in {
+  animation: teleport-in-slot 0.4s ease-out forwards;
+}
+
+@keyframes teleport-out-slot {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@keyframes teleport-in-slot {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Type 5: Nuclear Option (screen flash + reset) --- */
+
+.nuclear-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 100;
+  background: #fff;
+  animation: nuclear-flash-anim 0.8s ease-out forwards;
+  pointer-events: none;
+}
+
+@keyframes nuclear-flash-anim {
+  0% { opacity: 0; }
+  15% { opacity: 1; }
+  100% { opacity: 0; }
 }

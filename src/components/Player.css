@@ -6,8 +6,8 @@
 
 .player-marker {
   position: relative;
-  width: 14px;
-  height: 14px;
+  width: 7px;
+  height: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,14 +24,14 @@
 
 .player-icon {
   position: relative;
-  width: 7px;
-  height: 7px;
+  width: 4px;
+  height: 4px;
   color: #fff;
 }
 
 .player-emoji {
   position: relative;
-  font-size: 8px;
+  font-size: 4px;
   line-height: 1;
   text-align: center;
 }
@@ -46,4 +46,14 @@
 
 .player-dimmed .player-emoji {
   opacity: 0.5;
+}
+
+.player-thumbnail {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 33px;
+  height: 33px;
+  transition: opacity 0.3s ease;
 }

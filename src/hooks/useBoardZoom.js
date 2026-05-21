@@ -52,9 +52,8 @@ export function calcAutoZoom(positions, hole, boardWidth, boardHeight) {
 export function calcFollowUpZoom(activePos, hole, boardWidth, boardHeight) {
   const midX = (activePos.x + hole.x) / 2
   const midY = (activePos.y + hole.y) / 2
-  const dx = Math.abs(activePos.x - hole.x)
-  const dy = Math.abs(activePos.y - hole.y)
-  const pad = 12
+  const dist = Math.sqrt((activePos.x - hole.x) ** 2 + (activePos.y - hole.y) ** 2)
+  const pad = Math.max(4, Math.min(12, dist * 0.5))
   return calcZoomForPoints([
     { x: activePos.x, y: activePos.y },
     { x: hole.x, y: hole.y },

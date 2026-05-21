@@ -1,4 +1,6 @@
 const appConfig = {
+  debug: false,
+
   board: {
     aspectRatio: 1,
   },
@@ -7,12 +9,14 @@ const appConfig = {
     enabled: false,
     deckType: 'base',
     field: {
-      minCount: 2,              // min cards spawned per hole
-      maxCount: 4,              // max cards spawned per hole
-      acquireRadiusYd: 20,      // ball landing within this radius acquires card
-      pathStartPct: 0.15,       // spawn zone start along player→hole path
-      pathEndPct: 0.85,         // spawn zone end along player→hole path
-      lateralSpread: 8,         // max perpendicular offset (board pct)
+      minCount: 4,              // min cards spawned per hole
+      maxCount: 7,              // max cards spawned per hole
+      acquireRadiusYd: 25,      // ball landing within this radius acquires card
+      pathStartPct: 0.05,       // spawn zone start along player→hole path
+      pathEndPct: 0.95,         // spawn zone end along player→hole path
+      lateralSpread: 5,         // max perpendicular offset (board pct)
+      minSpacingPct: 3,         // min distance between cards (board pct)
+      spawnRetries: 10,         // max retries per card if too close
     },
   },
 

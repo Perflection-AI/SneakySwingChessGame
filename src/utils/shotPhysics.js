@@ -102,14 +102,32 @@ export function generateFieldCardPositions(startPos, holePos, count, cfg) {
   if (d < 1) return []
   const dirX = dx / d, dirY = dy / d
   const perpX = -dirY, perpY = dirX
+  const minDist = cfg.minSpacingPct || 3
+  const maxRetries = cfg.spawnRetries || 10
   const results = []
+
   for (let i = 0; i < count; i++) {
-    const t = cfg.pathStartPct + Math.random() * (cfg.pathEndPct - cfg.pathStartPct)
-    const lateral = (Math.random() - 0.5) * 2 * cfg.lateralSpread
-    results.push({
-      x: startPos.x + dx * t + perpX * lateral,
-      y: startPos.y + dy * t + perpY * lateral,
-    })
+    let placed = false
+    for (let r = 0; r < maxRetries; r++) {
+      const t = cfg.pathStartPct + Math.random() * (cfg.pathEndPct - cfg.pathStartPct)
+      const lateral = (Math.random() - 0.5) * 2 * cfg.lateralSpread
+      const cx = startPos.x + dx * t + perpX * lateral
+      const cy = startPos.y + dy * t + perpY * lateral
+      const tooClose = results.some(p => Math.sqrt((p.x - cx) ** 2 + (p.y - cy) ** 2) < minDist)
+      if (!tooClose) {
+        results.push({ x: cx, y: cy })
+        placed = true
+        break
+      }
+    }
+    if (!placed) {
+      const t = cfg.pathStartPct + Math.random() * (cfg.pathEndPct - cfg.pathStartPct)
+      const lateral = (Math.random() - 0.5) * 2 * cfg.lateralSpread
+      results.push({
+        x: startPos.x + dx * t + perpX * lateral,
+        y: startPos.y + dy * t + perpY * lateral,
+      })
+    }
   }
   return results
 }
