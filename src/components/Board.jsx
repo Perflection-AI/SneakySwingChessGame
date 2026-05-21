@@ -234,7 +234,7 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
 
   const handleUseCard = useCallback((id) => dispatch({ type: 'USE_CARD', payload: { cardId: id } }), [dispatch])
   const handleSkipCard = useCallback(() => dispatch({ type: 'SKIP_CARD' }), [dispatch])
-  const handleExchangeCards = useCallback((cardIds) => dispatch({ type: 'EXCHANGE_CARDS', payload: { cardIds } }), [dispatch])
+  const handleExchangeCards = useCallback((indices) => dispatch({ type: 'EXCHANGE_CARDS', payload: { indices } }), [dispatch])
   const handleSelectDeck = useCallback((deckType) => dispatch({ type: 'SELECT_DECK', payload: { deckType } }), [dispatch])
 
   // --- Mode switch: apply auto-zoom for test mode ---

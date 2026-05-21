@@ -591,9 +591,10 @@ function gameReducer(state, action) {
 
     case 'EXCHANGE_CARDS': {
       if (!isCardsEnabled()) return state
-      const { cardIds } = action.payload
-      if (!cardIds || cardIds.length !== 2) return state
-      const remaining = state.hand.filter(id => !cardIds.includes(id))
+      const { indices } = action.payload
+      if (!indices || indices.length !== 2) return state
+      const indexSet = new Set(indices)
+      const remaining = state.hand.filter((_, i) => !indexSet.has(i))
       const newCard = dealCard(currentPool())
       if (!newCard) return state
       return {

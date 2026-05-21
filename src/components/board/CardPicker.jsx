@@ -17,17 +17,19 @@ function SystemBadge({ system }) {
 export default function CardPicker({ hand, onUseCard, onSkipCard, onExchange, currentPlayerName }) {
   const [selected, setSelected] = useState(new Set())
 
-  const toggleSelect = (cardId) => {
+  const toggleSelect = (slotIdx) => {
     setSelected(prev => {
       const next = new Set(prev)
-      if (next.has(cardId)) {
-        next.delete(cardId)
+      if (next.has(slotIdx)) {
+        next.delete(slotIdx)
       } else if (next.size < 2) {
-        next.add(cardId)
+        next.add(slotIdx)
       }
       return next
     })
   }
+
+  const exchangeIndices = [...selected]
 
   return (
     <div className="card-picker">
@@ -37,10 +39,10 @@ export default function CardPicker({ hand, onUseCard, onSkipCard, onExchange, cu
       </div>
       <div className="cp-hint">Cards spawn randomly along the path — land your ball nearby to pick them up!</div>
       <div className="cp-grid">
-        {[0, 1, 2].map((_, i) => {
+        {[0, 1, 2].map((i) => {
           const cardId = hand[i]
           const card = cardId ? getCardDef(cardId) : null
-          const isSelected = selected.has(cardId)
+          const isSelected = selected.has(i)
           if (!card) return <div key={i} className="cp-slot cp-slot-empty" />
           const colors = EFFECT_COLORS[card.system] || EFFECT_COLORS.player_stat
           return (
@@ -48,7 +50,7 @@ export default function CardPicker({ hand, onUseCard, onSkipCard, onExchange, cu
               key={i}
               className={`cp-slot${isSelected ? ' cp-slot-selected' : ''}`}
               style={{ borderColor: isSelected ? '#EF4444' : colors.base }}
-              onClick={() => toggleSelect(cardId)}
+              onClick={() => toggleSelect(i)}
             >
               <div className="cp-emoji">{card.emoji}</div>
               <div className="cp-badge-row">
@@ -75,7 +77,7 @@ export default function CardPicker({ hand, onUseCard, onSkipCard, onExchange, cu
           disabled={selected.size !== 2}
           onClick={() => {
             if (selected.size === 2) {
-              onExchange([...selected])
+              onExchange(exchangeIndices)
               setSelected(new Set())
             }
           }}
