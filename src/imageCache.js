@@ -1,3 +1,9 @@
+const BASE = import.meta.env.BASE_URL
+
+export function pub(path) {
+  return BASE + path.replace(/^\//, '')
+}
+
 const cache = new Map()
 const thumbCache = new Map()
 
@@ -11,34 +17,36 @@ function tryImg(url) {
 }
 
 export async function discoverPhotos(dir) {
-  if (cache.has(dir)) return cache.get(dir)
+  const absDir = pub(dir)
+  if (cache.has(absDir)) return cache.get(absDir)
   const photos = []
   for (let i = 1; i <= 30; i++) {
     let found = null
     for (const ext of ['jpg', 'png']) {
-      found = await tryImg(`${dir}/P_${i}.${ext}`)
+      found = await tryImg(`${absDir}/P_${i}.${ext}`)
       if (found) break
     }
     if (!found) break
     photos.push(found)
   }
-  cache.set(dir, photos)
+  cache.set(absDir, photos)
   return photos
 }
 
 export async function discoverThumbnails(dir) {
-  if (thumbCache.has(dir)) return thumbCache.get(dir)
+  const absDir = pub(dir)
+  if (thumbCache.has(absDir)) return thumbCache.get(absDir)
   const photos = []
   for (let i = 1; i <= 30; i++) {
     let found = null
     for (const ext of ['webp', 'png']) {
-      found = await tryImg(`${dir}/P_${i}_t.${ext}`)
+      found = await tryImg(`${absDir}/P_${i}_t.${ext}`)
       if (found) break
     }
     if (!found) break
     photos.push(found)
   }
-  thumbCache.set(dir, photos)
+  thumbCache.set(absDir, photos)
   return photos
 }
 

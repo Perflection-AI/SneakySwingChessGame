@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { pub } from '../imageCache'
 import './MapPicker.css'
 
 const MAP_NAMES = { map_1: "Ohio State But It's Golf", map_2: "The White House (No Clearance Required)", map_3: "Earth is a Sandbox", map_4: "Strait of Hormuz or Whatever" }
@@ -15,7 +16,7 @@ function MapCard({ map, isSelected, isDimmed, onToggle }) {
       <div className="mp-card-preview">
         <img
           className="mp-card-img"
-          src={map.imageUrl || `/map/${map.id}/map.png`}
+          src={map.imageUrl || pub(`/map/${map.id}/map.png`)}
           alt={label}
           onError={(e) => { e.target.style.display = 'none' }}
         />

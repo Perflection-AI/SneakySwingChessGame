@@ -9,6 +9,7 @@ import MapPicker from './MapPicker'
 import DeckPickerScreen from './DeckPickerScreen'
 import { SWING_ISSUES } from '../utils/shotPhysics'
 import appConfig from '../appConfig'
+import { pub } from '../imageCache'
 import trainingRecords, { computeStatsFromTraining } from '../data/trainingRecords'
 import PracticeRange from './PracticeRange'
 import './IslandContainer.css'
@@ -261,13 +262,13 @@ export default function IslandContainer() {
     for (let i = 1; i <= 20; i++) {
       const id = `map_${i}`
       try {
-        const res = await fetch(`/map/${id}/map.json`)
+        const res = await fetch(pub(`/map/${id}/map.json`))
         if (!res.ok) break
         const data = await res.json()
         if (data.points?.length >= 2) {
           let imageUrl = null
           for (const ext of ['png', 'jpg']) {
-            const url = `/map/${id}/map.${ext}`
+            const url = pub(`/map/${id}/map.${ext}`)
             if (await tryImg(url)) { imageUrl = url; break }
           }
           maps.push({ id, pointCount: data.points.length, data, imageUrl })
@@ -303,7 +304,7 @@ export default function IslandContainer() {
           startPt: pts[i],
           endPt: pts[i + 1],
           mapId: m.id,
-          imageUrl: m.imageUrl || `/map/${m.id}/map.png`,
+          imageUrl: m.imageUrl || pub(`/map/${m.id}/map.png`),
           imageWidth: m.data.image?.width ?? 0,
           imageHeight: m.data.image?.height ?? 0,
         })
@@ -516,7 +517,7 @@ export default function IslandContainer() {
                 players={players}
                 mapImageUrl={(() => {
                   const m = discoveredMaps.find(m => m.id === selectedMapIds[0])
-                  return m?.imageUrl || (selectedMapIds.length > 0 ? `/map/${selectedMapIds[0]}/map.png` : null)
+                  return m?.imageUrl || (selectedMapIds.length > 0 ? pub(`/map/${selectedMapIds[0]}/map.png`) : null)
                 })()}
               />
             ) : (
@@ -532,7 +533,7 @@ export default function IslandContainer() {
                   testConfig={testConfig}
                   mapImageUrl={(() => {
                     const m = discoveredMaps.find(m => m.id === selectedMapIds[0])
-                    return m?.imageUrl || (selectedMapIds.length > 0 ? `/map/${selectedMapIds[0]}/map.png` : null)
+                    return m?.imageUrl || (selectedMapIds.length > 0 ? pub(`/map/${selectedMapIds[0]}/map.png`) : null)
                   })()}
                   onExit={gamePhase === 'playing' ? handleNewGame : undefined}
                 />
