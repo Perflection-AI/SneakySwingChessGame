@@ -670,7 +670,7 @@ export default function Board({ players, activePlayerId, mode, onControls, illus
                   clutchRadius={CLUTCH_THRESHOLD_YD * YD_TO_PCT}
                 />
               )}
-              <BallLayer balls={state.balls} ydToPct={YD_TO_PCT} ballEffect={ballEffect} weatherActive={weatherActive} penaltyPlayerIdxs={penaltyPlayerIdxs} nuclearFlash={state.nuclearPhase === 'flash'} />
+              <BallLayer balls={state.balls} ydToPct={YD_TO_PCT} ballEffect={ballEffect} weatherActive={weatherActive} penaltyPlayerIdxs={penaltyPlayerIdxs} nuclearFlash={state.nuclearPhase === 'flash' || !!state.activeCard?.effect?.resetHole} />
               {appConfig.cards?.enabled && state.fieldCards.length > 0 && state.fieldCards.map((fc, idx) => (
                 <FieldCardMarker
                   key={`fc-${idx}-${fc.cardId}`}
